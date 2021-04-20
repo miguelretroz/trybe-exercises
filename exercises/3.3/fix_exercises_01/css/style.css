@@ -13,6 +13,7 @@
 
   .padding {
   /* insira aqui um padding de 20px na classe abaixo para aplicá-lo aos itens B, C e D */
+  padding: 20px;
   }
 
   .margin {
