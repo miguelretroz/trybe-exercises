@@ -5,3 +5,6 @@ p, h1 {
 li:hover {
     background-color: rgba(165, 0, 165, 0.336);
 }
+li:active {
+    font-family: Helvetica;
+}
