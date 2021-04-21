@@ -30,3 +30,12 @@ ol li:nth-child(4n+8),
 ol li:nth-child(5n+10) {
   text-transform: none;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  color:red;
+}
+
+:is(h1, h2, h3, h4, h5, h6) em {
+  font-size: 40px;
+  border: 1px solid black;
+}
