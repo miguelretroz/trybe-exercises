@@ -1,2 +1,5 @@
-base = 5;
-altura = 8;
+let base = 5;
+let altura = 8;
+
+let area = base * altura;
+console.log(`Área do retangulo -> ${area}`);
