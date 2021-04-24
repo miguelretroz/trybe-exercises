@@ -10,3 +10,10 @@ console.log(typeof patientId);
 console.log(typeof isEnrolled);
 console.log(typeof patientInfo);
 console.log(typeof patientEmail);
+
+console.log();
+console.log(typeof patientAge);
+
+patientId = '50';
+console.log();
+console.log(typeof patientId);
