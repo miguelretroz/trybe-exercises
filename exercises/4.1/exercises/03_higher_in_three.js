@@ -4,12 +4,14 @@ let thirdNumber = Math.ceil(Math.random() * 100);
 
 let higher = 0;
 
-if (a > b) {
-    higher = a;
+if (firstNumber > secondNumber) {
+    higher = firstNumber;
 } else {
-    higher = b;
+    higher = secondNumber;
 }
 
-if (c > higher) {
-    higher = c;
+if (thirdNumber > higher) {
+    higher = thirdNumber;
 }
+
+console.log(`The higher between three is ${higher} !`);
