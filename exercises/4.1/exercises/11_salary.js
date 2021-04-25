@@ -1,4 +1,4 @@
-let grossSalary = 2850.50;
+let grossSalary = 3000.00;
 
 //INSS
 let inssValue = 0;
@@ -8,7 +8,7 @@ if (grossSalary < 1556.95) {
 } else if (grossSalary >= 1556.95 && grossSalary < 2594.93) {
     inssValue = grossSalary * 0.09;
 } else if (grossSalary >= 2594.93 && grossSalary <= 5189.82) {
-    innsValue = grossSalary * 0.11;
+    inssValue = grossSalary * 0.11;
 } else {
     inssValue = 570.88;
 }
@@ -29,3 +29,6 @@ if (salaryBase < 1903.99) {
 } else {
     irValue = (salaryBase * 0.275) - 869.36;
 }
+
+let salaryLiquid = salaryBase - irValue;
+console.log(`O salário líquido é R$ ${salaryLiquid}`);
