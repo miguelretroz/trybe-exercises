@@ -23,3 +23,16 @@ for (let index = 1; index < numbers.length; index += 1) {
 }
 
 console.log(numbers);
+
+numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27];
+let numbersMultiplied = numbers;
+
+for (let index = 0; index < numbersMultiplied.length; index += 1) {
+    if (index !== (numbersMultiplied.length - 1)) {
+        numbersMultiplied[index] = numbersMultiplied[index] * numbersMultiplied[index + 1];
+    } else {
+        numbersMultiplied[index] = numbersMultiplied[index] * 2;
+    }
+}
+
+console.log(numbersMultiplied);
