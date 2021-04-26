@@ -6,3 +6,9 @@ for(number of numbers) {
 }
 
 let arithmeticAverage = numbersSum / numbers.length;
+
+if (arithmeticAverage > 20) {
+    console.log('Valor maior que 20');
+} else {
+    console.log('Valor menor ou igual a 20');
+}
