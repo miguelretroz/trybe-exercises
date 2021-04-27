@@ -14,4 +14,10 @@ for (let lineIndex = 1; lineIndex <= n; lineIndex += 2) {
     for (space of lineSpaces) {
         pyramidLine += space;
     };
+
+    for (let asterisk = 0; asterisk < lineIndex; asterisk += 1) {
+        pyramidLine += '*';
+    };
+
+    console.log(pyramidLine);
 };
