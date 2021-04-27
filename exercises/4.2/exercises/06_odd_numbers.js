@@ -5,7 +5,7 @@ let oddAmount = 0;
 for (number of numbers) {
     if ((number % 2) !== 0) {
         oddAmount += 1;
-    }
-}
+    };
+};
 
 console.log(oddAmount);
