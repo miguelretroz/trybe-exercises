@@ -4,19 +4,13 @@ if ((n % 2) === 0) {
      n -= 1;
 }
 
-let lineSpace = [];
-
-for (let spaceIndex = 0; spaceIndex < (Math.ceil((n / 2))); spaceIndex += 1) {
-    lineSpace.push(' ');
-};
+let lineSpace = Math.ceil((n / 2));
 
 for (let lineIndex = 1; lineIndex <= n; lineIndex += 2) {
-    lineSpace.shift();
-
     let pyramid = '';
 
-    for (space of lineSpace) {
-        pyramid += space;
+    for (let spaceIndex = 0; spaceIndex < lineSpace; spaceIndex += 1) {
+        pyramid += ' ';
     };
 
     if(lineIndex === 1) {
@@ -33,5 +27,7 @@ for (let lineIndex = 1; lineIndex <= n; lineIndex += 2) {
             pyramidInternal += ' ';
         };
         console.log(pyramid + '*' + pyramidInternal + '*');
-    }
+    };
+
+    lineSpace -= 1;
 };
