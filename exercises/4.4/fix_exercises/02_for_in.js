@@ -4,3 +4,6 @@ let names = {
     person3: 'Jorge'
 };
 
+for (let name in names) {
+    console.log(`Olá ${names[name]}!`);
+};
