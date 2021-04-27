@@ -13,6 +13,6 @@ for (let lineIndex = 0; lineIndex < n; lineIndex += 1) {
     let line = '';
     for (asterisk of asterisksLine) {
         line += asterisk;
-    }
+    };
     console.log(line);
 };
