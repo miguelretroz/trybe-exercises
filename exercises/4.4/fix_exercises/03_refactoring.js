@@ -61,6 +61,8 @@ console.log();
     console.log(higherNumber(numberA, numberB));
 };
 
+console.log();
+
 // 3. Faça um programa que retorne o maior de três números. Defina no começo do programa três variáveis com os valores que serão comparados.
 {
     function higherInThree (number01, number02, number03) {
@@ -77,4 +79,21 @@ console.log();
     };
 
     console.log(higherInThree(numberA, numberB, 15));
+};
+
+console.log();
+
+// 4. Faça um programa que, dado um valor definido numa variável, retorne "positive" se esse valor for positivo, "negative" se for negativo e "zero" caso contrário.
+{
+    function numberSign (number) {
+        if (number > 0) {
+            return 'Positive';
+        } else if (number < 0) {
+            return 'Negative';
+        } else {
+            return 'Zero';
+        };
+    };
+
+    console.log(numberSign(4));
 };
