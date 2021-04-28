@@ -205,3 +205,32 @@ O programa deve retornar uma mensagem de erro e encerrar se a nota passada for m
 
     scoreVerification(score);
 };
+
+console.log();
+
+/* 8. Escreva um programa que defina três números em variáveis e retorne true se pelo menos uma das três for par. Caso contrário, ele retorna false .
+
+Bonus: use somente um if . */
+{
+    let firstNumber =  randomNumber(100);
+    let secondNumber = randomNumber(100);
+    let thridNumber = randomNumber(100);
+
+    function randomNumber(number) {
+        return (Math.ceil(Math.random() * number));
+    };
+
+    console.log(`The numbers chosen were -> ${firstNumber}, ${secondNumber}, ${thridNumber} !`);
+
+    function isEven (numberA, numberB, numberC) {
+        if ((numberA % 2) === 0 || (numberB % 2) === 0 || (numberC % 2) === 0) {
+            return true;
+        } else {
+            return false;
+        };
+    };
+
+    console.log(isEven(firstNumber, secondNumber, thridNumber));
+};
+
+console.log();
