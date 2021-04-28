@@ -36,3 +36,10 @@ function division (number01, number02) {
 };
 
 console.log(division (numberA, numberB));
+
+// Modulus
+function modulus (number01, number02) {
+    return (number01 % number02);
+};
+
+console.log(modulus(numberA, numberB));
