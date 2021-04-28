@@ -100,7 +100,12 @@ console.log();
 
 console.log();
 
-// 5. Faça um programa que defina três variáveis com os valores dos três ângulos internos de um triângulo. Retorne true se os ângulos representarem os ângulos de um triângulo e false , caso contrário. Se algum ângulo for inválido o programa deve retornar uma mensagem de erro.
+/* 5. Faça um programa que defina três variáveis com os valores dos três ângulos internos de um triângulo. Retorne true se os ângulos representarem os ângulos de um triângulo e false , caso contrário. Se algum ângulo for inválido o programa deve retornar uma mensagem de erro.
+
+Para os ângulos serem de um triângulo válido, a soma dos três devem ser 180 graus.
+
+Um ângulo será considerado inválido se não tiver um valor positivo.
+*/
 {
     let angleA = 30;
     let angleB = 50;
@@ -118,4 +123,51 @@ console.log();
     };
 
     console.log(triangle(angleA, angleB, angleC));
+};
+
+console.log();
+
+/* 6. Escreva um programa que receba o nome de uma peça de xadrez e retorne os movimentos que ela faz.
+
+- Escreva um programa que receba o nome de uma peça de xadrez e retorne os movimentos que ela faz.
+
+- Como desafio, faça o programa funcionar tanto se receber o nome de uma peça com letras maiúsculas quanto com letras minúsculas, sem aumentar a quantidade de condicionais.
+
+- Como dica, você pode pesquisar uma função que faz uma string ficar com todas as letras minúsculas (lower case) .
+
+- Se a peça passada for inválida, o programa deve retornar uma mensagem de erro.
+
+- Exemplo: bishop (bispo) -> diagonals (diagonais) */
+{
+    let piece = 'Rook';
+
+    function chessMovement(chessPiece) {
+        chessPiece = chessPiece.toLowerCase();
+
+        switch(chessPiece) {
+            case 'king':
+                console.log('King -> Move one square in any direction!');
+                break;
+            case 'queen':
+                console.log('Queen -> Move diagonally, horizontally, or vertically any number of squares!');
+                break;
+            case 'rook':
+                console.log('Rook -> Move horizontally or verically any number of squares!');
+                break;
+            case 'bishop':
+                console.log('Bishop -> Move diagonally any number of squares!');
+                break;
+            case 'knight':
+                console.log("Knight -> Move in an 'L' shape!");
+                break;
+            case 'pawn':
+                console.log('Pawn -> Move vertically forward one square!');
+                break;
+            default:
+                console.log('Invalid piece!');
+                break;
+        };
+    };
+
+    chessMovement(piece);
 };
