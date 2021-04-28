@@ -97,3 +97,25 @@ console.log();
 
     console.log(numberSign(4));
 };
+
+console.log();
+
+// 5. Faça um programa que defina três variáveis com os valores dos três ângulos internos de um triângulo. Retorne true se os ângulos representarem os ângulos de um triângulo e false , caso contrário. Se algum ângulo for inválido o programa deve retornar uma mensagem de erro.
+{
+    let angleA = 30;
+    let angleB = 50;
+    let angleC = 100;
+
+    function triangle (angle01, angle02, angle03) {
+        let angleTotal = angle01 + angle02 + angle03;
+        let isTriangle = false;
+
+        if ((angle01 >= 0 || angle02 >= 0 || angle03 >= 0) && (angleTotal === 180)) {
+            isTriangle = true;
+        };
+
+        return isTriangle;
+    };
+
+    console.log(triangle(angleA, angleB, angleC));
+};
