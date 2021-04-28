@@ -60,3 +60,21 @@ console.log();
 
     console.log(higherNumber(numberA, numberB));
 };
+
+// 3. Faça um programa que retorne o maior de três números. Defina no começo do programa três variáveis com os valores que serão comparados.
+{
+    function higherInThree (number01, number02, number03) {
+        let higher = number01;
+
+        if (number02 > higher) {
+            higher = number02;
+        };
+        if (number03 > higher) {
+            higher = number03;
+        };
+
+        return higher;
+    };
+
+    console.log(higherInThree(numberA, numberB, 15));
+};
