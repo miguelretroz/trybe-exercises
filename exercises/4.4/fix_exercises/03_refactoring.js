@@ -234,3 +234,25 @@ Bonus: use somente um if . */
 };
 
 console.log();
+
+/* 9. Escreva um programa que defina três números em variáveis e retorne true se pelo menos uma das três for ímpar. Caso contrário, ele retorna false .
+
+Bonus: use somente um if . */
+{
+    let firstNumber = randomNumber(50);
+    let secondNumber = randomNumber(50);
+    let thridNumber = randomNumber(50);
+
+    console.log('The numbers chosen were => ' + firstNumber + ", " + secondNumber + ', ' + thridNumber);
+    
+    function isOdd (numberA, numberB, numberC) {
+        if ((numberA % 2) !== 0 || (numberB % 2) !== 0 || (numberC % 2) !== 0) {
+            return true;
+        } else {
+            return false;
+        };
+    };
+
+    console.log(isOdd(firstNumber, secondNumber, thridNumber));
+};
+
