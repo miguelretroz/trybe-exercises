@@ -5,8 +5,8 @@ Multiplicação (a * b)
 Divisão (a / b)
 Módulo (a % b) */
 
-let number01 = 5;
-let number02 = 3;
+let numberA = 5;
+let numberB = 3;
 
 
 // Sum
@@ -14,11 +14,18 @@ function sum (number01, number02) {
     return number01 + number02;
 };
 
-console.log(sum(number01, number02));
+console.log(sum(numberA, numberB));
 
 // Subtraction
 function subtraction (number01, number02) {
     return number01 - number02;
 };
 
-console.log(subtraction(number01, number02));
+console.log(subtraction(numberA, numberB));
+
+// Multiplication
+function multiplication (number01, number02) {
+    return number01 * number02;
+};
+
+console.log(multiplication(numberA, numberB))
