@@ -9,9 +9,16 @@ let number01 = 5;
 let number02 = 3;
 
 
-//Sum
+// Sum
 function sum (number01, number02) {
     return number01 + number02;
-}
+};
 
 console.log(sum(number01, number02));
+
+// Subtraction
+function subtraction (number01, number02) {
+    return number01 - number02;
+};
+
+console.log(subtraction(number01, number02));
