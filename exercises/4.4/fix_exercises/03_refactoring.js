@@ -11,21 +11,28 @@ let numberB = 3;
 
 // Sum
 function sum (number01, number02) {
-    return number01 + number02;
+    return (number01 + number02);
 };
 
 console.log(sum(numberA, numberB));
 
 // Subtraction
 function subtraction (number01, number02) {
-    return number01 - number02;
+    return (number01 - number02);
 };
 
 console.log(subtraction(numberA, numberB));
 
 // Multiplication
 function multiplication (number01, number02) {
-    return number01 * number02;
+    return (number01 * number02);
 };
 
-console.log(multiplication(numberA, numberB))
+console.log(multiplication(numberA, numberB));
+
+// Division
+function division (number01, number02) {
+    return (number01 / number02);
+};
+
+console.log(division (numberA, numberB));
