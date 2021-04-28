@@ -243,7 +243,7 @@ Bonus: use somente um if . */
     let secondNumber = randomNumber(50);
     let thridNumber = randomNumber(50);
 
-    console.log('The numbers chosen were => ' + firstNumber + ", " + secondNumber + ', ' + thridNumber);
+    console.log('The numbers chosen were => ' + firstNumber + ", " + secondNumber + ', ' + thridNumber + ' !');
     
     function isOdd (numberA, numberB, numberC) {
         if ((numberA % 2) !== 0 || (numberB % 2) !== 0 || (numberC % 2) !== 0) {
@@ -256,3 +256,30 @@ Bonus: use somente um if . */
     console.log(isOdd(firstNumber, secondNumber, thridNumber));
 };
 
+console.log();
+
+/* 10. Escreva um programa que se inicie com dois valores em duas variáveis diferentes: o custo de um produto e seu valor de venda. A partir dos valores, calcule quanto de lucro (valor de venda descontado o custo do produto) a empresa terá ao vender mil desses produtos.
+
+Atente que, sobre o custo do produto, incide um imposto de 20%.
+
+Seu programa também deve emitir uma mensagem de erro e encerrar caso algum dos seus valores de entrada seja menor que zero.
+
+O lucro de um produto é o resultado da subtração do valor de venda pelo custo do mesmo, sendo que o imposto de 20% também faz parte do valor de custo.
+
+  - valorCustoTotal = valorCusto + impostoSobreOCusto
+  - lucro = valorVenda - valorCustoTotal (lucro de um produto) */
+{
+    let costValue = 500;
+    let saleValue = 900;
+
+    function productProfit (cost, sale, unitCount) {
+        let taxValue = cost * 0.2;
+        let costTotal = cost + taxValue;
+
+        let unitProfit = sale - costTotal;
+
+        return (unitProfit * unitCount);
+    };
+
+    console.log(`Profit per thousand sales -> U$ ${productProfit(costValue, saleValue, 1000)}`);
+};
