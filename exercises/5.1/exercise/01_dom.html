@@ -69,6 +69,12 @@
         }
 
         backgroundColorCenter('center-content', 0, 'white');
+
+        function headerText(classCSS, index, text) {
+            document.getElementsByClassName(classCSS)[index].innerText = text;
+        }
+
+        headerText('title', 0, 'Exercício 5.1 - JavaScript');
     </script>
   </body>
 </html>
