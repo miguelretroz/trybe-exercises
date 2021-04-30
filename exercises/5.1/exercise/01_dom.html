@@ -82,6 +82,15 @@
         }
 
         pUpperCase('p', 0);
+
+        function displayContent(tag) {
+            let elements = document.getElementsByTagName(tag);
+            for (let element of elements) {
+                console.log(element.innerHTML);
+            }
+        }
+
+        displayContent('p');
     </script>
   </body>
 </html>
