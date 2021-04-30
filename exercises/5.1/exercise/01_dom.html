@@ -58,11 +58,17 @@
 
         description('p', 0, 'Estarei trabalhando com desenvolvedor.');
 
-        function backgroundColorMainContent(classCss, index, bgColor) {
-            document.getElementsByClassName(classCss)[index].style.background = bgColor;
+        function backgroundColorMainContent(classCSS, index, bgColor) {
+            document.getElementsByClassName(classCSS)[index].style.background = bgColor;
         }
 
         backgroundColorMainContent('main-content', 0, 'rgb(76,164,109');
+
+        function backgroundColorCenter(classCSS, index, bgColor) {
+            document.getElementsByClassName(classCSS)[index].style.background = bgColor;
+        }
+
+        backgroundColorCenter('center-content', 0, 'white');
     </script>
   </body>
 </html>
