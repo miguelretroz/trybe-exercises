@@ -75,6 +75,13 @@
         }
 
         headerText('title', 0, 'Exercício 5.1 - JavaScript');
+
+        function pUpperCase(tag, index) {
+            let upper = document.getElementsByTagName(tag)[index].innerText.toUpperCase();
+            document.getElementsByTagName(tag)[index].innerText = upper;
+        }
+
+        pUpperCase('p', 0);
     </script>
   </body>
 </html>
