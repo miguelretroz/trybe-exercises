@@ -23,3 +23,24 @@ function isPalindrome (word) {
 };
 
 console.log(isPalindrome('arara'));
+
+/* 2. Crie uma função que receba um array de inteiros e retorne o índice do maior valor.
+
+- Array de teste: [2, 3, 6, 7, 10, 1]; .
+
+- Valor esperado no retorno da função: 4 . */
+
+function highestIndex(numbers) {
+    let highest = numbers[0];
+    let index = 0;
+
+    for (let numberIndex in numbers) {
+        if (numbers[numberIndex] > highest) {
+            highest = numbers[numberIndex];
+            index = numberIndex;
+        };
+    };
+    return index;
+};
+
+console.log(highestIndex([2, 3, 6, 7, 10, 1]));
