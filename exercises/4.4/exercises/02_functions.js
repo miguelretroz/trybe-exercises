@@ -145,3 +145,36 @@ function sumUpTo(maxNumber) {
 };
 
 console.log(sumUpTo(5));
+
+console.log();
+
+/* 7. Crie uma função que receba uma string word e outra string ending . Verifique se a string ending é o final da string word . Considere que a string ending sempre será menor que a string word .
+
+Valor de teste: 'trybe' e 'be'
+
+Valor esperado no retorno da função: true
+
+verificaFimPalavra('trybe', 'be') ;
+
+Retorno esperado: true
+
+verificaFimPalavra('joaofernando', 'fernan') ;
+
+Retorno esperado: false */
+
+function wordEnding(stringWord, stringEnding) {
+    let wordIndex = (stringWord.length - stringEnding.length);
+
+    if (stringWord[wordIndex] === stringEnding[0]) {
+        for (let index = 0; index < stringEnding.length; index += 1) {
+            if (stringWord[wordIndex + index] !== stringEnding[index]) {
+                return false;
+            };
+        };
+    } else {
+        return false;
+    };
+    return true;
+};
+
+console.log(wordEnding('joaofernando', 'fernando'));
