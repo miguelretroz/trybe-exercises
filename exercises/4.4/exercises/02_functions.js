@@ -24,6 +24,8 @@ function isPalindrome (word) {
 
 console.log(isPalindrome('arara'));
 
+console.log();
+
 /* 2. Crie uma função que receba um array de inteiros e retorne o índice do maior valor.
 
 - Array de teste: [2, 3, 6, 7, 10, 1]; .
@@ -44,3 +46,26 @@ function highestIndex(numbers) {
 };
 
 console.log(highestIndex([2, 3, 6, 7, 10, 1]));
+
+console.log();
+
+/* 3. Crie uma função que receba um array de inteiros e retorne o índice do menor valor.
+
+Array de teste: [2, 4, 6, 7, 10, 0, -3]; .
+
+Valor esperado no retorno da função: 6 . */
+
+function lowestIndex(numbers) {
+    let lowest = numbers[0];
+    let index = 0;
+
+    for (let numberIndex in numbers) {
+        if (numbers[numberIndex] < lowest) {
+            lowest = numbers[numberIndex];
+            index = numberIndex;
+        };
+    };
+    return index;
+};
+
+console.log(lowestIndex([2, 4, 6, 7, 10, 0, -3]));
