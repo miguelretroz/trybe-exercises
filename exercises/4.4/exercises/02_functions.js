@@ -94,3 +94,36 @@ function highestName(names) {
 console.log(highestName(['José', 'Lucas', 'Nádia', 'Fernanda', 'Cairo', 'Joana']));
 
 console.log();
+
+/* 5. Crie uma função que receba um array de inteiros e retorne o inteiro que mais se repete.
+
+Array de teste: [2, 3, 2, 5, 8, 2, 3]; .
+
+Valor esperado no retorno da função: 2 .
+ */
+
+function numberCount(number, numbersArray) {
+    let count = 0;
+    for (let number02 of numbersArray) {
+        if (number02 === number) {
+            count += 1;
+        };
+    };
+    return count;
+};
+
+function mostRepeatedNumber(numbersArray) {
+    let previousCount = 0;
+    let index = 0;
+
+    for (let number in numbersArray) {
+        let count = numberCount(numbersArray[number], numbersArray)
+        if (count >= previousCount) {
+            previousCount = count;
+            index = number;
+        };
+    };
+    return numbersArray[index];
+};
+
+console.log(mostRepeatedNumber([8, 3, 3, 8, 8, 8, 3]));
