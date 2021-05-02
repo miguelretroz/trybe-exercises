@@ -2,3 +2,20 @@
  
 
 let vector = [[1, 2], [3,4,5,6], [7,8,9,10]];*/
+
+
+let vector = [[1, 2], [3,4,5,6], [7,8,9,10]];
+
+function arrayOfNumbers(vector) {
+    let numbers = [];
+    for (let array in vector) {
+        for (let number of vector[array]) {
+            if ((number % 2) === 0) {
+                numbers.push(number);
+            }
+        }
+    }
+    return numbers;
+}
+
+console.log(arrayOfNumbers(vector));
