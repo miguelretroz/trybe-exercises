@@ -11,7 +11,7 @@ for (let lineIndex = 1; lineIndex <= n; lineIndex += 2) {
 
     let pyramidLine = '';
 
-    for (space of lineSpaces) {
+    for (let space of lineSpaces) {
         pyramidLine += space;
     };
 

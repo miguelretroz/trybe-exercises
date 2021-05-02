@@ -1,3 +1,5 @@
+// 3. Faça um programa que retorne o maior de três números. Defina no começo do programa três variáveis com os valores que serão comparados.
+
 let firstNumber = Math.ceil(Math.random() * 100);
 let secondNumber = Math.ceil(Math.random() * 100);
 let thirdNumber = Math.ceil(Math.random() * 100);

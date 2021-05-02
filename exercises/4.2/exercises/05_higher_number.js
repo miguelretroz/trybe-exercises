@@ -5,7 +5,7 @@ let higher = numbers[0];
 for (let index = 1; index < numbers.length; index += 1) {
     if (numbers[index] > higher) {
         higher = numbers[index];
-    }
-}
+    };
+};
 
 console.log(higher);
