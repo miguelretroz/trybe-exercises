@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<hmtl lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>getElementById</title>
+    </head>
+    <body>
+        <h2 id="page-title">Título</h2>
+        <p id="paragraph" class='all-paragraph'>Dê uma cor para este parágrafo!</p>
+        <h4 id="subtitle">Subtítulo</h4>
+        <p id="second-paragraph" class='all-paragraph'>Segundo parágrafo!</p>
+
+        <script>
+            let paragraph = document.getElementById("paragraph");
+            let pageTitle = document.getElementById("page-title");
+            let secondParagraph = document.getElementById("second-paragraph");
+            let subtitle = document.getElementById("subtitle");
+
+            let allParagraph = document.getElementsByClassName('all-paragraph');
+
+            paragraph.style.color = "red";
+            pageTitle.innerText = "Star Wars";
+            secondParagraph.style.color = "yellow";
+            subtitle.innerText = "May the Force be with you!";
+
+            allParagraph[0].style.color = 'blue';
+
+            let subtitleTag = document.getElementsByTagName("h4")[0];
+
+            subtitleTag.style.color = 'red';
+
+        </script>
+    </body>
+</html>
