@@ -18,7 +18,8 @@
             </div>
           </div>
           <script>
-              /* 1. Acesse o elemento elementoOndeVoceEsta .
+              /* Parte 1
+                 1. Acesse o elemento elementoOndeVoceEsta .
 
                  2. Acesse pai a partir de elementoOndeVoceEsta e adicione uma color a ele.
                  
@@ -60,6 +61,21 @@
 
               terceiroFilho = document.querySelector('#pai').childNodes;
               console.log(terceiroFilho[5]);
+
+            /* Parte 2
+            1. Crie um irmão para elementoOndeVoceEsta .
+
+            2. Crie um filho para elementoOndeVoceEsta .
+
+            3. Crie um filho para primeiroFilhoDoFilho .
+
+            4. A partir desse filho criado, acesse terceiroFilho .*/
+
+            quintoFilho = document.createElement('div');
+            console.log(quintoFilho);
+            quintoFilho.setAttribute('id', "quintoFilho");
+
+            ondeEstou.parentNode.appendChild(quintoFilho);
           </script>
     </body>
 </html>
