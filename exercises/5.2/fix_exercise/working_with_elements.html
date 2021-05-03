@@ -46,7 +46,10 @@
 
               primeiroFilhoDoFilho.innerHTML = 'Primeiro filho do filho';
 
-              let primeiroFilho = document.querySelector('#pai').nextSibling;
+              let primeiroFilho = document.querySelector('#pai').firstElementChild;
+              console.log(primeiroFilho);
+
+              primeiroFilho = ondeEstou.previusSibling;
               console.log(primeiroFilho);
           </script>
     </body>
