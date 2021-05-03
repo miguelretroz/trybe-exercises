@@ -71,23 +71,37 @@
 
             4. A partir desse filho criado, acesse terceiroFilho .*/
 
-            quintoFilho = document.createElement('div');
+            let quintoFilho = document.createElement('div');
             console.log(quintoFilho);
             quintoFilho.setAttribute('id', "quintoFilho");
 
             ondeEstou.parentNode.appendChild(quintoFilho);
 
-            filhoDeOndeEstou = document.createElement('h3');
+            let filhoDeOndeEstou = document.createElement('h3');
             console.log(filhoDeOndeEstou);
             filhoDeOndeEstou.setAttribute('id', 'filhoDeOndeEstou');
             filhoDeOndeEstou.innerText = 'Filho de onde estou';
             ondeEstou.appendChild(filhoDeOndeEstou);
 
-            filhoDoPrimeiroFilhoDoFilho = document.createElement('div');
+            let filhoDoPrimeiroFilhoDoFilho = document.createElement('div');
             filhoDoPrimeiroFilhoDoFilho.setAttribute('id', 'filhoDoPrimeiroFilhoDoFilho');
             primeiroFilhoDoFilho.appendChild(filhoDoPrimeiroFilhoDoFilho);
 
             console.log(filhoDoPrimeiroFilhoDoFilho.parentNode.parentNode.nextSibling.nextSibling);
+
+            let paiDoPai = document.querySelector('#paiDoPai');
+            let pai = paiDoPai.firstChild.nextSibling;
+            pai.removeChild(paiDoPai.firstChild.nextSibling.firstChild.nextSibling);
+            pai.removeChild(pai.firstChild.nextSibling.nextSibling.nextSibling);
+            pai.removeChild(pai.lastChild);
+            pai.removeChild(pai.lastChild.previousSibling);
+            pai.removeChild(pai.lastChild.previousSibling.previousSibling);
+            console.log(pai.childNodes);
+
+            console.log(ondeEstou.childNodes);
+            ondeEstou.removeChild(ondeEstou.lastChild);
+            ondeEstou.removeChild(ondeEstou.lastChild.previousSibling)
+
           </script>
     </body>
 </html>
