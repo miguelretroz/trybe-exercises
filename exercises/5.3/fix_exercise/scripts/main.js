@@ -19,6 +19,18 @@ a cor do mesmo;
 Segue abaixo um exemplo do uso de event.target:
 */
 
+let elementSelected = divUm;
+
+function removeTech(element) {
+    element.removeAttribute('class', '.tech');
+}
+
+function chooseBox(event) {
+    removeTech(elementSelected);
+    event.target.className = 'tech';
+    elementSelected = event.target;
+}
+
 function resetText(event) {
   // O Event é passado como um parâmetro para a função.
   event.target.innerText = 'Opção reiniciada';
@@ -30,3 +42,10 @@ divUm.addEventListener('dblclick', resetText);
 // Não precisa passar o parâmetro dentro do addEventListener. O próprio
 // navegador fará esse trabalho por você, não é legal? Desse jeito, o
 // event.target na nossa função retornará o objeto 'divUm'.
+
+divDois.addEventListener('dblclick', resetText);
+divTres.addEventListener('dblclick', resetText);
+
+divUm.addEventListener('click', chooseBox);
+divDois.addEventListener('click', chooseBox);
+divTres.addEventListener('click', chooseBox)
