@@ -32,14 +32,19 @@ function chooseBox(event) {
 }
 
 function textOfBox(event) {
-    console.log(event.target.id);
+    //console.log(event.target.id);
     if (event.target.id === 'divUm') {
-        document.getElementById('input').setAttribute('placeholder', 'Alterar a primeira tecnologia');
+        input.setAttribute('placeholder', 'Alterar a primeira tecnologia');
     } else if (event.target.id === 'divDois') {
-        document.getElementById('input').setAttribute('placeholder', 'Alterar a segunda tecnologia');
+        input.setAttribute('placeholder', 'Alterar a segunda tecnologia');
     } else if (event.target.id === 'divTres') {
-        document.getElementById('input').setAttribute('placeholder', 'Alterar a terçeira tecnologia');
+        input.setAttribute('placeholder', 'Alterar a terçeira tecnologia');
     }
+}
+
+
+function chooseTextTech(event) {
+    elementSelected.innerText = event.target.value;
 }
 
 function resetText(event) {
@@ -64,3 +69,5 @@ divTres.addEventListener('click', chooseBox);
 divUm.addEventListener('click', textOfBox);
 divDois.addEventListener('click', textOfBox);
 divTres.addEventListener('click', textOfBox);
+
+input.addEventListener('keyup', chooseTextTech);
