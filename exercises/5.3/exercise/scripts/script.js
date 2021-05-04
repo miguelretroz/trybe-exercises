@@ -122,3 +122,28 @@ Implemente uma função que receba como parâmetro a string "Sexta-feira" e crie
 
 
 btnConstructor('btn-friday', 'Sexta-feira');
+
+/* Exercício 5:
+
+Implemente uma função que adicione ao botão "Sexta-feira" um evento de "click" que modifica o texto exibido nos dias que são Sexta-feira.
+
+    É interessante que este botão possua também a lógica inversa. Ao ser clicado novamente ele retorna à configuração inicial exibindo os dias. */
+
+let btnFriday = document.getElementById('btn-friday');
+let textIsFriday = false;
+
+btnFriday.addEventListener('click', function () {
+    let fridaysList = document.getElementsByClassName('friday');
+    
+    if (textIsFriday) {
+        for (let friday in fridaysList) {
+            fridaysList[friday].innerText = dezFridaysList[friday];
+        };
+        textIsFriday = false;
+    } else {
+        for (let friday of fridaysList) {
+            friday.innerText = 'Sexta-feira';
+        };
+        textIsFriday = true;
+    };
+});
