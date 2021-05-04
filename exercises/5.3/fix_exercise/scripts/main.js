@@ -47,6 +47,18 @@ function chooseTextTech(event) {
     elementSelected.innerText = event.target.value;
 }
 
+function myPage(event) {
+    window.location.href = 'https://miguelretroz.github.io';
+}
+
+function myPageHover(event) {
+    event.target.style.color = '#378eff';
+}
+
+function myPageLeave(event) {
+    event.target.style.color = '#FFFFFF';
+}
+
 function resetText(event) {
   // O Event é passado como um parâmetro para a função.
   event.target.innerText = 'Opção reiniciada';
@@ -71,3 +83,7 @@ divDois.addEventListener('click', textOfBox);
 divTres.addEventListener('click', textOfBox);
 
 input.addEventListener('keyup', chooseTextTech);
+
+myWebpage.addEventListener('dblclick', myPage);
+myWebpage.addEventListener('mouseover', myPageHover);
+myWebpage.addEventListener('mouseout', myPageLeave);
