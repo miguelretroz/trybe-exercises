@@ -197,8 +197,30 @@ Implemente uma função que adiciona uma legenda com cor para a tarefa criada no
 function legendCreator(color) {
     let tasksContainer = document.getElementsByClassName('my-tasks')[0];
     let legend = document.createElement('div');
+    legend.className = 'task';
     legend.style.background = color;
     tasksContainer.appendChild(legend);
 };
 
 legendCreator('orangered');
+
+/* Exercício 9:
+
+Implemente uma função que adiciona um evento que ao clicar no elemento com a tag <div> referente a cor da sua tarefa, atribua a este elemento a classe task selected , ou seja, quando sua tarefa possuir a classe task selected ela estará selecionada.
+
+    Ao clicar novamente no elemento a sua classe deverá voltar a ser somente task , ou seja, esta tarefa está deixando de ser uma tarefa selecionada. */
+
+let taskIsSelected = false;
+
+function taskSelector(event) {
+    if (taskIsSelected) {
+        event.target.className = 'task';
+        taskIsSelected = false;
+    } else {
+        event.target.className = 'task selected';
+        taskIsSelected = true;
+    };
+};
+
+let legend = document.getElementsByClassName('task')[0];
+legend.addEventListener('click', taskSelector);
