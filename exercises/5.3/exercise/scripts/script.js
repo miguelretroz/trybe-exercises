@@ -240,3 +240,44 @@ function taskDay(event) {
 }
 
 eventListApplier(daysListItens, 'click', taskDay);
+
+/* Bônus:
+
+Vamos adicionar compromissos ao seu calendário? Implemente uma função que, ao digitar um compromisso na caixa de texto "COMPROMISSOS", adiciona o item à lista "MEUS COMPROMISSOS" ao clicar no botão "ADICIONAR".
+
+    Se nenhum caractere for inserido no campo input , a função deve retornar um alert com uma mensagem de erro ao clicar em "ADICIONAR".
+
+    Ao pressionar a tecla "enter" o evento também deverá ser disparado.*/
+
+let compromiseInputBox = document.getElementById('task-input');
+let compromiseAddButton = document.getElementById('btn-add');
+
+function compromiseItemCreator(text) {
+    let compromiseList = document.getElementsByClassName('task-list')[0];
+    let compromiseItem = document.createElement('li');
+    compromiseItem.innerText = text;
+
+    compromiseList.appendChild(compromiseItem);
+};
+
+function compromiseTextBoxInput(event) {
+    let Code = event.keyCode;
+    if (Code === 13 && (compromiseInputBox.value) === "") {
+        alert('Caixa vazia!');
+    } else if (Code === 13) {
+        compromiseItemCreator(event.target.value);
+        event.target.value = "";
+    };
+};
+
+function compromiseButtonInput() {
+    if (compromiseInputBox.value === "") {
+        alert('Caixa vazia!');
+    } else {
+        compromiseItemCreator(compromiseInputBox.value);
+        compromiseInputBox.value = "";
+    };
+};
+
+compromiseInputBox.addEventListener('keyup', compromiseTextBoxInput);
+compromiseAddButton.addEventListener('click', compromiseButtonInput);
