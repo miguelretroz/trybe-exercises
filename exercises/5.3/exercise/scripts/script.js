@@ -22,11 +22,11 @@ const dezFridaysList = [4, 11, 18, 25];
 
 O array dezDaysList contém os dois últimos dias de novembro e os dias do mês de dezembro. Desenvolva uma função que crie dinamicamente cada dia do calendário e os adicione como filhos/filhas da tag <ul> com ID "days" . Note que os dias 29 e 30 de novembro estão no array pois representam respectivamente Domingo e Segunda-feira.
 
-Os dias devem estar contidos em uma tag <li> , e todos devem ter a classe day . Ex: <li class="day">3</li>
+    Os dias devem estar contidos em uma tag <li> , e todos devem ter a classe day . Ex: <li class="day">3</li>
 
-Os dias 24, 25 e 31 são feriados e, além da classe day , devem conter também a classe holiday . Ex: <li class="day holiday">24</li>
+    Os dias 24, 25 e 31 são feriados e, além da classe day , devem conter também a classe holiday . Ex: <li class="day holiday">24</li>
 
-Os dias 4, 11, 18 e 25 são Sexta-feira. Eles devem conter a classe day e a classe friday . Ex: <li class="day friday">4</li> */
+    Os dias 4, 11, 18 e 25 são Sexta-feira. Eles devem conter a classe day e a classe friday . Ex: <li class="day friday">4</li> */
 
 function holidayChecker(day, holidaysList) {
     for (let holiday of holidaysList) {
@@ -70,9 +70,9 @@ createCalendarDays(dezDaysList);
 
 Implemente uma função que receba como parâmetro a string "Feriados" e crie dinamicamente um botão com o nome "Feriados".
 
-Adicione a este botão a ID "btn-holiday" .
+    Adicione a este botão a ID "btn-holiday" .
 
-Adicione este botão como filho/filha da tag <div> com classe "buttons-container" .
+    Adicione este botão como filho/filha da tag <div> com classe "buttons-container" .
  */
 
 function btnConstructor(btnID, btnText) {
@@ -84,3 +84,30 @@ function btnConstructor(btnID, btnText) {
 }
 
 btnConstructor('btn-holiday', 'Feriados');
+
+/* Exercício 3:
+
+Implemente uma função que adicione ao botão "Feriados" um evento de "click" que muda a cor de fundo dos dias que possuem a classe "holiday" .
+
+    É interessante que este botão possua também a lógica inversa. Ao ser clicado novamente ele retorna à configuração inicial com a cor "rgb(238,238,238)" .
+ */
+
+let btnHolidays = document.getElementById('btn-holiday');
+let backgroundColorIsApplied = false; 
+
+btnHolidays.addEventListener('click', function () {
+    let holidayItensList = document.getElementsByClassName('holiday');
+
+
+    if (backgroundColorIsApplied) {
+        for (let holiday of holidayItensList) {
+            holiday.style.background = 'none';
+        };
+        backgroundColorIsApplied = false;
+    } else {
+        for (let holiday of holidayItensList) {
+            holiday.style.background = 'white';
+        };
+        backgroundColorIsApplied = true;
+    };
+})
