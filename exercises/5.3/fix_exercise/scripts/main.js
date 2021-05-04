@@ -31,6 +31,17 @@ function chooseBox(event) {
     elementSelected = event.target;
 }
 
+function textOfBox(event) {
+    console.log(event.target.id);
+    if (event.target.id === 'divUm') {
+        document.getElementById('input').setAttribute('placeholder', 'Alterar a primeira tecnologia');
+    } else if (event.target.id === 'divDois') {
+        document.getElementById('input').setAttribute('placeholder', 'Alterar a segunda tecnologia');
+    } else if (event.target.id === 'divTres') {
+        document.getElementById('input').setAttribute('placeholder', 'Alterar a terçeira tecnologia');
+    }
+}
+
 function resetText(event) {
   // O Event é passado como um parâmetro para a função.
   event.target.innerText = 'Opção reiniciada';
@@ -48,4 +59,8 @@ divTres.addEventListener('dblclick', resetText);
 
 divUm.addEventListener('click', chooseBox);
 divDois.addEventListener('click', chooseBox);
-divTres.addEventListener('click', chooseBox)
+divTres.addEventListener('click', chooseBox);
+
+divUm.addEventListener('click', textOfBox);
+divDois.addEventListener('click', textOfBox);
+divTres.addEventListener('click', textOfBox);
