@@ -58,6 +58,12 @@
   <body>
     <script>
       // COLOQUE SEU CÓDIGO AQUI
+      let body = document.getElementsByTagName('body')[0]; //HTMLCollection
+      console.log(body);
+      let header = document.createElement('h1');
+      header.innerText = 'Exercício 5.2 - JavaScript DOM';
+      console.log(header);
+      body.appendChild(header);      
     </script>
   </body>
 </html>
