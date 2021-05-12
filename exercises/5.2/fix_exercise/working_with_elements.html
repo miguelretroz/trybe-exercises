@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+    <head>
+        <meta charset='UTF-8'>
+        <title></title>
+    </head>
+    <body>
+        <div id="paiDoPai">
+            <div id="pai">
+              <div id="primeiroFilho"></div>
+              <div id="elementoOndeVoceEsta">
+                <div id="primeiroFilhoDoFilho"></div>
+                <div id="segundoEUltimoFilhoDoFilho"></div>
+              </div>
+              Atenção!
+              <div id="terceiroFilho"></div>
+              <div id="quartoEUltimoFilho"></div>
+            </div>
+          </div>
+          <script>
+              /* Parte 1
+                 1. Acesse o elemento elementoOndeVoceEsta .
+
+                 2. Acesse pai a partir de elementoOndeVoceEsta e adicione uma color a ele.
+                 
+                 3. Acesse o primeiroFilhoDoFilho e adicione um texto a ele. Você se lembra dos vídeos da aula anterior, como fazer isso?
+                
+                 4. Acesse o primeiroFilho a partir de pai .
+                
+                 5. Agora acesse o primeiroFilho a partir de elementoOndeVoceEsta .
+                
+                 6. Agora acesse o texto Atenção! a partir de elementoOndeVoceEsta .
+                
+                 7. Agora acesse o terceiroFilho a partir de elementoOndeVoceEsta .
+                
+                 8. Agora acesse o terceiroFilho a partir de pai . */
+              
+              let ondeEstou = document.querySelector('#elementoOndeVoceEsta');
+              console.log(ondeEstou);
+
+              console.log(ondeEstou.parentNode);
+
+              ondeEstou.parentNode.style.color = 'red';
+
+              let primeiroFilhoDoFilho = document.querySelectorAll('#primeiroFilhoDoFilho')[0];
+              console.log(primeiroFilhoDoFilho);
+
+              primeiroFilhoDoFilho.innerHTML = 'Primeiro filho do filho';
+
+              let primeiroFilho = document.querySelector('#pai').firstElementChild;
+              console.log(primeiroFilho);
+
+              primeiroFilho = ondeEstou.previusSibling;
+              console.log(primeiroFilho);
+
+              let atencao = ondeEstou.nextSibling;
+              console.log(atencao);
+
+              let terceiroFilho = ondeEstou.nextSibling.nextSibling;
+              console.log(terceiroFilho);
+
+              terceiroFilho = document.querySelector('#pai').childNodes;
+              console.log(terceiroFilho[5]);
+
+            /* Parte 2
+            1. Crie um irmão para elementoOndeVoceEsta .
+
+            2. Crie um filho para elementoOndeVoceEsta .
+
+            3. Crie um filho para primeiroFilhoDoFilho .
+
+            4. A partir desse filho criado, acesse terceiroFilho .*/
+
+            let quintoFilho = document.createElement('div');
+            console.log(quintoFilho);
+            quintoFilho.setAttribute('id', "quintoFilho");
+
+            ondeEstou.parentNode.appendChild(quintoFilho);
+
+            let filhoDeOndeEstou = document.createElement('h3');
+            console.log(filhoDeOndeEstou);
+            filhoDeOndeEstou.setAttribute('id', 'filhoDeOndeEstou');
+            filhoDeOndeEstou.innerText = 'Filho de onde estou';
+            ondeEstou.appendChild(filhoDeOndeEstou);
+
+            let filhoDoPrimeiroFilhoDoFilho = document.createElement('div');
+            filhoDoPrimeiroFilhoDoFilho.setAttribute('id', 'filhoDoPrimeiroFilhoDoFilho');
+            primeiroFilhoDoFilho.appendChild(filhoDoPrimeiroFilhoDoFilho);
+
+            console.log(filhoDoPrimeiroFilhoDoFilho.parentNode.parentNode.nextSibling.nextSibling);
+
+            let paiDoPai = document.querySelector('#paiDoPai');
+            let pai = paiDoPai.firstChild.nextSibling;
+            pai.removeChild(paiDoPai.firstChild.nextSibling.firstChild.nextSibling);
+            pai.removeChild(pai.firstChild.nextSibling.nextSibling.nextSibling);
+            pai.removeChild(pai.lastChild);
+            pai.removeChild(pai.lastChild.previousSibling);
+            pai.removeChild(pai.lastChild.previousSibling.previousSibling);
+            console.log(pai.childNodes);
+
+            console.log(ondeEstou.childNodes);
+            ondeEstou.removeChild(ondeEstou.lastChild);
+            ondeEstou.removeChild(ondeEstou.lastChild.previousSibling)
+
+          </script>
+    </body>
+</html>
