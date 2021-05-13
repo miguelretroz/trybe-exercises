@@ -39,16 +39,23 @@
       </fieldset>
 
       <fieldset>
-        <p>Resumo do currículo</p>
-        <textarea name="abstract" id="abstract" cols="30" rows="10" maxlength="1000"></textarea>
+        <legend>Resumo do currículo</legend>
+        <textarea name="abstract" id="abstract" cols="30" rows="10" maxlength="1000" required></textarea>
         <br><br>
 
         <label for="">Cargo</label>
-        <input type="text" name="job" id="job" maxlength="40">
+        <input type="text" name="job" id="job" maxlength="40" required>
 
         <p>Descrição do cargo</p>
-        <textarea name="job-description" id="job-description" cols="30" rows="10" max="500"></textarea>
+        <textarea name="job-description" id="job-description" cols="30" rows="10" max="500" required></textarea>
+        <br><br>
+
+
+        <label for="date">Data de início</label>
+        <input type="text" name="date" id="date" required>
       </fieldset>
+
+      <button type="submit" id="btn-submit">Enviar</button>
     </form>
     <script src="./script.js"></script>
   </body>
