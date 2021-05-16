@@ -14,6 +14,40 @@ header {
   align-items: center;
 }
 
+section:nth-child(3) {
+  width: 550px;
+  height: 460px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+}
+
+section:nth-child(3) div {
+  width: 170px;
+  height: 210px;
+  background-color: rgba(241,241,241,255);
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 0px rgb(218 218 218);
+  margin: 0px 5px;
+  color: rgba(108,114,138,255);
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+section:nth-child(3) hr {
+  width: 150px;
+  height: 2px;
+  background-color: rgb(218 218 218);
+  border: none;
+  border-radius: 10px;
+}
+
 .header-img {
   width: 70px;
 }
