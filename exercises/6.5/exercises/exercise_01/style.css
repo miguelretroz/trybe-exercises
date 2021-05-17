@@ -1,17 +1,19 @@
 body {
-
+  font-size: 25px;
+  margin: 20px;
 }
 h1 {
-
+  font-size: 1.5em;
 }
 h2 {
 
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
+  
 }
 
 figure {
-    margin: 0;
+  margin: 20px 0px;
 }
