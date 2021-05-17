@@ -113,7 +113,6 @@ function stateConverter() {
 
 function findCheckedOption() {
   for (let option of houseTypeInput) {
-    console.log(option, option.checked);
     if (option.checked) {
       switch(option.value) {
         case 'house':
@@ -125,6 +124,14 @@ function findCheckedOption() {
   };
 }
 
+function abstractChecker() {
+  const abstractLength = abstractInputBox.value.length;
+  if (abstractLength > 0 && abstractLength <= 1000) {
+    return true;
+  };
+  return false;
+}
+
 function formValidation(event) {
   event.preventDefault();
   const div = document.createElement('div');
@@ -133,13 +140,18 @@ function formValidation(event) {
       if (cpfChecker()) {
         if (addressChecker()) {
           if (cityChecker()) {
-            div.innerHTML = `<p>Nome: ${nameInputBox.value}</p>
-            <p>Email: ${emailInputBox.value}</p>
-            <p>CPF: ${cpfInputBox.value}</p>
-            <p>Endereço: ${addressInputBox.value}</p>
-            <p>Cidade: ${cityInputBox.value}</p>
-            <p>Estado: ${stateConverter()}</p>
-            <p>Tipo residêcia: ${findCheckedOption()}</p>`;
+            if (abstractChecker()) {
+              div.innerHTML = `<p>Nome: ${nameInputBox.value}</p>
+              <p>Email: ${emailInputBox.value}</p>
+              <p>CPF: ${cpfInputBox.value}</p>
+              <p>Endereço: ${addressInputBox.value}</p>
+              <p>Cidade: ${cityInputBox.value}</p>
+              <p>Estado: ${stateConverter()}</p>
+              <p>Tipo residêcia: ${findCheckedOption()}</p>
+              <p>Resumo do currículo: ${abstractInputBox.value}</p>`;
+            } else {
+              div.innerHTML = '<h1>Resumo vazio</h1>';
+            }
           } else {
             div.innerHTML = '<h1>Cidade inválida</h1>';
           }
