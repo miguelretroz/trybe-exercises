@@ -66,8 +66,14 @@ p strong {
   background-color: #41197f;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 500px) {
   .card:nth-child(1) {
+    display: initial;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  .card:nth-child(2) {
     display: initial;
   }
 }
