@@ -77,3 +77,9 @@ p strong {
     display: initial;
   }
 }
+
+@media screen and (max-width: 650px), (min-width: 950px) {
+  .card:nth-child(3) {
+    display: initial;
+  }
+}
