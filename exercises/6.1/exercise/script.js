@@ -102,6 +102,14 @@ function cityChecker() {
   };
   return false;
 }
+
+function stateConverter() {
+  for(state of states) {
+    if (state.initials === stateInput.value) {
+      return state.name;
+    };
+  };
+}
  
 
 function formValidation(event) {
@@ -116,7 +124,8 @@ function formValidation(event) {
             <p>Email: ${emailInputBox.value}</p>
             <p>CPF: ${cpfInputBox.value}</p>
             <p>Endereço: ${addressInputBox.value}</p>
-            <p>Cidade: ${cityInputBox.value}</p>`;
+            <p>Cidade: ${cityInputBox.value}</p>
+            <p>Estado: ${stateConverter()}</p>`;
           } else {
             div.innerHTML = '<h1>Cidade inválida</h1>';
           }
