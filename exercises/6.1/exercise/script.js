@@ -71,7 +71,6 @@ function emailChecker() {
 
 function cpfChecker() {
   const cpfLength = cpfInputBox.value.length;
-  let haveLetter = false;
   if (cpfLength > 0 && cpfLength <= 11) {
     for (let number of cpfInputBox.value) {
       if (isNaN(parseInt(number, 10))) {
@@ -81,6 +80,14 @@ function cpfChecker() {
   };
   return true;
 }
+
+function addressChecker() {
+  const addressLength = addressInputBox.value.length;
+  if (addressLength > 0 && addressLength <= 200) {
+    return true;
+  };
+  return false;
+}
  
 
 function formValidation(event) {
@@ -89,9 +96,14 @@ function formValidation(event) {
   if (nameChecker()) {
     if (emailChecker()) {
       if (cpfChecker()) {
-        div.innerHTML = `<p>Nome: ${nameInputBox.value}</p>
-        <p>Email: ${emailInputBox.value}</p>
-        <p>CPF: ${cpfInputBox.value}</p>`;
+        if (addressChecker()) {
+          div.innerHTML = `<p>Nome: ${nameInputBox.value}</p>
+          <p>Email: ${emailInputBox.value}</p>
+          <p>CPF: ${cpfInputBox.value}</p>
+          <p>Endereço: ${addressInputBox.value}</p>`;
+        } else {
+          div.innerHTML = '<h1>Endereço inválido</h1>'
+        }
       } else {
         div.innerHTML = '<h1>CPF inválido</h1>';
       }
