@@ -10,7 +10,7 @@ const cpfInputBox = document.querySelector('#cpf');
 const addressInputBox = document.querySelector('#address');
 const cityInputBox = document.querySelector('#city');
 const stateInput = document.querySelector('#states');
-
+const houseTypeInput = document.getElementsByName('house-type');
 const abstractInputBox = document.querySelector('#abstract');
 const jobInputBox = document.querySelector('#job');
 const descriptionInputBox = document.querySelector('#job-description');
@@ -77,13 +77,27 @@ function cpfChecker() {
        return false;
       };
     };
+    return true;
   };
-  return true;
+  return false;
 }
 
 function addressChecker() {
   const addressLength = addressInputBox.value.length;
   if (addressLength > 0 && addressLength <= 200) {
+    return true;
+  };
+  return false;
+}
+
+function cityChecker() {
+  const cityLength = cityInputBox.value.length;
+  if (cityLength > 0 && cityLength <= 28) {
+    for (let letter of cityInputBox.value) {
+      if (!isNaN(parseInt(letter, 10))) {
+        return false;
+      };
+    };
     return true;
   };
   return false;
@@ -97,10 +111,15 @@ function formValidation(event) {
     if (emailChecker()) {
       if (cpfChecker()) {
         if (addressChecker()) {
-          div.innerHTML = `<p>Nome: ${nameInputBox.value}</p>
-          <p>Email: ${emailInputBox.value}</p>
-          <p>CPF: ${cpfInputBox.value}</p>
-          <p>Endereço: ${addressInputBox.value}</p>`;
+          if (cityChecker()) {
+            div.innerHTML = `<p>Nome: ${nameInputBox.value}</p>
+            <p>Email: ${emailInputBox.value}</p>
+            <p>CPF: ${cpfInputBox.value}</p>
+            <p>Endereço: ${addressInputBox.value}</p>
+            <p>Cidade: ${cityInputBox.value}</p>`;
+          } else {
+            div.innerHTML = '<h1>Cidade inválida</h1>';
+          }
         } else {
           div.innerHTML = '<h1>Endereço inválido</h1>'
         }
