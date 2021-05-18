@@ -35,15 +35,10 @@ function dateChecker() {
   for (let number of dateString) {
     dateNumber.push(parseInt(number, 10));
   }
-  if (((dateString[0] < 0) || (dateString[0] > 31))) {
-    alert('Formato inválido dd/mm/aaaa !');
-  } else if ((dateNumber[0] < 0) || (dateNumber[0] > 31)) {
-    alert('Dia inválido !');
-  } else if ((dateNumber[1] < 0) || (dateNumber[1] > 12)) {
-    alert('Mês inválido !');
-  } else if ((dateNumber[2] < 0)) {
-    alert('Ano inválido !');
+  if (((dateString[0] < 0) || (dateString[0] > 31)) || ((dateNumber[1] < 0) || (dateNumber[1] > 12)) || ((dateNumber[2] < 0))) {
+    return false;
   };
+  return true;
 }
 
 function nameChecker() {
@@ -148,6 +143,23 @@ function descriptionChecker() {
   return false;
 }
 
+function dateError() {
+  const dateString = dateInputBox.value.split('/');
+  let dateNumber = [];
+  for (let number of dateString) {
+    dateNumber.push(parseInt(number, 10));
+  };
+  if (((dateString[0] < 0) || (dateString[0] > 31))) {
+    return `Dia inválido`;
+  } 
+  if ((dateNumber[1] < 0) || (dateNumber[1] > 12)) {
+    return `Mês inválido`;
+  }
+  if ((dateNumber[2] < 0)) {
+    return `Ano inválido`;
+  };
+}
+
 function formValidation(event) {
   event.preventDefault();
   const div = document.createElement('div');
@@ -159,16 +171,21 @@ function formValidation(event) {
             if (abstractChecker()) {
               if (jobChecker()) {
                 if (descriptionChecker()) {
-                  div.innerHTML = `<p>Nome: ${nameInputBox.value}</p>
-                  <p>Email: ${emailInputBox.value}</p>
-                  <p>CPF: ${cpfInputBox.value}</p>
-                  <p>Endereço: ${addressInputBox.value}</p>
-                  <p>Cidade: ${cityInputBox.value}</p>
-                  <p>Estado: ${stateConverter()}</p>
-                  <p>Tipo residêcia: ${findCheckedOption()}</p>
-                  <p>Resumo do currículo: ${abstractInputBox.value}</p>
-                  <p>Cargo: ${jobInputBox.value}</p>
-                  <p>Descrição do cargo: ${descriptionInputBox.value}</p>`;
+                  if (dateChecker()) { 
+                    div.innerHTML = `<p>Nome: ${nameInputBox.value}</p>
+                    <p>Email: ${emailInputBox.value}</p>
+                    <p>CPF: ${cpfInputBox.value}</p>
+                    <p>Endereço: ${addressInputBox.value}</p>
+                    <p>Cidade: ${cityInputBox.value}</p>
+                    <p>Estado: ${stateConverter()}</p>
+                    <p>Tipo residêcia: ${findCheckedOption()}</p>
+                    <p>Resumo do currículo: ${abstractInputBox.value}</p>
+                    <p>Cargo: ${jobInputBox.value}</p>
+                    <p>Descrição do cargo: ${descriptionInputBox.value}</p>
+                    <p>Data de início: ${dateInputBox.value}</p>`;
+                  } else {
+                    div.innerHTML = `<h1>${dateError()}</h1>`;
+                  }
                 } else {
                   div.innerHTML = '<h1>Descrição inválida</h1>';
                 }
