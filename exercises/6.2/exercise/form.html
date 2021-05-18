@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <title>Forms</title>
+    <style>
+      div {
+        border: 1px solid black;
+        box-shadow: 1px 1px 10px black;
+        margin-top: 10px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form active="" method="GET">
+      <fieldset>
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name" maxlength="40" required>
+        <br><br>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" maxlength="50" required>
+        <br><br>
+
+        <label for="cpf">CPF</label>
+        <input type="text" name="cpf" id="cpf" maxlength="11" required>
+        <br><br>
+
+        <label for="address">Endereço</label>
+        <input type="text" name="address" id="address" maxlength="200" required>
+        <br><br>
+
+        <label for="city">Cidade</label>
+        <input type="text" name="city" id="city" maxlength="28" required>
+        <br><br>
+
+        <label for="states">Estado</label>
+        <select name="state" id="states">
+        </select>
+        <br><br>
+
+        <input type="radio" name="house-type" id="house" value="house" checked>
+        <label for="house">Casa</label>
+        <input type="radio" name="house-type" id="apartment" value="apartment">
+        <label for="apartment">Apartamento</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Resumo do currículo</legend>
+        <textarea name="abstract" id="abstract" cols="30" rows="10" maxlength="1000" required></textarea>
+        <br><br>
+
+        <label for="">Cargo</label>
+        <input type="text" name="job" id="job" maxlength="40" required>
+
+        <p>Descrição do cargo</p>
+        <textarea name="job-description" id="job-description" cols="30" rows="10" max="500" required></textarea>
+        <br><br>
+
+
+        <label for="date">Data de início</label>
+        <input type="text" name="date" id="date" required>
+      </fieldset>
+
+      <button type="submit" id="btn-submit">Enviar</button>
+      <button type="button" id="btn-clear">Limpar</button>
+    </form>
+    <script src="./script.js"></script>
+  </body>
+</html>
