@@ -164,7 +164,7 @@ function dateError() {
 
 function clear() {
   form.reset();
-  let divs = document.querySelectorAll('div');
+  let divs = document.querySelectorAll('.curriculum');
   for (let div of divs) {
     body.removeChild(div);
   }
@@ -173,6 +173,7 @@ function clear() {
 function formValidation(event) {
   event.preventDefault();
   const div = document.createElement('div');
+  div.className = 'curriculum';
   if (nameChecker()) {
     if (emailChecker()) {
       if (cpfChecker()) {

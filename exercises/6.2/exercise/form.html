@@ -5,60 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Forms</title>
     <link rel="stylesheet" href="./bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
     <form active="" method="GET">
-      <fieldset>
-        <label for="name">Nome</label>
-        <input type="text" name="name" id="name" maxlength="40" required>
-        <br><br>
+      <div class="field">
+        <label for="name" class="label">Nome</label>
+        <div class="control is-info">
+          <input class="input is-info" type="text" name="name" id="name" maxlength="40" required>
+        </div>
+      </div>
 
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" maxlength="50" required>
-        <br><br>
+      <div class="field">
+        <label for="email" class="label">Email</label>
+        <div class="control">
+          <input class="input is-info" type="email" name="email" id="email" maxlength="50" required>
+        </div>
+      </div>
 
-        <label for="cpf">CPF</label>
-        <input type="text" name="cpf" id="cpf" maxlength="11" required>
-        <br><br>
+      <div class="field">
+        <label for="cpf" class="label">CPF</label>
+        <div class="control">
+          <input class="input is-info" type="text" name="cpf" id="cpf" maxlength="11" required>
+        </div>
+      </div>
 
-        <label for="address">Endereço</label>
-        <input type="text" name="address" id="address" maxlength="200" required>
-        <br><br>
+      <div class="field">
+        <label for="address" class="label">Endereço</label>
+        <div class="control">
+          <input class="input is-info" type="text" name="address" id="address" maxlength="200" required>
+        </div>
+      </div>
 
-        <label for="city">Cidade</label>
-        <input type="text" name="city" id="city" maxlength="28" required>
-        <br><br>
-        
-        <label for="states">Estado</label>
-        <select name="state" id="states">
-        </select>
-        <br><br>
+      <div class="field">
+        <label for="city" class="label">Cidade</label>
+        <div class="control">
+          <input class="input is-info" type="text" name="city" id="city" maxlength="28" required>
+        </div>
+      </div>
+      <br><br>
+      
+      <div class="field">
+        <label for="states" class="label">Estado</label>
+        <span class="control">
+          <span class="select is-info">
+            <select name="state" id="states">
+            </select>
+          </span>
+        </span>
+      </div>
 
-        <input type="radio" name="house-type" id="house" value="house" checked>
-        <label for="house">Casa</label>
-        <input type="radio" name="house-type" id="apartment" value="apartment">
-        <label for="apartment">Apartamento</label>
-      </fieldset>
+      <div class="field">
+        <div class="control">
+          <label for="house" class="radio">
+            <input class="radio" type="radio" name="house-type" id="house" value="house" checked>
+            Casa</label>            
+            <label for="apartment" class="radio">
+              <input class="radio" type="radio" name="house-type" id="apartment" value="apartment">
+              Apartamento</label>
+        </div>
+      </div>
 
-      <fieldset>
-        <legend>Resumo do currículo</legend>
-        <textarea name="abstract" id="abstract" cols="30" rows="10" maxlength="1000" required></textarea>
-        <br><br>
+      <div class="field">
+        <label class="label" for="abstract">Resumo do currículo</label>
+        <div class="control">
+          <textarea class="textarea is-info" name="abstract" id="abstract" cols="30" rows="10" maxlength="1000" required></textarea>
+        </div>
+      </div>
 
-        <label for="">Cargo</label>
-        <input type="text" name="job" id="job" maxlength="40" required>
+      <div class="field">
+        <div class="control">
+          <label for="job" class="label">Cargo</label>
+          <input class="input is-info" type="text" name="job" id="job" maxlength="40" required>
+        </div>
+      </div>
 
-        <p>Descrição do cargo</p>
-        <textarea name="job-description" id="job-description" cols="30" rows="10" max="500" required></textarea>
-        <br><br>
+      <div class="field">
+        <label class="label" for="job-description">Descrição do cargo</label>
+        <div class="control">
+          <textarea class="textarea is-info" name="job-description" id="job-description" cols="30" rows="10" max="500" required></textarea>
+        </div>
+      </div>
 
+      <div class="field">
+        <label for="date" class="label">Data de início</label>
+        <div class="control">
+          <input class="input is-info" type="text" name="date" id="date" required>
+        </div>
+      </div>
 
-        <label for="date">Data de início</label>
-        <input type="text" name="date" id="date" required>
-      </fieldset>
-
-      <button type="submit" id="btn-submit">Enviar</button>
-      <button type="button" id="btn-clear">Limpar</button>
+      <div class="field">
+        <div class="control">
+          <button class="button is-success" type="submit" id="btn-submit">Enviar</button>
+          <button class="button is-danger" type="button" id="btn-clear">Limpar</button>
+        </div>
+      </div>
     </form>
     <script src="./script.js"></script>
   </body>
