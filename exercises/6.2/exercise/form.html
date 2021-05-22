@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <form active="" method="GET">
+    <form active="" method="GET" class="js-form">
       <div class="field">
         <label for="name" class="label">Nome</label>
         <div class="control is-info">
-          <input class="input is-info" type="text" name="name" id="name" maxlength="40" required>
+          <input class="input is-info" type="text"  name="name" id="name" data-validate-field="name" maxlength="40" >
         </div>
       </div>
 
@@ -104,6 +104,7 @@
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+    <script src="./just-validate.min.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
