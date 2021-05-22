@@ -18,6 +18,36 @@ const jobInputBox = document.querySelector('#job');
 const descriptionInputBox = document.querySelector('#job-description');
 const dateInputBox = document.querySelector('#date');
 
+const picker = new Pikaday({
+  field: document.getElementById('datepicker'),
+  format: 'D/MM/YYYY',
+  position: 'bottom left',
+  reposition: false,
+  yearRange: [1900, 2021],
+  minDate: new Date(1900, 0, 01),
+  maxDate: new Date(2021, 12, 31),
+  i18n: {
+    previousMonth: 'Mês anterior',
+    nextMonth: 'Próximo mês',
+    months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+    weekdays: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
+    weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+  },
+  firstDay: 1,
+  toString(date, format) {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  },
+  parse(dateString, format) {
+    const parts = dateString.split('/');
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const year = parseInt(parts[2], 10);
+  },
+  });
+
 function createState(stateData) {
   const stateElement = document.createElement('option');
   stateElement.innerText = stateData.name;
@@ -181,22 +211,17 @@ function formValidation(event) {
           if (cityChecker()) {
             if (abstractChecker()) {
               if (jobChecker()) {
-                if (descriptionChecker()) {
-                  if (dateChecker()) { 
-                    div.innerHTML = `<p>Nome: ${nameInputBox.value}</p>
-                    <p>Email: ${emailInputBox.value}</p>
-                    <p>CPF: ${cpfInputBox.value}</p>
-                    <p>Endereço: ${addressInputBox.value}</p>
-                    <p>Cidade: ${cityInputBox.value}</p>
-                    <p>Estado: ${stateConverter()}</p>
-                    <p>Tipo residêcia: ${findCheckedOption()}</p>
-                    <p>Resumo do currículo: ${abstractInputBox.value}</p>
-                    <p>Cargo: ${jobInputBox.value}</p>
-                    <p>Descrição do cargo: ${descriptionInputBox.value}</p>
-                    <p>Data de início: ${dateInputBox.value}</p>`;
-                  } else {
-                    div.innerHTML = `<h1>${dateError()}</h1>`;
-                  }
+                if (descriptionChecker()) { 
+                  div.innerHTML = `<p>Nome: ${nameInputBox.value}</p>
+                  <p>Email: ${emailInputBox.value}</p>
+                  <p>CPF: ${cpfInputBox.value}</p>
+                  <p>Endereço: ${addressInputBox.value}</p>
+                  <p>Cidade: ${cityInputBox.value}</p>
+                  <p>Estado: ${stateConverter()}</p>
+                  <p>Tipo residêcia: ${findCheckedOption()}</p>
+                  <p>Resumo do currículo: ${abstractInputBox.value}</p>
+                  <p>Cargo: ${jobInputBox.value}</p>
+                  <p>Descrição do cargo: ${descriptionInputBox.value}</p>`
                 } else {
                   div.innerHTML = '<h1>Descrição inválida</h1>';
                 }

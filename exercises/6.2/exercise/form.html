@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Forms</title>
     <link rel="stylesheet" href="./bulma/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
@@ -88,9 +89,9 @@
       </div>
 
       <div class="field">
-        <label for="date" class="label">Data de início</label>
+        <label for="start-date" class="label">Data de início</label>
         <div class="control">
-          <input class="input is-info" type="text" name="date" id="date" required>
+          <input class="input is-info" type="text" data-validate-field="date" name="start-date" id="datepicker" required autocomplete="off">
         </div>
       </div>
 
@@ -101,6 +102,8 @@
         </div>
       </div>
     </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
