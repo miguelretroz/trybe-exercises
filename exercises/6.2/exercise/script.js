@@ -2,21 +2,7 @@ const selectState = document.getElementById('states');
 const states = [{name: 'Acre', initials: 'AC',}, {name: 'Alagoas', initials: 'AL',}, {name: 'Amapá', initials: 'AP',}, {name: 'Amazonas', initials: 'AM',}, {name: 'Bahia', initials: 'BA',}, {name: 'Ceará', initials: 'CE',}, {name: 'Espírito Santo', initials: 'ES',}, {name: 'Goiás', initials: 'GO',}, {name: 'Maranhão', initials: 'MA',}, {name: 'Mato Grosso', initials: 'MT',}, {name: 'Mato Grosso do Sul', initials: 'MS',}, {name: 'Minas Gerais', initials: 'MG',}, {name: 'Pará', initials: 'PA',}, {name: 'Paraíba', initials: 'PB',}, {name: 'Paraná', initials: 'PR',}, {name: 'Pernambuco', initials: 'PE',}, {name: 'Piauí', initials: 'PI',}, {name: 'Rio de Janeiro', initials: 'RJ',}, {name: 'Rio Grande do Norte', initials: 'RN',}, {name: 'Rio Grande do Sul', initials: 'RS',}, {name: 'Rondônia', initials: 'RO',}, {name: 'Roraima', initials: 'RR',}, {name: 'Santa Catarina', initials: 'SC',}, {name: 'São Paulo', initials: 'SP',}, {name: 'Sergipe', initials: 'SE',}, {name: 'Tocantins', initials: 'TO',}, {name: 'Distrito Federal', initials: 'DF',}];
 const btnSubmit = document.querySelector('#btn-submit');
 const btnClear = document.querySelector('#btn-clear');
-const body = document.querySelector('body');
-const script = document.querySelector('script');
-
 const form = document.querySelector('form');
-const nameInputBox = document.querySelector('#name');
-const emailInputBox = document.querySelector('#email');
-const cpfInputBox = document.querySelector('#cpf');
-const addressInputBox = document.querySelector('#address');
-const cityInputBox = document.querySelector('#city');
-const stateInput = document.querySelector('#states');
-const houseTypeInput = document.getElementsByName('house-type');
-const abstractInputBox = document.querySelector('#abstract');
-const jobInputBox = document.querySelector('#job');
-const descriptionInputBox = document.querySelector('#job-description');
-const dateInputBox = document.querySelector('#date');
 
 const picker = new Pikaday({
   field: document.getElementById('datepicker'),
@@ -143,12 +129,17 @@ new JustValidate('.js-form', {
     date: {
       required: 'Insira a data de início',
     },
-  },  
-})
+  },
+  submitHandler: function (form, values) {
+    console.log(values);
+  },
+});
+
+function clear() {
+  form.reset();
+}
 
 window.onload = () => {
   addStateElements(states);
-}
-// btnSubmit.addEventListener('click', dateCheck);
-btnSubmit.addEventListener('click', formValidation);
+};
 btnClear.addEventListener('click', clear);
