@@ -20,7 +20,7 @@ const dateInputBox = document.querySelector('#date');
 
 const picker = new Pikaday({
   field: document.getElementById('datepicker'),
-  format: 'D/MM/YYYY',
+  format: 'DD/MM/YYYY',
   position: 'bottom left',
   reposition: false,
   yearRange: [1900, 2021],
@@ -89,6 +89,21 @@ new JustValidate('.js-form', {
     houseType: {
       required: true,
     },
+    abstract: {
+      required: true,
+      maxLength: 1000,
+    },
+    job: {
+      required: true,
+      maxLength: 40,
+    },
+    description: {
+      required: true,
+      maxLength: 500,
+    },
+    date: {
+      required: true,
+    },
   },
   messages: {
     name: {
@@ -112,6 +127,21 @@ new JustValidate('.js-form', {
     },
     houseType: {
       required: 'Escolha uma opção',
+    },
+    abstract: {
+      required: 'Insira o resumo',
+      maxLength: 'Limite de 1000 caracteres',
+    },
+    job: {
+      required: 'Insira o cargo',
+      maxLength: 'Limite de 40 caracteres',
+    },
+    description: {
+      required: 'Insira a descrição',
+      maxLength: 'Limite de 500 caracteres',
+    },
+    date: {
+      required: 'Insira a data de início',
     },
   },  
 })
