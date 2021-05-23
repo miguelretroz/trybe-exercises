@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Forms</title>
+    <link rel="stylesheet" href="./bulma/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <form active="" method="GET" class="js-form">
+      <div class="field">
+        <label for="name" class="label">Nome</label>
+        <div class="control is-info">
+          <input autocomplete="off" class="input is-info" type="text"  name="name" id="name" data-validate-field="name">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email" class="label">Email</label>
+        <div class="control">
+          <input autocomplete="off" class="input is-info" type="email" name="email" id="email" data-validate-field="email">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="cpf" class="label">CPF</label>
+        <div class="control">
+          <input autocomplete="off" class="input is-info" type="text" name="cpf" id="cpf" data-validate-field="cpf" maxLength="11">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="address" class="label">Endereço</label>
+        <div class="control">
+          <input autocomplete="off" class="input is-info" type="text" name="address" id="address" data-validate-field="address">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="city" class="label">Cidade</label>
+        <div class="control">
+          <input autocomplete="off" class="input is-info" type="text" name="city" id="city" data-validate-field="city">
+        </div>
+      </div>
+      
+      <div class="field">
+        <label for="states" class="label">Estado</label>
+        <span class="control">
+          <span class="select is-info">
+            <select name="state" id="states">
+            </select>
+          </span>
+        </span>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label for="house" class="radio">
+            <input autocomplete="off" class="radio" type="radio" name="house-type" id="house" value="house" data-validate-field="houseType">
+            Casa</label>            
+            <label for="apartment" class="radio">
+              <input autocomplete="off" class="radio" type="radio" name="house-type" id="apartment" value="apartment" data-validate-field="houseType">
+              Apartamento</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="abstract">Resumo do currículo</label>
+        <div class="control">
+          <textarea class="textarea is-info" name="abstract" id="abstract" cols="30" rows="10" data-validate-field="abstract"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label for="job" class="label">Cargo</label>
+          <input autocomplete="off" class="input is-info" type="text" name="job" id="job" data-validate-field="job">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="job-description">Descrição do cargo</label>
+        <div class="control">
+          <textarea class="textarea is-info" name="job-description" id="job-description" cols="30" rows="10" data-validate-field="description"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="start-date" class="label">Data de início</label>
+        <div class="control">
+          <input autocomplete="off" class="input is-info" type="text" data-validate-field="date" name="start-date" id="datepicker" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-success" type="submit" id="btn-submit">Enviar</button>
+          <button class="button is-danger" type="button" id="btn-clear">Limpar</button>
+        </div>
+      </div>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+    <script src="./just-validate.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
