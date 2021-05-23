@@ -62,6 +62,60 @@ function addStateElements(statesDataList) {
   };
 }
 
+new JustValidate('.js-form', {
+  rules: {
+    name: {
+      required: true,
+      maxLength: 40,
+    },
+    email: {
+      required: true,
+      email: true,
+      maxLength: 50,
+    },
+    cpf: {
+      required: true,
+      minLength: 11,
+      maxLength: 11,
+    },
+    address: {
+      required: true,
+      maxLength: 200,
+    },
+    city: {
+      required: true,
+      maxLength: 28,
+    },
+    houseType: {
+      required: true,
+    },
+  },
+  messages: {
+    name: {
+      required: 'Insira seu nome',
+    },
+    email: {
+      required: 'Insira seu email',
+    },
+    cpf: {
+      required: 'Insira seu CPF',
+      minLength: 'CPF deve conter 11 dígitos',
+      maxLength: 'CPF deve conter 11 dígitos',
+    },
+    address: {
+      required: 'Insira seu endereço',
+      maxLength: 'Limite de 200 caracteres',
+    },
+    city: {
+      required: 'Insira sua cidade',
+      maxLength: 'Limite de 28 caracteres',
+    },
+    houseType: {
+      required: 'Escolha uma opção',
+    },
+  },  
+})
+
 window.onload = () => {
   addStateElements(states);
 }
