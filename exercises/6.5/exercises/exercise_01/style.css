@@ -36,5 +36,6 @@ figure {
     background: rgb(181, 157, 204);
     font-size: 30px;
     margin: auto;
+    max-width: 1200px;
   }
 }
