@@ -22,5 +22,6 @@ figure {
   body {
     background: rgb(207, 207, 207);
     font-size: 25px;
+    margin: 40px;
 }
 }
