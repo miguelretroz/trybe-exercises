@@ -6,6 +6,7 @@ html {
 }
 
 body { 
+  padding-top: 80px;
   background: rgb(214, 210, 171);
   text-align: center;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -57,7 +58,6 @@ ul {
 @media screen and (max-width: 599px) {
   body {
     font-size: 15px;
-    padding-top: 80px;
     margin: 0px 10px;
   }
 
@@ -68,5 +68,28 @@ ul {
 
   .main-content h1{
     font-size: 1.6em;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 899px) {
+  body {
+    margin: 0px 15px;
+    font-size: 20px;
+  }
+
+  header {
+    height: 70px;
+  }
+
+  header p {
+    flex-basis: 300px;
+  }
+
+  header ul {
+    flex-direction: row;
+  }
+
+  header ul li {
+    margin: 0px 10px;
   }
 }
