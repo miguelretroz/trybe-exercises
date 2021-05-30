@@ -4,3 +4,69 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+body { 
+  background: rgb(214, 210, 171);
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(71, 71, 71);
+}
+
+header {
+  background: rgba(45, 216, 255, 0.479);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  box-shadow:0 0 25px rgba(255, 73, 194, 0.747);
+}
+
+header ul {
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  font-size: 0.9em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-content: flex-end;
+}
+
+header p  {
+  flex-basis: 200px;
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin: 0px;
+}
+
+.aside-one h2 {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+@media screen and (max-width: 599px) {
+  body {
+    font-size: 15px;
+    padding-top: 80px;
+    margin: 0px 10px;
+  }
+
+  .aside-one {
+    margin: auto;
+    width: 70%;
+  }
+
+  .main-content h1{
+    font-size: 1.6em;
+  }
+}
