@@ -23,5 +23,10 @@ figure {
     background: rgb(207, 207, 207);
     font-size: 25px;
     margin: 40px;
-}
+  }
+
+  figure {
+    display:inline-block;
+    margin: 0px 30px;
+  }
 }
