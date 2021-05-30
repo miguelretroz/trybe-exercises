@@ -34,5 +34,6 @@ figure {
 @media screen and (min-width: 1300px) {
   body {
     background: rgb(181, 157, 204);
+    font-size: 30px;
   }
 }
