@@ -17,5 +17,9 @@ img {
 figure {
   margin: 20px 0px;
 }
+
 @media screen and (min-width: 980px) {
+  body {
+    font-size: 25px;
+}
 }
