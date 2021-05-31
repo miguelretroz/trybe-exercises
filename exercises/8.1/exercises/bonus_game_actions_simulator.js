@@ -35,5 +35,11 @@ const mageDmg = (intelligence, mana, callback) => {
     manaSpending: 0,
   }
 }
+
 const gameActions = {
+  warriorTurn: (action) => {
+    const damage = action(15, warrior.strength);
+    warrior.damage = damage;
+    dragon.healthPoints = dragon.healthPoints - damage;
+  },
 };
