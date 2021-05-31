@@ -34,13 +34,16 @@ header ul {
   padding: 0px;
   font-size: 0.9em;
   display: flex;
-  flex-flow: column nowrap;
   justify-content: flex-end;
   align-content: flex-end;
 }
 
+header ul li {
+  margin: 0px 10px;
+}
+
 header p  {
-  flex-basis: 200px;
+  flex-basis: 300px;
   text-align: center;
   font-size: 0.8em;
   font-weight: bold;
@@ -61,6 +64,14 @@ ul {
     margin: 0px 10px;
   }
 
+  header ul {
+    flex-direction: column;
+  }
+
+  header ul li {
+    margin: 0px;
+  }
+
   .aside-one {
     margin: auto;
     width: 70%;
@@ -79,17 +90,32 @@ ul {
 
   header {
     height: 70px;
-  }
+  }  
+}
 
-  header p {
+@media screen and (min-width: 900px){
+  body {
+    font-size: 30px;
+    margin: 15px;
+  }
+  
+    header p {
+      flex-basis: 400px;
+    }
+  
+  main {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+  }
+  
+  .aside-container {
     flex-basis: 300px;
+    font-size: 20px;
+    margin-top: 80px;
   }
-
-  header ul {
-    flex-direction: row;
-  }
-
-  header ul li {
-    margin: 0px 10px;
+  
+  article {
+    flex-basis: 700px;
   }
 }
