@@ -35,3 +35,5 @@ const mageDmg = (intelligence, mana, callback) => {
     manaSpending: 0,
   }
 }
+const gameActions = {
+};
