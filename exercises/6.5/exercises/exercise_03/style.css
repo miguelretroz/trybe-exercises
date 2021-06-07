@@ -99,6 +99,7 @@
   body {
     padding: 0px;
     margin: 0px;
+    font-size: 10px;
   }
   
   #header {
@@ -107,7 +108,7 @@
   }
 
   #navigation {
-    margin: 80px 5px 0px 5px;
+    margin: 70px 5px 0px 5px;
     width: 95%;
   }
 
@@ -125,6 +126,39 @@
     width: 150%;
   }
   
+  #aside {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 241px) and (max-width: 360px) {
+  body {
+    margin: 0px;
+  }
+
+  #header {
+    position: fixed;
+    width: 100%;
+  }
+
+  #navigation {
+    margin: 85px 10px 0px 10px;
+    width: 95%;
+  }
+
+  #navigation ul {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  #navigation ul a {
+    border: none;
+  }
+
+  img {
+    width: 150%;
+  }
+
   #aside {
     display: none;
   }
