@@ -1,18 +1,15 @@
 const fetch = require('node-fetch');
 
-function verifiedFetch(url) {
-  return new Promise((resolve, reject) => {
-    if (url === 'https://api.chucknorris.io/jokes/random?category=dev') {
-      // fetch(url)
-      //   .then(response => response.json())
-      //   .then(r => resolve(r.value));
-      resolve('Resolveu!');
-    }
-    else {
-      reject(new Error('endpoint não existe'));
-    }
-  });
-}
+async function verifiedFetch(url) {
+  if (url === 'https://api.chucknorris.io/jokes/random?category=dev') {
+    return fetch(url)
+      .then(response => response.json())
+      .then(r => r.value);
+  }
+  else {
+    throw new Error('endpoint não existe');
+  }
+};
 
 function sendJokeToFriend(name) {
   const message = verifiedFetch('https://api.chucknorris.io/jokes/random?category=dev')
