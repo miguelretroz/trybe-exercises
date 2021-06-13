@@ -11,8 +11,8 @@ async function verifiedFetch(url) {
   }
 };
 
-function sendJokeToFriend(name) {
-  const message = verifiedFetch('https://api.chucknorris.io/jokes/random?category=dev')
+async function sendJokeToFriend(name) {
+  const message = await verifiedFetch('https://api.chucknorris.io/jokes/random?category=dev')
     .then(joke => `Oi ${name} ouve essa: ${joke}`)
     .catch(error => error);
   console.log(message);
