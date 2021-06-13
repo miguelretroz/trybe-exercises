@@ -12,3 +12,12 @@ function verifiedFetch(url) {
     }
   });
 }
+
+function sendJokeToFriend(name) {
+  const message = verifiedFetch('https://api.chucknorris.io/jokes/random?category=dev')
+    .then(joke => `Oi ${name} ouve essa: ${joke}`)
+    .catch(error => error);
+  console.log(message);
+}
+
+sendJokeToFriend('Anna');
