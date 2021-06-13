@@ -23,5 +23,12 @@ const isOverEightThousand = () => {
 };
 
 isOverEightThousand()
-  .then(response => console.log(response))
+  .then(response => {
+    console.log(response)
+    return new Promise((resolve) => {
+      const sum = response.reduce((accumulator, currentNumber) => accumulator + currentNumber);
+      resolve(sum);
+    })
+  })
+  .then(sum => console.log(sum))
   .catch((error) => console.log(error));
