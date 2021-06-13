@@ -14,7 +14,7 @@ const isOverEightThousand = () => {
     const result = tenNumbers.reduce((accumulator, currentNumber) => accumulator + Math.pow(currentNumber, 2));
 
     if (result < 8000) {
-      const resultDivision = [(result / 2), (result / 3), (result / 5), (result / 10)];
+      const resultDivision = [(Math.round((result / 2))), Math.round((result / 3)), Math.round((result / 5)), Math.round((result / 10))];
       resolve(resultDivision);
     } else {
       return reject();
@@ -22,6 +22,4 @@ const isOverEightThousand = () => {
   });
 };
 
-isOverEightThousand()
-  .then(response => console.log(response))
-  .catch(() => console.log('Promise rejeitada'));
+isOverEightThousand().then(response => console.log(response)).catch(() => console.log('Promise rejeitada'));
