@@ -2,8 +2,8 @@ const promise = new Promise((resolve, reject) => {
   const number = Math.round((Math.random() * 11));
 
   if (number <= 5) {
-    return reject(console.log(`Que fracasso =( Nosso número foi ${number}`));
+    return reject(`Que fracasso =( Nosso número foi ${number}`);
   }
   resolve(number);
 }).then(number => `Que sucesso =) Nosso número foi ${number}`)
-  .then(msg => console.log(msg));
+  .then(msg => console.log(msg)).catch(msg => console.log(msg));
