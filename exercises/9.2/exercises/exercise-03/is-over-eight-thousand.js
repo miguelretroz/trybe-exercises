@@ -22,4 +22,6 @@ const isOverEightThousand = () => {
   });
 };
 
-isOverEightThousand().then(response => console.log(response)).catch(() => console.log('Promise rejeitada'));
+isOverEightThousand()
+  .then(response => console.log(response))
+  .catch(() => console.log('Promise rejeitada'));

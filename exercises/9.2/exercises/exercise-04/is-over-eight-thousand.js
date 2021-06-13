@@ -17,9 +17,11 @@ const isOverEightThousand = () => {
       const resultDivision = [(Math.round((result / 2))), Math.round((result / 3)), Math.round((result / 5)), Math.round((result / 10))];
       resolve(resultDivision);
     } else {
-      return reject();
+      return reject('É mais de oito mil! Essa promise deve estar quebrada!');
     }
   });
 };
 
-isOverEightThousand().then(response => console.log(response)).catch(() => console.log('Promise rejeitada'));
+isOverEightThousand()
+  .then(response => console.log(response))
+  .catch((error) => console.log(error));
