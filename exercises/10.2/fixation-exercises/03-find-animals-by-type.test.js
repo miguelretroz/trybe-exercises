@@ -33,3 +33,12 @@ describe('Quando o tipo do animal, existe', () => {
     });
   });
 });
+
+describe('Quando o tipo do animal, não existe', () => {
+  test('Retorne a messagem de erro', () => {
+    expect.assertions(1);
+    return getListAnimals('Lion').catch((error) => {
+      expect(error).toEqual({ error: 'Não possui esse tipo de animal.' });
+    });
+  });
+});
