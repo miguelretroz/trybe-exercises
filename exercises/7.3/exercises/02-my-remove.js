@@ -11,3 +11,10 @@ function myRemove(arr, item) {
 }
 
 // implemente seus testes aqui
+assert.strictEqual(typeof myRemove, 'function');
+const numbers = [1, 2, 3, 4];
+assert.deepStrictEqual(myRemove(numbers, 3), [1, 2, 4]);
+assert.notDeepStrictEqual(myRemove(numbers, 3), [1, 2, 3, 4]);
+myRemove(numbers, 3);
+assert.deepStrictEqual(numbers, [1, 2, 3, 4]);
+assert.deepStrictEqual(myRemove(numbers, 5), [1, 2, 3, 4]);
