@@ -34,7 +34,7 @@ describe('Quando o tipo do animal, existe', () => {
 });
 
 describe('Quando o tipo do animal, não existe', () => {
-  test('Retorne a messagem de erro', async () => {
+  test('Retorne a mensagem de erro', async () => {
     expect.assertions(1);
     try {
       await getListAnimals('Lion');
@@ -72,6 +72,12 @@ describe('Testando Async/Await - findAnimalByType', () => {
         { name: 'Soneca', age: 2, type: 'Dog' },
       ];
       await expect(getListAnimals('Dog')).resolves.toEqual(listDogs);
+    });
+  });
+
+  describe('Quando o tipo do animal, não existe', () => {
+    test('Retorne a mensagem de erro', async () => {
+      await expect(getListAnimals('Lion')).rejects.toEqual({ error: 'Não possui esse tipo de animal.' });
     });
   });
 });
