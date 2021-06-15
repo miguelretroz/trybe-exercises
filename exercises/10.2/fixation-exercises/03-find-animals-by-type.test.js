@@ -63,3 +63,15 @@ describe('Testando Promise - findAnimalsByType', () => {
     });
   });
 });
+
+describe('Testando Async/Await - findAnimalByType', () => {
+  describe('Quando o tipo do animal, existe', () => {
+    test('Retorne a lista de animais', async () => {
+      const listDogs = [
+        { name: 'Dorminhoco', age: 1, type: 'Dog' },
+        { name: 'Soneca', age: 2, type: 'Dog' },
+      ];
+      await expect(getListAnimals('Dog')).resolves.toEqual(listDogs);
+    });
+  });
+});
