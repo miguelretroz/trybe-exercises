@@ -26,11 +26,10 @@ const getListAnimals = type => (
 describe('Quando o tipo do animal, existe', () => {
   expect.assertions(2);
 
-  test('Retorne a lista de animais', () => {
-    return getListAnimals('Dog').then((listDogs) => {
-      expect(listDogs[0].name).toBe('Dorminhoco');
-      expect(listDogs[1].name).toBe('Soneca');
-    });
+  test('Retorne a lista de animais', async () => {
+    const listDogs = await getListAnimals('Dog');
+    expect(listDogs[0].name).toBe('Dorminhoco');
+    expect(listDogs[1].name).toBe('Soneca');
   });
 });
 
