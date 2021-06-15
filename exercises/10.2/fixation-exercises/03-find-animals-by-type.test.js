@@ -43,3 +43,16 @@ describe('Quando o tipo do animal, não existe', () => {
     }
   });
 });
+
+describe('Testando Promise - findAnimalsByType', () => {
+  describe('Quando o tipo do animal, existe', () => {
+    test('Retorna uma lista de animais', () => {
+      const listDogs = [
+        { name: 'Dorminhoco', age: 1, type: 'Dog' },
+        { name: 'Soneca', age: 2, type: 'Dog' },
+      ];
+      expect.assertions(1);
+      return expect(getListAnimals('Dog')).resolves.toEqual(listDogs);
+    });
+  });
+});
