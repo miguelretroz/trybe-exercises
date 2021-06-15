@@ -1,3 +1,5 @@
+const { test, expect, describe } = require('@jest/globals');
+
 const Animals = [
   { name: 'Dorminhoco', age: 1, type: 'Dog' },
   { name: 'Soneca', age: 2, type: 'Dog' },
@@ -20,3 +22,14 @@ const findAnimalsByType = (type) => (
 const getListAnimals = type => (
   findAnimalsByType(type).then(list => list)
 );
+
+describe('Quando o tipo do animal, existe', () => {
+  expect.assertions(2);
+
+  test('Retorne a lista de animais', () => {
+    return getListAnimals('Dog').then((listDogs) => {
+      expect(listDogs[0].name).toBe('Dorminhoco');
+      expect(listDogs[1].name).toBe('Soneca');
+    });
+  });
+});
