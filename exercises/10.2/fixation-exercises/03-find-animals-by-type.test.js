@@ -55,4 +55,11 @@ describe('Testando Promise - findAnimalsByType', () => {
       return expect(getListAnimals('Dog')).resolves.toEqual(listDogs);
     });
   });
+
+  describe('Quando o tipo do animal, não existe', () => {
+    test('Retorna a mensagem de erro', () => {
+      expect.assertions(1);
+      return expect(getListAnimals('Lion')).rejects.toEqual({ error: 'Não possui esse tipo de animal.' });
+    });
+  });
 });
