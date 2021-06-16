@@ -6,7 +6,7 @@ const users = {
 const findUserById = (id) => {
   return new Promise((resolve, reject) => {
     if (users[id]) return resolve(users[id]);
-    return reject(users[id]);
+    return reject({ error: `User with ${id} not found.` });
   });
 };
 
