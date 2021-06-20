@@ -13,4 +13,15 @@ describe('Para fixar...', () => {
     expect(math.subtrair(1, 3)).toBe(3);
     expect(math.subtrair).toHaveBeenCalledTimes(2);
   });
+
+  test('Multiplicar', () => {
+    math.multiplicar = jest.fn();
+
+    expect(math.multiplicar()).toBe(undefined);
+    expect(math.multiplicar).toHaveBeenCalled();
+    
+    math.multiplicar.mockReturnValue(10);
+    expect(math.multiplicar()).toBe(10);
+    expect(math.multiplicar).toHaveBeenCalledTimes(2);
+  });
 });
