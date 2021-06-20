@@ -46,4 +46,23 @@ describe('Para fixar...', () => {
     expect(math.dividir).toHaveBeenCalled();
     expect(math.dividir()).toBe(2);
   });
+
+  test('Subtrair #2', () => {
+    const mockSubtrair = jest.spyOn(math, 'subtrair');
+
+    expect(mockSubtrair(5, 3)).toBe(15);
+    expect(mockSubtrair).toHaveBeenCalled();
+    expect(mockSubtrair).toHaveBeenCalledTimes(3);
+
+    mockSubtrair.mockReturnValue(20);
+    expect(mockSubtrair()).toBe(20)
+    expect(mockSubtrair).toHaveBeenCalledTimes(4);
+
+    mockSubtrair.mockRestore();
+    expect(mockSubtrair(3, 3)).toBe(undefined);
+
+    mockSubtrair.mockImplementation((a, b) => a - b);
+    expect(mockSubtrair(5, 2)).toBe(3);
+    expect(mockSubtrair).toHaveBeenCalledTimes(2);
+  });
 });
