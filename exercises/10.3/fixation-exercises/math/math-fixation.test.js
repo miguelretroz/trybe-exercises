@@ -32,5 +32,18 @@ describe('Para fixar...', () => {
     expect(math.somar).toHaveBeenCalled();
     expect(math.somar).toHaveBeenCalledWith(1, 3);
     expect(math.somar(1, 4)).toBe(5);
+    expect(math.somar).toHaveBeenCalledWith(1, 3);
+    expect(math.somar).toHaveBeenLastCalledWith(1, 4);
+  });
+
+  test('Dividir', () => {
+    math.dividir = jest.fn()
+      .mockReturnValue(15)
+      .mockReturnValueOnce(5)
+      .mockReturnValueOnce(2);
+
+    expect(math.dividir()).toBe(5);
+    expect(math.dividir).toHaveBeenCalled();
+    expect(math.dividir()).toBe(2);
   });
 });
