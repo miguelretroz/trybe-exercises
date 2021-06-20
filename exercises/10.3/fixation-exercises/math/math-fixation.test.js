@@ -24,4 +24,13 @@ describe('Para fixar...', () => {
     expect(math.multiplicar()).toBe(10);
     expect(math.multiplicar).toHaveBeenCalledTimes(2);
   });
+
+  test('Somar', () => {
+    math.somar = jest.fn().mockImplementation((a, b) => a + b);
+    
+    math.somar(1, 3);
+    expect(math.somar).toHaveBeenCalled();
+    expect(math.somar).toHaveBeenCalledWith(1, 3);
+    expect(math.somar(1, 4)).toBe(5);
+  });
 });
