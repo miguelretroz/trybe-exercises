@@ -4,10 +4,12 @@ function Task (value) {
   return <li>{value}</li>
 }
 
+const taskList = ['Estudar', 'Organizar agenda', 'Limpar mesa'];
+
 function App() {
   return (
     <ul>
-      {Task('Estudar')}
+      { taskList.map( task => Task(task))}
     </ul>
   );
 }
