@@ -1,0 +1,13 @@
+const JSX = (
+  <div>
+    <h1>Miguel Retroz</h1>
+    <p>
+      Sou estudante de desenvolvimento web
+    </p>
+    <ul>
+      <li>Git</li>
+      <li>HTML</li>
+      <li>CSS</li>
+    </ul>
+  </div>
+);
