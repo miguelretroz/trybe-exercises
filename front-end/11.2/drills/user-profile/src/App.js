@@ -16,10 +16,10 @@ class App extends Component {
       email: "amelia@gmail.com",
       avatar: "https:\/\/cdn.pixabay.com/photo/2017/01/31/13/05/cameo-2023867_640.png"
     };
+    const users = [joao, amelia];
     return (
       <div className="App">
-        <UserProfile user={ joao } />
-        <UserProfile user={ amelia } />
+        {users.map(user => <UserProfile key={ user.id } user={ user } />)}
       </div>
     );
   }
