@@ -3,7 +3,7 @@ import Image from './Image';
 
 class UserProfile extends Component {
   render() {
-    const { name, email, avatar } = this.props;
+    const { name, email, avatar } = this.props.user;
     return (
       <div>
         <p> { name } </p>
