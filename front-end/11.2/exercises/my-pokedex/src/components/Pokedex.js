@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Pokemon from './Pokemon';
 
 class Pokedex extends Component {
@@ -8,6 +9,20 @@ class Pokedex extends Component {
       { pokemons.map(pokemon => <Pokemon infos={ pokemon } />) }
     );
   };
+}
+
+Pokedex.propTypes = {
+  pokemons: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    averageWeight: PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      measurementUnit: PropTypes.string.isRequired,
+    }).isRequired,
+    image: PropTypes.string.isRequired,
+    moreInfo: PropTypes.string,
+  })).isRequired,
 }
 
 export default Pokedex;
