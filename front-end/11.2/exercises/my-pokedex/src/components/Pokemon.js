@@ -13,7 +13,7 @@ class Pokemon extends Component {
         <p>Average weight: { averageWeight.value }  { averageWeight.measurementUnit }</p>
       </div>
     );
-  }
+  };
 }
 
 Pokemon.propTypes = {
