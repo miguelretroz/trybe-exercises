@@ -5,7 +5,7 @@
 
 ---
 # Conteúdo do curso
-- [X] Fundamentos do Desenvolvimento Web
+## Fundamentos do Desenvolvimento Web
   - [X] Unix & Bash
   - [X] Git, GitHub e Internet
   - [X] Introdução à HTML e CSS
@@ -17,8 +17,8 @@
   - [X] JavaScript Assíncrono e Promises
   - [X] Testes automatizados com Jest
 ---
-- [ ] Desenvolvimento Front-end
-  - [ ] Introdução à React
+## Desenvolvimento Front-end
+  - [X] Introdução à React
   - [ ] Componentes com Estado, Eventos e Formulários com React
   - [ ] Ciclo de Vida de Componentes e React Router
   - [ ] Metodologias Ágeis
