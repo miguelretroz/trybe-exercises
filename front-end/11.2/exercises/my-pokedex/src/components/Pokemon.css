@@ -1,0 +1,13 @@
+.pokemon-card {
+  background: rgb(247, 234, 210);
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 300px;
+  display: inline-block;
+  margin: 10px 5px;
+  transition: 1000ms;
+}
+
+.pokemon-card:hover {
+  box-shadow: 0 0 0.9em 0.4em #ff3b3b;
+}

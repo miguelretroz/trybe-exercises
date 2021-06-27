@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from './Image';
+import './Pokemon.css';
 
 class Pokemon extends Component {
   render() {
     const { name, type, averageWeight, image } = this.props.infos;
     return (
-      <div>
+      <div className="pokemon-card">
         <Image source={ image } alternativeText={ name } />
         <p>{ name }</p>
         <p>{ type }</p>
