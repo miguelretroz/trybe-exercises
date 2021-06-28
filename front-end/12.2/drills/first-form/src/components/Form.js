@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 
 class Form extends Component {
+  constructor() {
+    super();
+    this.state = {
+      abstract: '',
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    console.log(event.target.value);
+    this.setState({
+      abstract: event.target.value,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -26,7 +41,7 @@ class Form extends Component {
 
           <label>
             Resumo
-            <textarea />
+            <textarea value={ this.state.abstract } onChange={ this.handleChange } />
           </label>
         </form>
       </div>
