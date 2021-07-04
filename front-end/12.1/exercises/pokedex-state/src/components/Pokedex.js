@@ -42,7 +42,7 @@ class Pokedex extends React.Component {
     }
 
     getWithType(type) {
-      const { pokemons } = this.state;
+      const { pokemons } = this.props;
       const pokemonsFiltered = pokemons.filter((pokemon) => pokemon.type === type);
       return pokemonsFiltered;
     }
@@ -52,7 +52,8 @@ class Pokedex extends React.Component {
         return (
             <div className="pokedex">
                 <Pokemon key={pokemons[pkmIndex].id} pokemon={pokemons[pkmIndex]} />
-                <Button btnName={ 'pkmType' } btnValue={ 'Fire' } btnText={ 'Fire' } onClick={ this.setType } />
+                <Button btnName={ 'pkmType' } btnValue={ 'Fire' } onClick={ this.setType } >Fire</Button>
+                <Button btnName={ 'pkmType' } btnValue={ 'Psychic' } onClick={ this.setType } >Psychic</Button>
                 <Button btnName={ 'nextPokemon' } btnText={ 'Próximo pokemon' } onClick={ this.handleClick } />
             </div>
         );
