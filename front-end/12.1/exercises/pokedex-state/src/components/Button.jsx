@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 class Button extends React.Component {
   render() {
-    const { btnName, btnValue, btnText, onClick } = this.props;
+    const { btnName, btnValue, onClick, children } = this.props;
     return (
-      <button name={ btnName } type="button" value={ btnValue } onClick={ onClick } >{ btnText }</button>
+      <button name={ btnName } type="button" value={ btnValue } onClick={ onClick } >{ children }</button>
     );
   }
 }
@@ -18,7 +18,7 @@ Button.defaultProps = {
 Button.propTypes = {
   btnName: PropTypes.string,
   btnValue: PropTypes.string,
-  btnText: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 }
 
