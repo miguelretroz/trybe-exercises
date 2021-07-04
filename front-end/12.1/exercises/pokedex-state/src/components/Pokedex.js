@@ -5,34 +5,55 @@ import Pokemon from './Pokemon';
 import Button from './Button';
 
 class Pokedex extends React.Component {
-    constructor() {
-      super();
+    constructor(prop) {
+      super(prop);
       this.state = {
         pkmIndex: 0,
+        pkmType: '',
+        pokemons: prop.pokemons,
       }
 
       this.handleClick = this.handleClick.bind(this);
+      this.setType = this.setType.bind(this);
+      this.getWithType = this.getWithType.bind(this);
     }
 
     handleClick() {
-      const { pokemons } = this.props;
+      const { pokemons } = this.state;
       this.setState((prevState) => {
         let { pkmIndex } = prevState;
         pkmIndex += 1;
         if (pkmIndex === pokemons.length) {
           pkmIndex = 0;
         }
-        return { pkmIndex };
+        return {
+          pkmIndex,
+        };
       })
     }
 
+    setType({ target }) {
+      const { name, value } = target;
+      this.setState({ 
+        [name]: value,
+        pkmIndex: 0,
+        pokemons: (this.getWithType(value)), 
+      });
+    }
+
+    getWithType(type) {
+      const { pokemons } = this.state;
+      const pokemonsFiltered = pokemons.filter((pokemon) => pokemon.type === type);
+      return pokemonsFiltered;
+    }
+
     render() {
-        const { pokemons } = this.props;
-        const { pkmIndex } = this.state;
+        const { pkmIndex, pokemons } = this.state;
         return (
             <div className="pokedex">
                 <Pokemon key={pokemons[pkmIndex].id} pokemon={pokemons[pkmIndex]} />
-                <Button btnText={ 'Próximo pokemon' } handleClick={ this.handleClick } />
+                <Button btnName={ 'pkmType' } btnValue={ 'Fire' } btnText={ 'Fire' } onClick={ this.setType } />
+                <Button btnName={ 'nextPokemon' } btnText={ 'Próximo pokemon' } onClick={ this.handleClick } />
             </div>
         );
     }
