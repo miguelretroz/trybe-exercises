@@ -11,6 +11,8 @@ class Pokedex extends React.Component {
         pkmIndex: 0,
         pkmType: '',
         pokemons: prop.pokemons,
+        allTypes: prop.pokemons.map((pokemon) => pokemon.type)
+          .filter((type, index, everyTypes) => everyTypes.indexOf(type) === index),
       }
 
       this.handleClick = this.handleClick.bind(this);
@@ -48,14 +50,24 @@ class Pokedex extends React.Component {
     }
 
     render() {
-        const { pkmIndex, pokemons } = this.state;
+        const { pkmIndex, pokemons, allTypes } = this.state;
+        const pkmSelected = pokemons[pkmIndex];
         return (
-            <div className="pokedex">
-                <Pokemon key={pokemons[pkmIndex].id} pokemon={pokemons[pkmIndex]} />
-                <Button btnName={ 'pkmType' } btnValue={ 'Fire' } onClick={ this.setType } >Fire</Button>
-                <Button btnName={ 'pkmType' } btnValue={ 'Psychic' } onClick={ this.setType } >Psychic</Button>
-                <Button btnName={ 'nextPokemon' } btnText={ 'Próximo pokemon' } onClick={ this.handleClick } />
-            </div>
+          <div className="pokedex">
+              <Pokemon key={pkmSelected.id} pokemon={pkmSelected} />
+              {
+                allTypes.map((type) =>
+                  <Button
+                    key={ type }
+                    btnName={ 'pkmType' }
+                    btnValue={ type }
+                    onClick={ this.setType }
+                  >
+                    { type }
+                  </Button>)
+              }
+              <Button btnName={ 'nextPokemon' } onClick={ this.handleClick } >Próximo pokemon</Button>
+          </div>
         );
     }
 }
