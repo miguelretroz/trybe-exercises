@@ -18,11 +18,14 @@ class Pokedex extends React.Component {
       this.handleClick = this.handleClick.bind(this);
       this.setType = this.setType.bind(this);
       this.getWithType = this.getWithType.bind(this);
+      this.resetPokemons = this.resetPokemons.bind(this);
     }
 
-    handleClick() {
+    handleClick({ target }) {
+      const { name } = target;
       const { pokemons } = this.state;
       this.setState((prevState) => {
+        if (name === 'resetPokemons') return (this.resetPokemons());
         let { pkmIndex } = prevState;
         pkmIndex += 1;
         if (pkmIndex === pokemons.length) {
@@ -49,12 +52,21 @@ class Pokedex extends React.Component {
       return pokemonsFiltered;
     }
 
+    resetPokemons() {
+      const { pokemons } = this.props;
+      return {
+        pkmIndex: 0,
+        pokemons
+      };
+    }
+
     render() {
         const { pkmIndex, pokemons, allTypes } = this.state;
         const pkmSelected = pokemons[pkmIndex];
         return (
           <div className="pokedex">
               <Pokemon key={pkmSelected.id} pokemon={pkmSelected} />
+              <Button btnName={ 'resetPokemons' } onClick={ this.handleClick } >All</Button>
               {
                 allTypes.map((type) =>
                   <Button
