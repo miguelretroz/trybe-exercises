@@ -19,6 +19,7 @@ class Pokedex extends React.Component {
       this.setType = this.setType.bind(this);
       this.getWithType = this.getWithType.bind(this);
       this.resetPokemons = this.resetPokemons.bind(this);
+      this.nextIsEnabled = this.nextIsEnabled.bind(this);
     }
 
     handleClick({ target }) {
@@ -60,6 +61,11 @@ class Pokedex extends React.Component {
       };
     }
 
+    nextIsEnabled() {
+      const { pokemons } = this.state;
+      return (pokemons.length === 1) ? false : true;
+    }
+
     render() {
         const { pkmIndex, pokemons, allTypes } = this.state;
         const pkmSelected = pokemons[pkmIndex];
@@ -78,7 +84,7 @@ class Pokedex extends React.Component {
                     { type }
                   </Button>)
               }
-              <Button btnName={ 'nextPokemon' } onClick={ this.handleClick } >Próximo pokemon</Button>
+              <Button btnName={ 'nextPokemon' } onClick={ this.handleClick } btnDisabled={ this.nextIsEnabled() } >Próximo pokemon</Button>
           </div>
         );
     }
