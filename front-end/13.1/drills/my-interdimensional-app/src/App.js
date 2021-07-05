@@ -9,8 +9,22 @@ class App extends React.Component {
     }
   }
 
+  fetchCharacters = () => {
+    fetch('https://rickandmortyapi.com/api/character')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ characters: data.results });
+      })
+  }
+
   render() {
-    return ();
+    return (
+      <div>
+        <h1>
+          Ricky and Morty Characters:
+        </h1>
+      </div>
+    );
   }
 }
 
