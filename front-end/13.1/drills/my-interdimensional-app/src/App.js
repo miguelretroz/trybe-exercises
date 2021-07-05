@@ -17,6 +17,10 @@ class App extends React.Component {
       })
   }
 
+  componentDidMount() {
+    this.fetchCharacters();
+  }
+
   render() {
     const { characters } = this.state;
     return (
