@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class Home extends Component {
+
+  componentDidMount() {
+    this.props.loginRender();
+  }
+
   render() {
     return (
       <div>
