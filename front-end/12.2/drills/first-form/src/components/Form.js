@@ -17,36 +17,47 @@ class Form extends Component {
   }
 
   render() {
+    const { abstract } = this.state;
     return (
       <div>
         <form>
-          <label>
+          <label htmlFor="select">
             Escolha uma opção
-            <select>
-              <option value='Opção-01'>Opção 01</option>
-              <option value='Opção-02'>Opção 02</option>
-              <option value='Opção-03'>Opção 03</option>
+            <select id="select">
+              <option value="Opção-01">Opção 01</option>
+              <option value="Opção-02">Opção 02</option>
+              <option value="Opção-03">Opção 03</option>
             </select>
           </label>
 
-          <label>
+          <label htmlFor="input-01">
             Login
-            <input type='text' />
+            <input
+              type="text"
+              id="input-01"
+            />
           </label>
 
-          <label>
+          <label htmlFor="input-02">
             Password
-            <input type='password' />
+            <input
+              type="password"
+              id="input-02"
+            />
           </label>
 
-          <label>
+          <label htmlFor="abstract">
             Resumo
-            <textarea value={ this.state.abstract } onChange={ this.handleChange } />
+            <textarea
+              id="abstract"
+              value={ abstract }
+              onChange={ this.handleChange }
+            />
           </label>
         </form>
       </div>
     );
-  };
+  }
 }
 
 export default Form;
