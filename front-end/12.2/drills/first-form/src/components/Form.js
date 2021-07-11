@@ -8,19 +8,20 @@ class Form extends Component {
       login: '',
       password: '',
       abstract: '',
+      checkbox: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange({ target }) {
-    console.log(typeof target.value);
+    const value = (target.type === 'checkbox') ? target.checked : target.value;
     this.setState({
-      [target.name]: target.value,
+      [target.name]: value,
     });
   }
 
   render() {
-    const { select, login, password, abstract } = this.state;
+    const { select, login, password, abstract, checkbox } = this.state;
     return (
       <div>
         <form>
@@ -37,7 +38,6 @@ class Form extends Component {
               <option value="Opção-03">Opção 03</option>
             </select>
           </label>
-
           <label htmlFor="input-01">
             Login
             <input
@@ -48,7 +48,6 @@ class Form extends Component {
               onChange={ this.handleChange }
             />
           </label>
-
           <label htmlFor="input-02">
             Password
             <input
@@ -59,7 +58,6 @@ class Form extends Component {
               onChange={ this.handleChange }
             />
           </label>
-
           <label htmlFor="abstract">
             Resumo
             <textarea
@@ -67,6 +65,15 @@ class Form extends Component {
               value={ abstract }
               onChange={ this.handleChange }
             />
+          </label>
+          <label htmlFor="checkbox">
+            <input
+              type="checkbox"
+              name="checkbox"
+              value={ checkbox }
+              onChange={ this.handleChange }
+            />
+            Checkbox
           </label>
         </form>
       </div>
