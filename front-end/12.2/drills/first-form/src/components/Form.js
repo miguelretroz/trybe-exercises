@@ -75,6 +75,7 @@ class Form extends Component {
             />
             Checkbox
           </label>
+          <input type="file" />
         </form>
       </div>
     );
