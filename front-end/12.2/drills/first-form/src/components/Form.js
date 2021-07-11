@@ -4,26 +4,34 @@ class Form extends Component {
   constructor() {
     super();
     this.state = {
+      select: 'Opção-01',
+      login: '',
+      password: '',
       abstract: '',
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    console.log(event.target.value);
+  handleChange({ target }) {
+    console.log(typeof target.value);
     this.setState({
-      abstract: event.target.value,
+      [target.name]: target.value,
     });
   }
 
   render() {
-    const { abstract } = this.state;
+    const { select, login, password, abstract } = this.state;
     return (
       <div>
         <form>
           <label htmlFor="select">
             Escolha uma opção
-            <select id="select">
+            <select
+              id="select"
+              name="select"
+              value={ select }
+              onChange={ this.handleChange }
+            >
               <option value="Opção-01">Opção 01</option>
               <option value="Opção-02">Opção 02</option>
               <option value="Opção-03">Opção 03</option>
@@ -35,6 +43,9 @@ class Form extends Component {
             <input
               type="text"
               id="input-01"
+              name="login"
+              value={ login }
+              onChange={ this.handleChange }
             />
           </label>
 
@@ -43,6 +54,9 @@ class Form extends Component {
             <input
               type="password"
               id="input-02"
+              name="password"
+              value={ password }
+              onChange={ this.handleChange }
             />
           </label>
 
