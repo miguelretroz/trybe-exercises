@@ -38,26 +38,28 @@ class Form extends Component {
               <option value="Opção-03">Opção 03</option>
             </select>
           </label>
-          <label htmlFor="input-01">
-            Login
-            <input
-              type="text"
-              id="input-01"
-              name="login"
-              value={ login }
-              onChange={ this.handleChange }
-            />
-          </label>
-          <label htmlFor="input-02">
-            Password
-            <input
-              type="password"
-              id="input-02"
-              name="password"
-              value={ password }
-              onChange={ this.handleChange }
-            />
-          </label>
+          <fieldset>
+            <label htmlFor="input-01">
+              Login
+              <input
+                type="text"
+                id="input-01"
+                name="login"
+                value={ login }
+                onChange={ this.handleChange }
+              />
+            </label>
+            <label htmlFor="input-02">
+              Password
+              <input
+                type="password"
+                id="input-02"
+                name="password"
+                value={ password }
+                onChange={ this.handleChange }
+              />
+            </label>
+          </fieldset>
           <label htmlFor="abstract">
             Resumo
             <textarea
