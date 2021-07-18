@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Input from './Input';
+
 class Form extends Component {
   constructor() {
     super();
@@ -9,19 +11,22 @@ class Form extends Component {
       password: '',
       abstract: '',
       checkbox: false,
+      haveErrors: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange({ target }) {
+  handleChange({ target }, state) {
     const value = (target.type === 'checkbox') ? target.checked : target.value;
+    const { haveErrors } = state;
     this.setState({
       [target.name]: value,
+      haveErrors,
     });
   }
 
   render() {
-    const { select, login, password, abstract, checkbox } = this.state;
+    const { select, login, password, abstract, checkbox, haveErrors } = this.state;
     return (
       <div>
         <form>
@@ -39,16 +44,16 @@ class Form extends Component {
             </select>
           </label>
           <fieldset>
-            <label htmlFor="input-01">
+            <Input
+              type="text"
+              id="login"
+              name="login"
+              value={ login }
+              onChange={ this.handleChange }
+            >
               Login
-              <input
-                type="text"
-                id="input-01"
-                name="login"
-                value={ login }
-                onChange={ this.handleChange }
-              />
-            </label>
+            </Input>
+            { haveErrors && <h5>Dados incorretos</h5> }
             <label htmlFor="input-02">
               Password
               <input
