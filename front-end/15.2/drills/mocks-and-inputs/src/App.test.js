@@ -11,10 +11,7 @@ describe('Testing App.js', () => {
     };
 
     jest.spyOn(global, 'fetch');
-    global.fetch.mockImplementation(() =>
-      Promise.resolve({ json: () =>
-         Promise.resolve(joke)
-      }));
+    global.fetch.mockResolvedValue({ json: jest.fn().mockResolvedValue(joke)});
 
     render(<App />);
     await screen
