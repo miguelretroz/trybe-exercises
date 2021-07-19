@@ -8,11 +8,16 @@ const verifyEmail = (email) => {
 
 const ValidEmail = (props) => {
   const { email } = props;
+  const verifyResult = verifyEmail(email);
   return (
     <div>
       <h2 data-testid="id-email-user">{`Valor: ${email}`}</h2>
       {(email !== '')
-        && <h3>{(verifyEmail(email) ? 'Email Valido' : 'Email Inválido')}</h3>
+        && <h3
+          className={(verifyResult ? 'green-text' : 'red-text' )}
+        >
+          {(verifyResult ? 'Email Valido' : 'Email Inválido')}
+        </h3>
       }
     </div>
   );
