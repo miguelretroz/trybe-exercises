@@ -7,7 +7,7 @@ function App() {
         Email
       </label>
       <input id="id-email" type="email" />
-      <input id="btn-send" type="button" value="Enviar" />
+      <input id="btn-send" type="button" data-testid="id-send" value="Enviar" />
       <input id="btn-back" type="button" value="Voltar" />
     </div>
   );
