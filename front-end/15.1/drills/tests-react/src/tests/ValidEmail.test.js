@@ -5,7 +5,7 @@ describe('Testando componente "ValidEmail"', () => {
   it('Testando um componente, caso o email seja valido.', () => {
     const EMAIL_USER = 'email@email.com';
     const { getByText } = render(<ValidEmail email={EMAIL_USER} />);
-    const isValid = getByText('Email Valido');
+    const isValid = getByText('Email Válido');
     expect(isValid).toBeInTheDocument();
   });
 
@@ -19,9 +19,16 @@ describe('Testando componente "ValidEmail"', () => {
   it('Testando um componente, caso nada tenha sido enviado', () => {
     const EMAIL_USER = '';
     const { queryByText } = render(<ValidEmail email={EMAIL_USER} />);
-    const isValid = queryByText('Email Valido');
+    const isValid = queryByText('Email Válido');
     const isInvalid = queryByText('Email Inválido');
     expect(isValid).not.toBeInTheDocument();
     expect(isInvalid).not.toBeInTheDocument();
+  });
+
+  it('Testando se o componente possui texto verde ao ser digitado um email válido.', () => {
+    const EMAIL_USER = 'email@email.com';
+    const { getByText } = render(<ValidEmail email={EMAIL_USER} />);
+    const isValid = getByText('Email Válido');
+    expect(isValid).toHaveAttribute('class', 'green-text');
   });
 });

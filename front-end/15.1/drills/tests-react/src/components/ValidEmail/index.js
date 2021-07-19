@@ -16,7 +16,7 @@ const ValidEmail = (props) => {
         && <h3
           className={(verifyResult ? 'green-text' : 'red-text' )}
         >
-          {(verifyResult ? 'Email Valido' : 'Email Inválido')}
+          {(verifyResult ? 'Email Válido' : 'Email Inválido')}
         </h3>
       }
     </div>
