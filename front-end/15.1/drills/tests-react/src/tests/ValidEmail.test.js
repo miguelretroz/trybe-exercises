@@ -15,4 +15,13 @@ describe('Testando componente "ValidEmail"', () => {
     const isValid = getByText('Email Inválido');
     expect(isValid).toBeInTheDocument();
   });
+
+  it('Testando um componente, caso nada tenha sido enviado', () => {
+    const EMAIL_USER = '';
+    const { queryByText } = render(<ValidEmail email={EMAIL_USER} />);
+    const isValid = queryByText('Email Valido');
+    const isInvalid = queryByText('Email Inválido');
+    expect(isValid).not.toBeInTheDocument();
+    expect(isInvalid).not.toBeInTheDocument();
+  });
 });
