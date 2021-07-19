@@ -8,8 +8,14 @@ test('Verificando se existe o campo Email', () => {
   expect(inputEmail.type).toBe('email');
 });
 
-test('Verificando se existe um botão', () => {
-  const { getByRole } = render(<App />);
-  const btn = getByRole('button');
-  expect(btn).toBeInTheDocument();
+// test('Verificando se existe um botão', () => {
+//   const { getByRole } = render(<App />);
+//   const btn = getByRole('button');
+//   expect(btn).toBeInTheDocument();
+// });
+
+test('Verificando se existe dois botões', () => {
+  const { getAllByRole } = render(<App />);
+  const buttons = getAllByRole('button');
+  expect(buttons.length).toBe(2);
 });
