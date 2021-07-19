@@ -1,8 +1,27 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('Testing App.js', () => {
+  afterEach(() => jest.clearAllMocks());
+  it('fetch joke', async () => {
+    const joke = {
+      id: '7h3oGtrOfxc',
+      joke: 'Whiteboards ... are remarkable.',
+      status: 200,
+    };
+
+    jest.spyOn(global, 'fetch');
+    global.fetch.mockImplementation(() =>
+      Promise.resolve({ json: () =>
+         Promise.resolve(joke)
+      }));
+
+    render(<App />);
+    await screen
+      .findByText('Whiteboards ... are remarkable.');
+    expect(global.fetch)
+      .toBeCalledTimes(1);
+    expect(global.fetch)
+      .toBeCalledWith('https://icanhazdadjoke.com/', {'headers': {'Accept': 'application/json'}})
+  });
 });
