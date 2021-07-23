@@ -31,6 +31,7 @@
       <p>Color: <span id="value">white</span></p>
       <button id="previous">Previous color</button>
       <button id="next">Next color</button>
+      <button id="random">Random color</button>
     </div>
     <script>
       const ESTADO_INICIAL = {
@@ -49,7 +50,13 @@
             return {
               ...state,
               index: (state.index === 0) ? (state.colors.length - 1) : (state.index - 1),
-            }
+            };
+          case 'RANDOM_COLOR':
+            return {
+              ...state,
+              colors: [...state.colors, createColor()],
+              index: state.colors.length,
+            };
           default:
             return state;
         }
@@ -65,8 +72,13 @@
         type: 'PREVIOUS_COLOR',
       });
 
+      const randomColor = () => ({
+        type: 'RANDOM_COLOR',
+      });
+
       const previousButton = document.querySelector('#previous');
       const nextButton = document.querySelector('#next');
+      const randomButton = document.querySelector('#random');
 
       previousButton.addEventListener('click', () => {
         store.dispatch(previousColor());
@@ -74,6 +86,10 @@
 
       nextButton.addEventListener('click', () => {
         store.dispatch(nextColor());
+      });
+
+      randomButton.addEventListener('click', () => {
+        store.dispatch(randomColor());
       });
 
       const colorText = document.querySelector('#value');
@@ -85,6 +101,16 @@
         colorText.innerHTML = color;
         colorContainer.style.backgroundColor = color;
       });
+
+      const createColor = () => {
+        const oneChar = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+        let color = '#';
+        const aleatorio = () => Math.floor(Math.random() * oneChar.length);
+        for(let i = 0; i < 6; i += 1) {
+          color += oneChar[aleatorio()];
+        }
+        return color;
+      }
     </script>
   </body>
 </html>
