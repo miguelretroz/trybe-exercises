@@ -76,6 +76,15 @@
         store.dispatch(nextColor());
       });
 
+      const colorText = document.querySelector('#value');
+      const colorContainer = document.querySelector('#container');
+
+      store.subscribe(() => {
+        const { colors, index } = store.getState();
+        const color = colors[index];
+        colorText.innerHTML = color;
+        colorContainer.style.backgroundColor = color;
+      });
     </script>
   </body>
 </html>
