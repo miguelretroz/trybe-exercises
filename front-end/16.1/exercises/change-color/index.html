@@ -64,6 +64,18 @@
       const previousColor = () => ({
         type: 'PREVIOUS_COLOR',
       });
+
+      const previousButton = document.querySelector('#previous');
+      const nextButton = document.querySelector('#next');
+
+      previousButton.addEventListener('click', () => {
+        store.dispatch(previousColor());
+      });
+
+      nextButton.addEventListener('click', () => {
+        store.dispatch(nextColor());
+      });
+
     </script>
   </body>
 </html>
