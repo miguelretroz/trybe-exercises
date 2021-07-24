@@ -38,6 +38,12 @@
 
       const meuPrimeiroReducer = (state = ESTADO_INICIAL_1, action) => {
         switch (action.type) {
+          case 'CHANGE_NAME_01':
+            return {
+              ...state,
+              nome: 'Bruna',
+              sobrenome: 'Santana Oliveira',
+            };
           default:
             return state;
         }
@@ -45,6 +51,12 @@
 
       const meuSegundoReducer = (state = ESTADO_INICIAL_2, action) => {
         switch (action.type) {
+          case 'CHANGE_NAME_02':
+            return {
+              ...state,
+              nome: 'Rodrigo',
+              sobrenome: 'Santos da Silva',
+            };
           default:
             return state;
         }
@@ -56,6 +68,14 @@
       });
 
       const store = Redux.createStore(reducerCombinado);
+
+      const changeName01 = () => ({
+        type: 'CHANGE_NAME_01',
+      });
+
+      const changeName02 = () => ({
+        type: 'CHANGE_NAME_02',
+      });
     </script>
   </body>
 </html>
