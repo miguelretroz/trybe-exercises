@@ -76,6 +76,15 @@
       const changeName02 = () => ({
         type: 'CHANGE_NAME_02',
       });
+
+      window.onload = () => {
+        setTimeout(() => {
+          store.dispatch(changeName01());
+          setTimeout(() => {
+            store.dispatch(changeName02());
+          }, 2000);
+        }, 3000);
+      };
     </script>
   </body>
 </html>
