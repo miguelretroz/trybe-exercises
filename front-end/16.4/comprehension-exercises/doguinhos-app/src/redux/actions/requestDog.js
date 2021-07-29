@@ -1,4 +1,4 @@
-export const REQUEST_IMAGE = 'REQUEST_IMAGE';
+import { REQUEST_IMAGE } from './';
 
 function requestDog() {
   return { type: REQUEST_IMAGE };

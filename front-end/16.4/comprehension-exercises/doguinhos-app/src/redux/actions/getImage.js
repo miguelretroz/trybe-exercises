@@ -1,4 +1,4 @@
-export const GET_IMAGE = 'GET_IMAGE';
+import { GET_IMAGE } from './';
 
 function getImage(json) {
   return { type: GET_IMAGE, payload: json.message }

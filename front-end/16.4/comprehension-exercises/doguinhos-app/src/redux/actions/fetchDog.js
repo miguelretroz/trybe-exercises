@@ -1,4 +1,4 @@
-import { getImage, requestDog, failedRequest } from "./index";
+import { getImage, requestDog, failedRequest } from "./";
 
 export function fetchDog() {
   return (dispatch) => {

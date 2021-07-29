@@ -1,4 +1,4 @@
-export const FAILED_REQUEST = 'FAILED_REQUEST';
+import { FAILED_REQUEST } from './';
 
 function failedRequest(error) {
   return { type: FAILED_REQUEST, payload: error };
