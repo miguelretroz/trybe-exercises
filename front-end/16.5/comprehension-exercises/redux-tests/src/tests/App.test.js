@@ -29,4 +29,15 @@ describe('testing clicks', () => {
     fireEvent.click(buttonAdicionar);
     expect(queryByText('1')).toBeInTheDocument();
   });
+
+  test('button click, with initial state set', () => {
+    const { queryByText } = renderWithRedux(<App />, { initialState: { clickReducer: { counter: 10 }}});
+    const buttonAdicionar = queryByText(/clique aqui/i);
+
+    expect(buttonAdicionar).toBeInTheDocument();
+    expect(queryByText('10')).toBeInTheDocument();
+
+    userEvent.click(buttonAdicionar);
+    expect(queryByText('11')).toBeInTheDocument();
+  });
 });
