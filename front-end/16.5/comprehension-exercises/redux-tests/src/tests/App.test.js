@@ -11,4 +11,10 @@ describe('testing clicks', () => {
     expect(buttonAdicionar).toBeInTheDocument();
     expect(queryByText('0')).toBeInTheDocument();
   });
+
+  test('add the initial state', () => {
+    const { getByText } = renderWithRedux(<App />, { initialState: { clickReducer: { counter: 5 }}});
+
+    expect(getByText('5')).toBeInTheDocument();
+  });
 });
