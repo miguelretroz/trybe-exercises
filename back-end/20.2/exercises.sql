@@ -45,4 +45,7 @@ SELECT
 FROM Scientists.Projects
 ORDER BY Hours ASC
 LIMIT 5;
-    
+
+SELECT
+	CONCAT ('Existem ', COUNT(*), ' cientistas na tabela Scientists')
+FROM Scientists.Scientists;
