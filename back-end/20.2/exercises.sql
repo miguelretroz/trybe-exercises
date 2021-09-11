@@ -33,4 +33,10 @@ SELECT
 FROM Scientists.Projects
 ORDER BY Hours DESC
 LIMIT 1;
+
+SELECT
+	Name
+FROM Scientists.Projects
+ORDER BY Hours ASC
+LIMIT 1 OFFSET 1;
     
