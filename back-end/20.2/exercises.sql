@@ -7,3 +7,5 @@ SELECT 10 + 15;
 SELECT 23 * 5;
 
 SELECT * FROM Scientists.Scientists;
+
+SELECT Name AS 'Nome do Projeto', Hours AS 'Tempo de Trabalho' FROM Scientists.Projects;
