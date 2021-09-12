@@ -12,3 +12,9 @@ FROM
 	Provides
 WHERE Provider = 'HAL'
 ORDER BY Price DESC;
+
+SELECT
+    COUNT(DISTINCT Provider)
+FROM
+    Provides
+WHERE Piece = 1;
