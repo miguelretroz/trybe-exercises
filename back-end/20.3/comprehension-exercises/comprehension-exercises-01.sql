@@ -27,3 +27,10 @@ OR rating = 'PG-13'
 )
 ORDER BY replacement_cost DESC, title ASC
 LIMIT 100;
+
+SELECT
+	COUNT(*)
+FROM
+	customer
+WHERE active IS TRUE
+AND store_id = 1;
