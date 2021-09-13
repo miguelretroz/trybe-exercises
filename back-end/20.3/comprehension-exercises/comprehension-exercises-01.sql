@@ -34,3 +34,10 @@ FROM
 	customer
 WHERE active IS TRUE
 AND store_id = 1;
+
+SELECT
+	*
+FROM
+	customer
+WHERE active IS FALSE
+AND store_id = 1;
