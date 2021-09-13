@@ -41,3 +41,11 @@ FROM
 	customer
 WHERE active IS FALSE
 AND store_id = 1;
+
+SELECT
+	*
+FROM
+	film
+WHERE (rating = 'R' OR rating = 'NC-17')
+ORDER BY rental_rate ASC, title ASC
+LIMIT 50;
