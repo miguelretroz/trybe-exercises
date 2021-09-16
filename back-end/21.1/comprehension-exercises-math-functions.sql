@@ -1,4 +1,5 @@
 -- 1. Monte uma query que gere um valor entre 15 e 20 .
+SELECT (15 + (RAND() * 5));
 
 -- 2. Monte uma query que exiba o valor arredondado de 15.7515971 com uma precisão de 5 casas decimais.
 
