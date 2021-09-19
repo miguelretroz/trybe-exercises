@@ -75,6 +75,16 @@ GROUP BY
 HAVING
     JOB_ID <> 'IT_PROG';
 -- 10. Escreva um query que exiba média salarial e o número de funcionários de todos os departamentos com mais de dez funcionários. Dica: agrupe pelo department_id .
+SELECT
+    DEPARTMENT_ID,
+    ROUND(AVG(SALARY), 2) AS AVG_SALARY,
+    COUNT(*) AS EMPLOYEES_COUNT
+FROM
+    employees
+GROUP BY
+    DEPARTMENT_ID
+HAVING
+    EMPLOYEES_COUNT > 10;
 -- 11. Escreva uma query que atualize a coluna PHONE_NUMBER , de modo que todos os telefones iniciados por 515 agora devem iniciar com 777 .
 -- 12. Escreva uma query que só exiba as informações dos funcionários cujo o primeiro nome tenha oito ou mais caracteres.
 -- 13. Escreva uma query que exiba as seguintes informações de cada funcionário: id , primeiro nome e ano no qual foi contratado (exiba somente o ano).
