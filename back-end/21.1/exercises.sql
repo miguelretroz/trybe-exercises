@@ -30,6 +30,13 @@ SELECT
 FROM
     employees;
 -- 5. Escreva uma query que exiba quatro informações: o maior salário, o menor salário, a soma de todos os salários e a média dos salários. Todos os valores devem ser formatados para ter apenas duas casas decimais.
+SELECT
+    TRUNCATE(MAX(SALARY), 2) AS HIGHER_SALARY,
+    ROUND(MIN(SALARY), 2) AS LOWER_SALARY,
+    TRUNCATE(SUM(SALARY), 2) AS TOTAL_SALARY,
+    ROUND(AVG(SALARY), 2) AS AVG_SALARY
+FROM
+    employees;
 -- 6. Escreva uma query que exiba a quantidade de pessoas que trabalham como pessoas programadoras ( IT_PROG ).
 -- 7. Escreva uma query que exiba a quantidade de dinheiro necessária para efetuar o pagamento de cada profissão ( JOB_ID ).
 -- 8. Utilizando a query anterior, faça as alterações para que seja exibido somente a quantidade de dinheiro necessária para cobrir a folha de pagamento das pessoas programadoras ( IT_PROG ).
