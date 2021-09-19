@@ -90,6 +90,12 @@ UPDATE employees
 SET PHONE_NUMBER = REPLACE(PHONE_NUMBER, '515', '777')
 WHERE PHONE_NUMBER LIKE '515%';
 -- 12. Escreva uma query que só exiba as informações dos funcionários cujo o primeiro nome tenha oito ou mais caracteres.
+SELECT
+    *
+FROM
+    employees
+WHERE
+    CHAR_LENGTH(FIRST_NAME) >= 8;
 -- 13. Escreva uma query que exiba as seguintes informações de cada funcionário: id , primeiro nome e ano no qual foi contratado (exiba somente o ano).
 -- 14. Escreva uma query que exiba as seguintes informações de cada funcionário: id , primeiro nome e dia do mês no qual foi contratado (exiba somente o dia).
 -- 15. Escreva uma query que exiba as seguintes informações de cada funcionário: id , primeiro nome e mês no qual foi contratado (exiba somente o mês).
