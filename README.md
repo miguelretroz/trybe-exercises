@@ -30,3 +30,4 @@
   ---
 ## Desenvolvimento Back-end
 - [ ] 20. Introdução à SQL
+- [ ] 21. Funções SQL, Joins e Subqueries
