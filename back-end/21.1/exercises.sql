@@ -123,4 +123,12 @@ SELECT
 FROM
     employees;
 -- 17: Escreva uma query que exiba o sobrenome e a data de contratação de todos os funcionário contratados em julho de 1987.
+SELECT
+    LAST_NAME,
+    HIRE_DATE
+FROM
+    employees
+WHERE
+    YEAR(HIRE_DATE) = 1987
+AND MONTH(HIRE_DATE) = 7;
 -- 18: Escreva uma query que exiba as seguintes informações de cada funcionário: nome , sobrenome , tempo que trabalha na empresa (em dias) .
