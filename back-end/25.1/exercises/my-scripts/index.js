@@ -1,14 +1,26 @@
 const readline = require('readline-sync');
 
-const scriptNumber = readline.questionInt(`Escolha um script para executar:
-  1. IMC
-  2. AVG Speed
-  3. Drawing
-Digite o número do escolhido: `);
+const scripts = [
+  { name: 'Calculador de IMC', script: './imc.js' },
+  { name: 'Calculador de velocidade media', script: './speed.js' },
+  { name: 'Sorteio', script: './drawing.js' },
+  { name: 'Calculador de fatorial', script: './factorial.js' },
+  { name: 'Fibonacci', script: './fibonacci.js' },
+];
 
-if (scriptNumber === 1) require('./imc.js');
-else if (scriptNumber === 2) require('./speed.js');
-else if (scriptNumber === 3) require('./drawing.js');
-else console.log('Número inválido.');
+console.log('Escolha um script para executar:');
+scripts.forEach(({ name }, index) => console.log(` ${index + 1}. ${name}`));
 
+const scriptNumber = readline.questionInt('Digite o número do escolhido: ') - 1;
+console.log();
+
+if (scripts[scriptNumber]) {
+  const { name, script } = scripts[scriptNumber];
+
+  console.log(`--- ${name} ---`);
+
+  require(script);
+} else console.log('Número inválido.');
+
+console.log();
 console.log('Parando a execução...');
