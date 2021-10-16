@@ -1,0 +1,9 @@
+use('agg_example');
+
+db.articles.aggregate(
+  [
+    {
+      $limit: 5,
+    },
+  ]
+);
