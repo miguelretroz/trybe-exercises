@@ -1,0 +1,27 @@
+use('storage');
+
+db.samples.aggregate(
+  [
+    {
+      $project: {
+        value: 1,
+        roundedValue: {
+          $round: ["$value"],
+        },
+      },
+    },
+  ],
+);
+
+db.samples.aggregate(
+  [
+    {
+      $project: {
+        value: 1,
+        roundedValue: {
+          $round: ["$value", 1],
+        },
+      },
+    },
+  ],
+);
