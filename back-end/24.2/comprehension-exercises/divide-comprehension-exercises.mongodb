@@ -1,0 +1,16 @@
+// Utilizando o banco de dados storage , faça o seguinte exercício:
+use('storage');
+
+db.products.find();
+// 1. Calcule qual será o preço de venda de cada produto caso haja uma promoção de 50% de desconto.
+db.products.aggregate(
+  [
+    {
+      $project: {
+        price: {
+          $divide: ["$sale_price", 2],
+        },
+      },
+    },
+  ],
+);
