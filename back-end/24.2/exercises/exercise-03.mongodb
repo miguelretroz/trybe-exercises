@@ -1,0 +1,45 @@
+// Exercício 3 : Remova os estágios $count e $match do exercício anterior e adicione um estágio no pipeline que coloque as compras do cliente no campo compras .
+use("erp");
+
+db.vendas.find();
+
+db.clientes.aggregate(
+  [
+    {
+      $addFields: {
+        idade: {
+          $floor: {
+            $divide: [
+              {
+                $subtract: [
+                  new Date(),
+                  "$dataNascimento",
+                ],
+              },
+              31104000000,
+            ],
+          },
+        },
+      },
+    },
+    {
+      $lookup: {
+        from: "vendas",
+        let: { clienteId: "$clienteId" },
+        pipeline: [
+          {
+            $match: {
+              $expr: {
+                $eq: ["$clienteId", "$$clienteId"],
+              },
+              status: {
+                $in: ["ENTREGUE", "EM SEPARACAO"],
+              },
+            },
+          },
+        ],
+        as: "compras",
+      },
+    },
+  ],
+);
