@@ -1,0 +1,81 @@
+// Exercício 9 : Calcule a diferença absoluta em dias entre a data da primeira entrega prevista e a última, considerando o pipeline do exercício 8.
+use("erp");
+
+db.clientes.aggregate(
+  [
+    {
+      $lookup: {
+        from: "vendas",
+        let: { clienteId: "$clienteId" },
+        pipeline: [
+          {
+            $match: {
+              $expr: {
+                $eq: ["$clienteId", "$$clienteId"],
+              },
+              status: "EM SEPARACAO",
+              dataVenda: {
+                $gte: ISODate("2020-03-01"),
+                $lt: ISODate("2020-04-01"),
+              },
+            },
+          }
+        ],
+        as: "compras",
+      },
+    },
+    {
+      $match: {
+        $expr: {
+          $gt: [
+            {
+              $size: "$compras",
+            },
+            0,
+          ],
+        },
+      },
+    },
+    {
+      $unwind: "$compras",
+    },
+    {
+      $project: {
+        _id: 0,
+        clienteId: 1,
+        dataVenda: "$compras.dataVenda",
+        dataEntregaPrevista: {
+          $add: ["$compras.dataVenda", 259200000],
+        },
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        primeiraEntrega: {
+          $min: "$dataEntregaPrevista",
+        },
+        ultimaEntrega: {
+          $max: "$dataEntregaPrevista",
+        },
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+        diferencaEntregas: {
+          $floor: {
+            $divide: [
+              {
+                $abs: {
+                  $subtract: ["$primeiraEntrega", "$ultimaEntrega"],
+                },
+              },
+              86400000,
+            ],
+          },
+        },
+      },
+    },
+  ],
+);
