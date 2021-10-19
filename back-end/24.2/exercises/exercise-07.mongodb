@@ -1,0 +1,58 @@
+// Exercício 7 : Descubra o cliente que mais consumiu QUEIJO PRATO . Retorne um documento com a seguinte estrutura:
+// {
+//   "nomeCliente": "NOME",
+//   "uf": "UF DO CLIENTE",
+//   "totalConsumido": 100
+// }
+use("erp");
+
+db.clientes.aggregate(
+  [
+    {
+      $lookup: {
+        from: "vendas",
+        let: { clienteId: "$clienteId" },
+        pipeline: [
+          {
+            $match: {
+              $expr: {
+                $eq: ["$clienteId", "$$clienteId"],
+              },
+            },
+          },
+        ],
+        as: "compras",
+      },
+    },
+    {
+      $unwind: "$compras",
+    },
+    {
+      $unwind: "$compras.itens",
+    },
+    {
+      $match: {
+        "compras.itens.nome": "QUEIJO PRATO",
+      },
+    },
+    {
+      $group: {
+        _id: "$clienteId",
+        nomeCliente: {
+          $first: "$nome",
+        },
+        uf: {
+          $first: "$endereco.uf",
+        },
+        totalConsumido: {
+          $sum: "$compras.itens.quantidade",
+        },
+      },
+    },
+    {
+      $project: {
+        _id: 0,
+      }
+    },
+  ],
+);
