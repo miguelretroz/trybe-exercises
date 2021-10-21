@@ -20,4 +20,4 @@ function treeNumberCalc (number01, number02, number03) {
   });
 }
 
-module.export = treeNumberCalc;
+module.exports = treeNumberCalc;
