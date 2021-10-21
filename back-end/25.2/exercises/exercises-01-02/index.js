@@ -7,10 +7,27 @@
 const treeNumberCalc = require('./treeNumberCalc');
 const { randomNumberGenerator } = require('./randomNumberGenerator');
 
-const number01 = randomNumberGenerator(1, 100);
-const number02 = randomNumberGenerator(1, 100);
-const number03 = randomNumberGenerator(1, 100);
+// const number01 = randomNumberGenerator(1, 100);
+// const number02 = randomNumberGenerator(1, 100);
+// const number03 = randomNumberGenerator(1, 100);
 
-treeNumberCalc(number01, number02, number03)
-  .then((result) => console.log(`Resultado: ${result}`))
-  .catch((err) => console.error(`Erro: ${err}`));
+// treeNumberCalc(number01, number02, number03)
+//   .then((result) => console.log(`Resultado: ${result}`))
+//   .catch((err) => console.error(`Erro: ${err}`));
+
+
+// 3. Reescreva o código do exercício anterior para que utilize async/await .
+async function main () {
+  try {
+    const number01 = randomNumberGenerator(1, 100);
+    const number02 = randomNumberGenerator(1, 100);
+    const number03 = randomNumberGenerator(1, 100);
+
+    const result = await treeNumberCalc(number01, number02, number03);
+    console.log(`Resultado: ${result}`);
+  } catch (err) {
+    console.log(`Erro: ${err}`);
+  }
+}
+
+main();
