@@ -1,3 +1,4 @@
+// 5. Crie uma função que adicione ao arquivo simpsonFamily.json o personagem Nelson Muntz .
 const fs = require('fs').promises;
 
 async function addNewCharacter() {
