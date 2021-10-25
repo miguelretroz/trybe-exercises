@@ -23,7 +23,7 @@ app.get('/recipes/:id', (req, res) => {
 
   if (!recipe) return res.status(404).json({ message: 'Recipe not found!' });
 
-  res.status(202).json(recipe);
+  res.status(200).json(recipe);
 });
 
 app.listen(3000, () => {

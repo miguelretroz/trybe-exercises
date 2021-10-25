@@ -33,7 +33,7 @@ app.get('/drinks/:id', (req, res) => {
 
   if (!drink) return res.status(404).json({ message: 'Drink not found!' });
 
-  res.status(202).json(drink);
+  res.status(200).json(drink);
 });
 
 app.listen(PORT, () => {
