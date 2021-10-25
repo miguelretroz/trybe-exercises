@@ -17,6 +17,15 @@ app.get('/recipes', (_req, res) => {
   res.json(recipes);
 });
 
+app.get('/recipes/:id', (req, res) => {
+  const { id } = req.params;
+  const recipe = recipes.find((r) => r.id === parseInt(id));
+
+  if (!recipe) return res.status(404).json({ message: 'Recipe not found!' });
+
+  res.status(202).json(recipe);
+});
+
 app.listen(3000, () => {
   console.log(`Aplicação ouvindo na porta ${PORT}`);
 });
