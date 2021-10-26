@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const authMiddleware = require('./middlewares/auth-middleware');
+
+router.use(authMiddleware);
 
 const recipes = [
   { id: 1, name: 'Lasanha', preco: 40.0, tempoDePreparo: 30 },
