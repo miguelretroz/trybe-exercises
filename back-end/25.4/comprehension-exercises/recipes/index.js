@@ -23,8 +23,23 @@ app.get('/recipes', (_req, res) => {
   res.json(recipes);
 });
 
+app.get('/recipes/search', (req, res) => {
+  const { name, maxPrice, minPrice } = req.query;
+  const filteredRecipes = recipes
+    .filter((r) => (r.name.includes(name)) && (r.price < maxPrice) && (r.price >= minPrice));
+
+  return res.status(200).json(filteredRecipes);
+});
+
 app.get('/drinks', (_req, res) => {
   res.json(drinks);
+});
+
+app.get('/drinks/search', (req, res) => {
+  const { name } = req.query;
+  const filteredDrinks = drinks.filter((d) => (d.name.includes(name)));
+
+  return res.status(200).json(filteredDrinks);
 });
 
 app.get('/drinks/:id', (req, res) => {
