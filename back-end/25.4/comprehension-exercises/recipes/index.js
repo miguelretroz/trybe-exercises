@@ -1,6 +1,8 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.json());
 
 const PORT = 3000;
 
@@ -23,6 +25,13 @@ app.get('/recipes', (_req, res) => {
   res.json(recipes);
 });
 
+app.post('/recipes', (req, res) => {
+  const { id, name, price, waitTime } = req.body;
+  recipes.push({ id, name, price, waitTime });
+
+  return res.status(200).json({ message: 'Recipes created successfully!' });
+});
+
 app.get('/recipes/search', (req, res) => {
   const { name, maxPrice, minPrice } = req.query;
   const filteredRecipes = recipes
@@ -33,6 +42,15 @@ app.get('/recipes/search', (req, res) => {
 
 app.get('/drinks', (_req, res) => {
   res.json(drinks);
+});
+
+app.post('/drinks', (req, res) => {
+  const { id, name, price } = req.body;
+  console.log(id);
+  drinks.push({ id, name, price });
+  console.log(drinks);
+
+  return res.status(201).json({ message: 'Drink created successfully!' });
 });
 
 app.get('/drinks/search', (req, res) => {
