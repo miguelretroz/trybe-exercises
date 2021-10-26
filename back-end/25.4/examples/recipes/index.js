@@ -73,6 +73,14 @@ app.delete('/recipes/:id', (req, res) => {
   return res.status(204).end();
 });
 
+// app.get('/xablau', (req, res) => {
+//   return res.status(404).json({ message: 'Xablau!' });
+// });
+
+app.all('*', (req, res) => {
+  return res.status(404).json({ message: `Rota '${req.path}' não existe!'` });
+});
+
 app.listen(3000, () => {
   console.log(`Aplicação ouvindo na porta ${PORT}`);
 });
