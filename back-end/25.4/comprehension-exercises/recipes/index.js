@@ -69,6 +69,18 @@ app.get('/drinks/:id', (req, res) => {
   res.status(200).json(drink);
 });
 
+app.put('/drinks/:id', (req, res) => {
+  const { id } = req.params;
+  const { name, price } = req.body;
+
+  const drinkIndex = drinks.findIndex((d) => d.id === parseInt(id));
+
+  if (drinkIndex === -1) return res.status(404).json({ message: 'Drink not found!' });
+
+  drinks[drinkIndex] = { ...drinks[drinkIndex], name, price };
+
+  res.status(204).end();
+});
 app.listen(PORT, () => {
-  console.log(`Aplicação ouvindo na porta ${PORT}`)
+  console.log(`Aplicação ouvindo na porta ${PORT}`);
 });
