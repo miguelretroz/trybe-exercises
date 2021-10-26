@@ -1,18 +1,29 @@
 const express = require('express');
+const rescue = require('express-rescue');
 const fs = require('fs/promises');
 
 const app = express();
 
 const PORT = 3000;
 
-app.get('/:filename', async (req, res, next) => {
-  try {
-    const file = await fs.readFile(`./${req.params.filename}`);
-    res.send(file.toString('utf-8'));
-  } catch (err) {
-    next(err);
-  }
-});
+// app.get('/:filename', async (req, res, next) => {
+//   try {
+//     const file = await fs.readFile(`./${req.params.filename}`);
+//     res.send(file.toString('utf-8'));
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+app.get(
+  '/:filename',
+  rescue(
+    async (req, res) => {
+      const file = await fs.readFile(`./${req.params.filename}`);
+      res.send(file.toString('utf-8'));
+    },
+  ),
+);
 
 app.use((err, _req, res, _next) => {
   res.status(500).json({ error: `Erro: ${ err.message }` });
