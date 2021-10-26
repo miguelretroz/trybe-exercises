@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const authMiddleware = require('./middlewares/auth-middleware');
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,6 +20,12 @@ const validateName = (req, res, next) => {
 
   next();
 };
+
+app.get('/open', (req, res) => {
+  res.send('open!');
+});
+
+app.use(authMiddleware);
 
 app.get('/recipes', (req, res) => {
   res.status(200).json(recipes);
