@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.json());
 
 const PORT = 3000;
 
@@ -13,8 +15,22 @@ const recipes = [
   { id: 3, name: 'Macarrão com molho branco', price: 35.0, waitTime: 25 },
 ];
 
+app.get('/validateToken', (req, res) => {
+  const token = req.headers.authorization;
+  if (token.length !== 16) return res.status(401).json({ message: 'Invalid Token!' });
+
+  res.status(200).json({ message: 'Valid Token!' });
+});
+
 app.get('/recipes', (_req, res) => {
   res.json(recipes);
+});
+
+app.post('/recipes', (req, res) => {
+  const { id, name, price } = req.body;
+  recipes.push({ id, name, price });
+
+  return res.status(201).json({ message: 'Recipe created successfully!' });
 });
 
 app.get('/recipes/search', (req, res) => {
