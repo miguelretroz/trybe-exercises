@@ -37,4 +37,4 @@ app.put('/users/:name/:age', (req, res) => {
   res.status(200).json({ message: `Seu nome é ${name} e você tem ${age} anos de idade` });
 });
 
-app.listen(PORT, () => console.log(`🚀 Server is running on PORT ${PORT} `));
+app.listen(PORT, () => console.log(`🚀 Server is running on PORT ${PORT}`));
