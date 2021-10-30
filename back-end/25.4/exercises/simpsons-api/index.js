@@ -1,6 +1,10 @@
 const express = require('express');
 const rescue = require('express-rescue');
 const bodyParser = require('body-parser');
+const crypto = require('crypto');
+
+const authorization = require('./middlewares/authorization');
+
 const fs = require('fs/promises');
 
 const app = express();
@@ -8,6 +12,18 @@ const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
+
+app.post('/signup', (req, res) => {
+  const { email, password, firstName, phone } = req.body;
+
+  if (!email || !password || !firstName || !phone) return res.status(401).json({ message: 'Missing fields' });
+
+  const token = crypto.randomBytes(8).toString('hex');
+
+  res.status(200).json({ message: token });
+});
+
+app.use(authorization);
 
 app.get('/simpsons', rescue(
   async (_req, res) => {
