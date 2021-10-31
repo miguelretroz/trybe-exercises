@@ -1,4 +1,6 @@
-module.exports = (req, res) => {
+const rescue = require('express-rescue');
+
+module.exports = rescue((req, res, next) => {
   const { password } = req.body;
 
   if (!password) return res.status(400).json({ message: '"password" is required!' });
@@ -10,4 +12,4 @@ module.exports = (req, res) => {
   ) return res.status(400).json({ message: 'Invalid "password"' });
 
   next();
-};
+});
