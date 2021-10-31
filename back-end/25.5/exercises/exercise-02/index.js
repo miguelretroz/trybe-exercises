@@ -1,6 +1,10 @@
 const express = require('express');
 
 const {
+  btcRouters,
+} = require('./routers');
+
+const {
   errorMiddleware,
 } = require('./middlewares');
 
@@ -8,6 +12,7 @@ const app = express();
 
 const PORT = 3000;
 
+app.use('/btc', btcRouters);
 
 app.use(errorMiddleware);
 
