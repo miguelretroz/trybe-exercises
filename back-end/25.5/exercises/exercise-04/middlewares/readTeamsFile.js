@@ -1,5 +1,5 @@
 const rescue = require('express-rescue');
-const fs = require('fs/promise');
+const fs = require('fs/promises');
 
 module.exports = rescue(
   async (req, _res, next) => {

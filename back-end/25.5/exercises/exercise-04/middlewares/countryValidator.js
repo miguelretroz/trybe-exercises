@@ -1,4 +1,4 @@
-const rescure = require('express-rescue');
+const rescue = require('express-rescue');
 
 module.exports = rescue(
   (req, res, next) => {
