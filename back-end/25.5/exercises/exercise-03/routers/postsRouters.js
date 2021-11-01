@@ -5,7 +5,14 @@ const {
   idValidator,
   readPostsFile,
   getPostById,
+  getPosts,
 } = require('../middlewares');
+
+router.get(
+  '/',
+  readPostsFile,
+  getPosts,
+);
 
 router.get(
   '/:id',
