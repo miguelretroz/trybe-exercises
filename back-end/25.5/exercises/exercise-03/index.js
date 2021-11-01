@@ -6,6 +6,7 @@ const {
 
 const {
   errorMiddleware,
+  routeNotFound,
 } = require('./middlewares');
 
 const app = express();
@@ -13,6 +14,8 @@ const app = express();
 const PORT = 3000;
 
 app.use('/posts', postsRouters);
+
+app.use(routeNotFound);
 
 app.use(errorMiddleware);
 
