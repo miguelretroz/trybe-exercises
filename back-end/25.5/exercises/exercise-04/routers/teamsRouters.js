@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const rescue = require('express-rescue');
 const fs = require('fs/promises');
 
 const {
@@ -29,6 +30,20 @@ router.post(
      res.status(201).json(newTeam);
     },
    ],
+);
+
+router.get(
+  '/',
+  [
+    readTeamsFile,
+    rescue(
+      (req, res) => {
+        const { teams } = req;
+
+        res.status(200).json(teams);
+      },
+    ),
+  ],
 );
 
 module.exports = router;
