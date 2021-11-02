@@ -6,8 +6,11 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/books', async (_req, res) => {
-  const books = await Book.getAll();
+app.get('/books', async (req, res) => {
+  const { authorid } = req.query;
+
+  const books = authorid ? await Book
+    .getByAuthorId(authorid) : await Book.getAll();
 
   res.status(200).json(books);
 });
