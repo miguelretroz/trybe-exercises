@@ -39,8 +39,28 @@ const findById = async (id) => {
   return serialize(book[0]);
 };
 
+const isValid = async (title, authorId) => {
+  if (!title || typeof title !== 'string' || title.length < 3) return false;
+  if (!authorId || typeof authorId !== 'number') return false;
+
+  const [author] = await connection.execute(
+    'SELECT id FROM model_example.authors WHERE id = ?;',
+    [authorId],
+  );
+  if (author.length === 0) return false;
+
+  return true;
+};
+
+const create = async (title, authorId) => connection.execute(
+  'INSERT INTO model_example.books (title, author_id) VALUES (?, ?);',
+  [title, authorId],
+);
+
 module.exports = {
   getAll,
   getByAuthorId,
   findById,
+  isValid,
+  create,
 };
