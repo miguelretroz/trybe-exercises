@@ -41,8 +41,31 @@ const getById = async (userId) => {
   return serialize(user);
 };
 
+const update = async (userId, userData) => {
+  if (!ObjectId.isValid(userId)) return null;
+
+  const { firstName, lastName, email, password } = userData;
+
+  const db = await connection();
+
+  await db.collection('users').updateOne(
+    {
+      _id: new ObjectId(userId),
+    },
+    {
+      $set: {
+        "firstName": firstName,
+        "lastName": lastName,
+        "email": email,
+        "password": password,
+      },
+    },
+  );
+};
+
 module.exports = {
   create,
   getAll,
   getById,
+  update,
 };

@@ -80,6 +80,36 @@ app.get(
   ),
 );
 
+app.put(
+  '/user/:id',
+  [
+    firstNameHandler,
+    lastNameHandler,
+    emailHandler,
+    passwordHandler,
+    rescue(
+      async (req, res) => {
+        const { id } = req.params;
+
+        const { firstName, lastName, email, password } = req.body;
+
+        const user = await User.getById(id);
+
+        if (!user) return res.status(404).json(
+          {
+            error: true,
+            message: 'Usuário não encontrado',
+          },
+        );
+
+        await User.update(id, { firstName, lastName, email, password });
+
+        res.status(200).json({ id, firstName, lastName, email });
+      },
+    ),
+  ],
+);
+
 app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
