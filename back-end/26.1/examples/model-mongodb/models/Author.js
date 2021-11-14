@@ -46,7 +46,25 @@ const findById = async (id) => {
   return getNewAuthor({ id, firstName, middleName, lastName });
 };
 
+const isValid = (firstName, middleName, lastName) => {
+  if (!firstName || typeof firstName !== 'string') return false;
+  if (!lastName || typeof lastName !== 'string') return false;
+  if (middleName && typeof middleName !== 'string') return false;
+
+  return true;
+};
+
+const create = async (firstName, middleName, lastName) => {
+  const db = await connection();
+
+  const result = db.collection('authors').insertOne({ firstName, middleName, lastName });
+
+  return getNewAuthor({ id: result.insertedId, firstName, middleName, lastName });
+};
+
 module.exports = {
   getAll,
   findById,
+  isValid,
+  create,
 };
