@@ -39,8 +39,25 @@ const findById = async (bookId) => {
   return serialize(book);
 };
 
+const isValid = async (title, authorId) => {
+  if (!title || typeof title !== 'string' || title.length < 3) return false;
+  if (!authorId || typeof authorId !== 'number') return false;
+
+  return true;
+};
+
+const create = async (title, authorId) => {
+  const db = await connection();
+
+  const result = db.collection('books').insertOne({ title, author_id: authorId });
+
+  return { id: result.insertedId, title, authorId };
+};
+
 module.exports = {
   getAll,
   getByAuthorId,
   findById,
+  isValid,
+  create,
 };
