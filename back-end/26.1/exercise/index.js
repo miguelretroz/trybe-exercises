@@ -49,6 +49,17 @@ app.post(
   ],
 );
 
+app.get(
+  '/user',
+  rescue(
+    async (_req, res) => {
+      const users = await User.getAll();
+
+      res.status(200).json(users);
+    },
+  ),
+);
+
 app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
