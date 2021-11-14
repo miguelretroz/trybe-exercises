@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const connection = require('./connection');
 
 const serialize = ({ _id, firstName, lastName, email }) => ({
@@ -28,7 +29,20 @@ const getAll = async () => {
   return users.map(serialize);
 };
 
+const getById = async (userId) => {
+  if (!ObjectId.isValid(userId)) return null;
+
+  const db = await connection();
+
+  const user = await db.collection('users').findOne(new ObjectId(userId));
+
+  if (!user) return null;
+
+  return serialize(user);
+};
+
 module.exports = {
   create,
   getAll,
+  getById,
 };

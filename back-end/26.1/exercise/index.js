@@ -60,6 +60,26 @@ app.get(
   ),
 );
 
+app.get(
+  '/user/:id',
+  rescue(
+    async (req, res) => {
+      const { id } = req.params;
+
+      const user = await User.getById(id);
+
+      if (!user) return res.status(404).json(
+        {
+          error: true,
+          message: "Usuário não encontrado",
+        },
+      );
+
+      res.status(200).json(user);
+    },
+  ),
+);
+
 app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
