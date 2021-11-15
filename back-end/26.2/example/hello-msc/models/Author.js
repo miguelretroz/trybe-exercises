@@ -79,7 +79,7 @@ const findByName = async (firstName, middleName, lastName) => {
 
 
   const author = await connection()
-    .then((db) => db.collection('authors')).findOne(query);
+    .then((db) => db.collection('authors').findOne(query));
 
   if (!author) return null;
 
