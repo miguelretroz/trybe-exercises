@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const Book = require('./models/Book');
 const BookService = require('./services/Book');
 
+const { errorMiddleware } = require('./middlewares');
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -39,6 +41,8 @@ app.post('/books', async (req, res) => {
 
   res.status(201).json({ message: 'Livro criado com sucesso!' });
 });
+
+app.use(errorMiddleware);
 
 const PORT = 3000;
 
