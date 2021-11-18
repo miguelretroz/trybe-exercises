@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const Book = require('./models/Book');
+const BookService = require('./services/Book');
 
 const app = express();
 
@@ -11,8 +12,8 @@ app.get('/books', async (req, res) => {
   const { authorid } = req.query;
 
   const books = authorid
-  ? await Book.getByAuthorId(authorid)
-  : await Book.getAll();
+  ? await BookService.getByAuthorId(authorid)
+  : await BookService.getAll();
 
   res.status(200).json(books);
 });
@@ -20,7 +21,7 @@ app.get('/books', async (req, res) => {
 app.get('/books/:id', async (req, res) => {
   const { id } = req.params;
 
-  const book = await Book.findById(id);
+  const book = await BookService.findById(id);
 
   if (!book) return res.status(404).json({ message: 'Book not found!' });
 
@@ -34,7 +35,7 @@ app.post('/books', async (req, res) => {
     return res.status(400).json({ message: 'Invalid data' });
   }
 
-  await Book.create(title, authorId);
+  await BookService.create(title, authorId);
 
   res.status(201).json({ message: 'Livro criado com sucesso!' });
 });
