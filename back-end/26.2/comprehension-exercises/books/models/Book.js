@@ -7,13 +7,6 @@ const serialize = ({ _id, title, author_id }) => ({
   authorId: author_id,
 });
 
-const isValid = async (title, authorId) => {
-  if (!title || typeof title !== 'string' || title.length < 3) return false;
-  if (!authorId || typeof authorId !== 'number') return false;
-
-  return true;
-};
-
 const create = async (title, authorId) => {
   const db = await connection();
 
@@ -31,13 +24,23 @@ const getAll = async () => {
 };
 
 const findById = async (bookId) => {
-  if (!ObjectId.isValid(bookId)) return null;
+  if (!ObjectId.isValid(bookId)) return {
+    error: {
+      code: 'badRequest',
+      message: 'Invalid book ID',
+    },
+  };
 
   const db = await connection();
 
   const book = await db.collection('books').findOne(new ObjectId(bookId));
 
-  if (!book) return null;
+  if (!book) return {
+    error: {
+      code: 'notFound',
+      message: 'Book not found',
+    },
+  };
 
   return serialize(book);
 };
@@ -58,6 +61,5 @@ module.exports = {
   getAll,
   getByAuthorId,
   findById,
-  isValid,
   create,
 };

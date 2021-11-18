@@ -1,8 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const Book = require('./models/Book');
-const BookService = require('./services/Book');
+const BookController = require('./controllers/Book');
 
 const { errorMiddleware } = require('./middlewares');
 
@@ -10,37 +9,11 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.get('/books', async (req, res) => {
-  const { authorid } = req.query;
+app.get('/books', BookController.getBooks);
 
-  const books = authorid
-  ? await BookService.getByAuthorId(authorid)
-  : await BookService.getAll();
+app.get('/books/:id', BookController.findById);
 
-  res.status(200).json(books);
-});
-
-app.get('/books/:id', async (req, res) => {
-  const { id } = req.params;
-
-  const book = await BookService.findById(id);
-
-  if (!book) return res.status(404).json({ message: 'Book not found!' });
-
-  res.status(200).json(book);
-});
-
-app.post('/books', async (req, res) => {
-  const { title, authorId } = req.body;
-
-  if (!(await Book.isValid(title, authorId))) {
-    return res.status(400).json({ message: 'Invalid data' });
-  }
-
-  await BookService.create(title, authorId);
-
-  res.status(201).json({ message: 'Livro criado com sucesso!' });
-});
+app.post('/books', BookController.create);
 
 app.use(errorMiddleware);
 
