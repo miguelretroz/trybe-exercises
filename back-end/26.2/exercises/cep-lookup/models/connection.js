@@ -11,7 +11,7 @@ let connection = null;
 
 module.exports = () => {
   connection = connection
-  ? connection
+  ? Promise.resolve(connection)
   : mysql.createPool(OPTIONS);
 
   return connection;
