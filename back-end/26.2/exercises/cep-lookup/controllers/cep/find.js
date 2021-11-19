@@ -10,6 +10,6 @@ module.exports = rescue(
 
     if (cepResult.error) return next(cepResult.error);
 
-    res.status(cepResult.code).json(cepResul.cep);
+    res.status(cepResult.code).json(cepResult.cep);
   },
 );

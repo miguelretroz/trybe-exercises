@@ -2,7 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { errorMiddleware } = require('./middlewares');
+const {
+  errorMiddleware,
+  cepMiddlewares,
+} = require('./middlewares');
 const cepController = require('./controllers/cep');
 
 const app = express();
@@ -14,6 +17,14 @@ app.get('/ping', (_req, res) => {
 });
 
 app.get('/cep/:cep', cepController.find);
+
+app.post(
+  '/cep',
+  [
+    cepMiddlewares.createDataValidator,
+    cepController.create,
+  ],
+);
 
 app.use(errorMiddleware);
 
