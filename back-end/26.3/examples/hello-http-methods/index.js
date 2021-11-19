@@ -40,3 +40,21 @@ axios.post('https://postman-echo.com/post?param1=teste')
 
     console.error(errorOrResponse);
   });
+
+// post with body
+const body = {
+  name: 'Tryber',
+  email: 'tryber@betrybe.com',
+  password: 'Tr1b3r',
+};
+
+axios.post('https://postman-echo.com/post?param1=teste', body, { headers })
+  .then((response) => response.data)
+  .then((data) => console.log(data))
+  .catch((errorOrResponse) => {
+    if (errorOrResponse.status) {
+      return console.error(`Request failed with status ${errorOrResponse.status}`);
+    }
+
+    console.error(errorOrResponse);
+  });
