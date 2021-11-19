@@ -28,3 +28,15 @@ axios.get('https://postman-echo.com/get?param1=teste', { headers })
 
     console.error(errorOrResponse);
   });
+
+// post simple
+axios.post('https://postman-echo.com/post?param1=teste')
+  .then((response) => response.data)
+  .then((data) => console.log(data))
+  .catch((errorOrResponse) => {
+    if (errorOrResponse) {
+      return console.error(`Request failed with status ${errorOrResponse.status}`);
+    }
+
+    console.error(errorOrResponse);
+  });
