@@ -1,4 +1,6 @@
 const express = require('express');
+const statusCode = require('http-status-codes').StatusCodes;
+
 const ProductModel = require('../models/productModel');
 
 const router = express.Router();
@@ -6,13 +8,15 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
   const products = await ProductModel.getAll();
 
-  res.json(products);
+  res.status(statusCode.OK).json(products);
 });
 
 router.get('/:id', async (req, res, next) => {
   const product = await ProductModel.getById(req.params.id);
 
-  res.json(product);
+  if (!product) return res.status(statusCode.NOT_FOUND).end();
+
+  res.status(statusCode.OK).json(product);
 });
 
 router.post('/', async (req, res) => {
@@ -20,13 +24,15 @@ router.post('/', async (req, res) => {
 
   const newProduct = await ProductModel.add(name, brand);
 
-  res.json(newProduct);
+  res.status(statusCode.CREATED).json(newProduct);
 });
 
 router.delete('/:id', async (req, res) => {
-  await ProductModel.exclude(req.params.id);
+  const product = await ProductModel.exclude(req.params.id);
 
-  res.end();
+  if (Object.keys(product).length === 0) return res.status(statusCode.NOT_FOUND).end();
+
+  res.status(statusCode.NO_CONTENT).end();
 });
 
 router.put('/:id', async (req, res) => {
@@ -35,7 +41,7 @@ router.put('/:id', async (req, res) => {
 
   const product = await ProductModel.update(id, name, brand);
 
-  res.json(product);
+  res.status(statusCode.OK).json(product);
 });
 
 module.exports = router;
