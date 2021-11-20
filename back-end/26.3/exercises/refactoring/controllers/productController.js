@@ -23,18 +23,19 @@ router.post('/', async (req, res) => {
   res.json(newProduct);
 });
 
-router.post('/:id', async (req, res) => {
-  const products = await ProductModel.exclude(req.params.id);
+router.delete('/:id', async (req, res) => {
+  await ProductModel.exclude(req.params.id);
 
   res.end();
 });
 
-router.post('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   const { name, brand } = req.body;
+  const { id } = req.params;
 
-  const products = await ProductModel.update(req.params.id, name, brand);
+  const product = await ProductModel.update(id, name, brand);
 
-  res.json(products);
+  res.json(product);
 });
 
 module.exports = router;
