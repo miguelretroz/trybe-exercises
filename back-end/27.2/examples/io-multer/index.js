@@ -31,6 +31,12 @@ app.post('/files/upload', upload.single('file'), (req, res) =>
 
 app.get('/ping', controllers.ping);
 
+const uploadEnvios = multer({ dest: 'envios' });
+
+app.post('/envios', uploadEnvios.single('file'), (req, res) => 
+  res.status(200).json({ body: req.body, file: req.file }),
+);
+
 app.use(middlewares.error);
 
 app.listen(PORT, () => {
