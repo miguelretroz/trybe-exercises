@@ -23,7 +23,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/uploads'));
 
-const upload = multer({ dest: 'uploads' });
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, 'uploads');
+  },
+  filename: (req, file, callback) => {
+    callback(null, `${Date.now()}-${file.originalname}`);
+  },
+});
+
+const upload = multer({ storage });
 
 app.post('/files/upload', upload.single('file'), (req, res) =>
   res.status(200).json({ body: req.body, file: req.file }),
