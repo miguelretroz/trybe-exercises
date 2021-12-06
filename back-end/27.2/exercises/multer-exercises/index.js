@@ -22,6 +22,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/ping', controllers.ping);
+app.post(
+  '/upload',
+  [
+    middlewares.upload.single('file'),
+    controllers.upload,
+  ]
+);
 
 app.use(middlewares.error);
 
