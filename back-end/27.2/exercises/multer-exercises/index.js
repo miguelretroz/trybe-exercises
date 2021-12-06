@@ -30,7 +30,15 @@ app.post(
   [
     middlewares.upload.single('file'),
     controllers.upload,
-  ]
+  ],
+);
+
+app.post(
+  '/multiple',
+  [
+    middlewares.multiple.array('files'),
+    controllers.multiple,
+  ],
 );
 
 app.use(middlewares.error);
