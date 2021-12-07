@@ -23,6 +23,5 @@ module.exports = (req, res) => {
 
   saveProfiles(profiles);
 
-
   res.status(201).json(newProfile);
 };

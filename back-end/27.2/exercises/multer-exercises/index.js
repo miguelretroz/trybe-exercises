@@ -49,6 +49,11 @@ app.post(
   ],
 );
 
+app.get(
+  '/profile/:id',
+  controllers.getProfileById,
+);
+
 app.use(middlewares.error);
 
 app.listen(PORT, () => {
