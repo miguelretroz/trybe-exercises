@@ -41,6 +41,14 @@ app.post(
   ],
 );
 
+app.post(
+  '/profile',
+  [
+    middlewares.profile.single('profilePic'),
+    controllers.profile,
+  ],
+);
+
 app.use(middlewares.error);
 
 app.listen(PORT, () => {
