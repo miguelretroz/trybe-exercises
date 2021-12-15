@@ -6,7 +6,7 @@ const app = express();
 app.get(
   '/',
   (_req, res) => {
-    res.status(200).send(`Exercicios bloco 28 dia 2 - PM2 ${pid}`);
+    res.status(200).send(`Exercicios bloco 28 dia 2 - PM2 - Ambiente de ${process.env.ENVIRONMENT} ${pid}`);
   },
 );
 

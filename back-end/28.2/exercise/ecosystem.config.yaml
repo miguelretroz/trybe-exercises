@@ -6,3 +6,8 @@ apps:
   exec_mode: cluster
   instances: max
   max_memory_restart: 100M
+  env_prod:
+    ENVIRONMENT: Production
+  env_homolog:
+    PORT: 3002
+    ENVIRONMENT: Homolog
