@@ -14,3 +14,13 @@ apps:
   env_homolog:
     PORT: 3002
     ENVIRONMENT: Homolog
+
+- name: exercise-28.2-second-instance
+  script: index.js
+  exec_mode: fork
+  env:
+    ENVIRONMENT: Default second instance
+    PORT: 3003
+  env_prod:
+    ENVIRONMENT: Production second instance
+    PORT: 3003
