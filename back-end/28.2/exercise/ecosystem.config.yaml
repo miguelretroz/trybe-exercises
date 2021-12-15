@@ -1,0 +1,8 @@
+apps:
+
+- name: exercise-28.2
+  script: index.js
+  watch: true
+  exec_mode: cluster
+  instances: max
+  max_memory_restart: 100M
