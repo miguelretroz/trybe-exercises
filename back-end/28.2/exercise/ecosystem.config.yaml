@@ -4,8 +4,11 @@ apps:
   script: index.js
   watch: true
   exec_mode: cluster
-  instances: max
+  instances: 1
   max_memory_restart: 100M
+  autorestart: true
+  env:
+    ENVIRONMENT: Default
   env_prod:
     ENVIRONMENT: Production
   env_homolog:

@@ -10,6 +10,14 @@ app.get(
   },
 );
 
+app.get(
+  '/bug',
+  (_req, res) => {
+    res.status(500).send('Quebrou!');
+    process.exit(1);
+  },
+);
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
