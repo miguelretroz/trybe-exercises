@@ -1,8 +1,10 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
 
-const mongoConnection = require('../../models/connection');
+const { MongoClient } = require('mongodb');
+const { getConnection } = require('./mongoMockConnection');
 
+const mongoConnection = require('../../models/connection');
 const MoviesModel = require('../../models/movieModel');
 
 describe('Insere um novo filme no BD', () => {
@@ -14,23 +16,16 @@ describe('Insere um novo filme no BD', () => {
     releaseYear: 1999,
   }
 
-  before(() => {
-    const ID_EXAMPLE = '604cb554311d68f491ba5781';
-    const insertOne = async () => ({ insertedId: ID_EXAMPLE });
-    const collection = async () => ({ insertOne });
-    const db = async (databaseName) => ({ collection });
-    const getConnectionMock = async () => ({ db });
-
-    connectionMock = getConnectionMock()
-      .then((conn) => conn.db('model_example'));
-
-    sinon.stub(mongoConnection, 'getConnection').resolves(connectionMock)
+  before(async () => {
+    connectionMock = await getConnection();
+    connectionMock.db('model_example').createCollection('movies');
+    sinon.stub(MongoClient, 'connect').resolves(connectionMock);
   });
 
-  after(() => {
-    mongoConnection.getConnection.restore();
+  after(async () => {
+    await connectionMock.db('model_example').collection('movies').drop();
+    MongoClient.connect.restore();
   });
-
   describe('quando é inserido com sucesso', () => {
     it('retorna um objeto', async () => {
       const response = await MoviesModel.create(payloadMovie);
