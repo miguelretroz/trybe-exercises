@@ -38,5 +38,15 @@ describe('Insere um novo filme no BD', () => {
 
       expect(response).to.have.a.property('id');
     });
+
+    it('deve existir um filme com o título cadastrado!', async () => {
+      await MoviesModel.create(payloadMovie);
+      const movieCreated = await connectionMock
+        .db('model_example')
+        .collection('movies')
+        .findOne({ title: payloadMovie.title });
+
+      expect(movieCreated).to.be.not.null;
+    });
   });
 });
