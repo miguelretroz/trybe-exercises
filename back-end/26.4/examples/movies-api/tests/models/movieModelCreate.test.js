@@ -1,8 +1,6 @@
 const { expect } = require('chai');
 
-const MoviesModel = {
-  create: () => {},
-};
+const MoviesModel = require('../../models/movieModel');
 
 describe('Insere um novo filme no BD', () => {
   const payloadMovie = {
