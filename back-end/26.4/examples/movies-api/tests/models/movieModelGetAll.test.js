@@ -4,10 +4,7 @@ const { MongoClient } = require('mongodb');
 const { getConnection } = require('./mongoMockConnection');
 
 
-const MoviesModel = {
-  getAll: () => {},
-};
-
+const MoviesModel = require('../../models/movieModel');
 
 describe('Ao chamar o model getAll', () => {
   let connectionMock = null;
@@ -32,7 +29,7 @@ describe('Ao chamar o model getAll', () => {
       expect(movies).to.be.an('array');
     });
 
-    it('o array retornado está vazio', async () => {
+    it('o array é retornado vazio', async () => {
       const movies = await MoviesModel.getAll();
 
       expect(movies).to.be.empty;
@@ -68,7 +65,7 @@ describe('Ao chamar o model getAll', () => {
     it('retorna todos os filmes do DB', async () => {
       const movies = await MoviesModel.getAll();
 
-      expect(movies).to.include(moviesToStore.length);
+      expect(movies).to.have.deep.members(moviesToStore);
     });
   });
 });
