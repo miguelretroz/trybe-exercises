@@ -1,9 +1,7 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
 
-const MoviesController = {
-  getAll: () => {},
-};
+const MoviesController = require('../../controllers/movieController');
 const MoviesService = require('../../services/movieService');
 
 describe('Ao chamar o controller getAll', () => {
