@@ -21,6 +21,9 @@ const create = async ({ title, directedBy, releaseYear }) => {
   };
 };
 
+const getAll = async () => {};
+
 module.exports = {
   create,
+  getAll,
 };
