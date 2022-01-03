@@ -6,6 +6,15 @@ const GRADE_DICT = {
   0.1: 'E',
 };
 
+const SCHOOL_DATA = {
+  Standard: {
+    approvalGrade: 0.7,
+  },
+  Hogwarts: {
+    approvalGrade: 0.8,
+  },
+};
+
 const gradeKeys = Object.keys(GRADE_DICT);
 
 const getGradeLetter = (gradeNumber) => {
@@ -28,13 +37,14 @@ const getLetterGrades = ({ name, grade }) => ({
   letterGrade: getGradeLetter(grade),
 });
 
-const percentageGradesIntoLetters = ({ name, disciplines }) => ({
+const percentageGradesIntoLetters = ({ name, disciplines, school }) => ({
   name,
   disciplines: disciplines.map(getLetterGrades),
+  school,
 });
 
-const approvedStudents = ({ disciplines }) =>
-  disciplines.every(({ grade }) => grade > 0.7);
+const approvedStudents = (disciplines, { approvalGrade }) =>
+  disciplines.every(({ grade }) => grade > approvalGrade);
 
 const updateAprovalData = ({ name: studentName, disciplines }) => {
   console.log(`A pessoa com nome ${studentName} foi aprovada!`);
@@ -46,7 +56,7 @@ const updateAprovalData = ({ name: studentName, disciplines }) => {
 function setApproved(students) {
   students
     .map(percentageGradesIntoLetters)
-    .filter(approvedStudents)
+    .filter(({ disciplines, school }) => approvedStudents(disciplines, SCHOOL_DATA[school]))
     .map(updateAprovalData);
 }
 
@@ -54,20 +64,21 @@ function setApproved(students) {
 const students = [
   {
     name: 'Lee',
-    disciplines: [
-      { name: 'matemática', grade: 0.8 },
-      { name: 'história', grade: 0.6 },
-    ],
-  },
-  {
-    name: 'Clementine',
+    school: 'Standard',
     disciplines: [
       { name: 'matemática', grade: 0.8 },
       { name: 'história', grade: 0.9 },
     ],
   },
+  {
+    name: 'Albus',
+    school: 'Hogwarts',
+    disciplines: [
+      { name: 'divination', grade: 0.8 },
+      { name: 'potions', grade: 0.9 },
+    ],
+  },
 ];
-
 setApproved(students);
 
 module.exports = {
