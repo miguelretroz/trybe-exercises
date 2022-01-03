@@ -75,4 +75,5 @@ module.exports = {
   approvedStudents,
   updateAprovalData,
   setApproved,
+  getLetterGrades,
 };
