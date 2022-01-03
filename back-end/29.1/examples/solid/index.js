@@ -1,19 +1,36 @@
-// ./index.js
+const GRADE_DICT = {
+  0.9: 'A',
+  0.8: 'B',
+  0.7: 'C',
+  0.6: 'D',
+  0.1: 'E',
+};
+
+const gradeKeys = Object.keys(GRADE_DICT);
+
+const getGradeLetter = (gradeNumber) => {
+  let letterGrade = 'F';
+
+  gradeKeys.find((grade) => {
+    if (gradeNumber >= grade) {
+      letterGrade = GRADE_DICT[grade];
+      return true;
+    }
+    return false;
+  });
+
+  return letterGrade;
+};
+
+const getLetterGrades = ({ name, grade }) => ({
+  name,
+  grade,
+  letterGrade: getGradeLetter(grade),
+});
 
 const percentageGradesIntoLetters = ({ name, disciplines }) => ({
   name,
-  disciplines: disciplines.map(({ name, grade }) => {
-    let letterGrade;
-
-    if (grade >= 0.9) letterGrade = 'A';
-    else if (grade >= 0.8) letterGrade = 'B';
-    else if (grade >= 0.7) letterGrade = 'C';
-    else if (grade >= 0.6) letterGrade = 'D';
-    else if (grade >= 0.1) letterGrade = 'E';
-    else letterGrade = 'F';
-
-    return { name, grade, letterGrade };
-  }),
+  disciplines: disciplines.map(getLetterGrades),
 });
 
 const approvedStudents = ({ disciplines }) =>
