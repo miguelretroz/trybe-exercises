@@ -44,8 +44,8 @@ router.get('/search/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { fullName, email } = req.body;
-    const newUser = await User.create({ fullName, email });
+    const { fullName, email, phoneNum } = req.body;
+    const newUser = await User.create({ fullName, email, phoneNum });
 
     return res.status(201).json(newUser);
   } catch (e) {
