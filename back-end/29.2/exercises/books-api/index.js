@@ -7,4 +7,6 @@ const app = express();
 
 app.use(bodyParser.json());
 
+app.use(require('./controllers/root'));
+
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
