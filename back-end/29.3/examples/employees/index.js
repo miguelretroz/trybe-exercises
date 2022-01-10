@@ -8,7 +8,8 @@ const config = require('./config/config');
 const app = express();
 app.use(bodyParser.json());
 
-const sequelize = new Sequelize(config.development);
+console.log(process.env.NODE_ENV);
+const sequelize = new Sequelize(config[process.env.NODE_ENV || 'development']);
 
 app.get('/employees', async (_req, res) => {
   try {
@@ -28,15 +29,16 @@ app.get('/employees/:id', async (req, res) => {
     const { id } = req.params;
     const employee = await Employee.findOne({
       where: { id },
+      include: [{ model: Address, as: 'addresses' }],
     });
 
     if (!employee)
       return res.status(404).json({ message: 'Funcionário não encontrado' });
 
-    if (req.query.includeAddresses === 'true') {
-      const addresses = await Address.findAll({ where: { employeeId: id } });
-      return res.status(200).json({ employee, addresses });
-    }
+    // if (req.query.includeAddresses === 'true') {
+    //   const addresses = await Address.findAll({ where: { employeeId: id } });
+    //   return res.status(200).json({ employee, addresses });
+    // }
 
     return res.status(200).json(employee);
   } catch (e) {
@@ -46,28 +48,41 @@ app.get('/employees/:id', async (req, res) => {
 });
 
 app.post('/employees', async (req, res) => {
-  // const transaction = await sequelize.transaction();
+  const transaction = await sequelize.transaction();
 
   try {
     const { firstName, lastName, age, city, street, number } = req.body;
 
-    const result = await sequelize.transaction(async (transaction) => {
-      const employee = await Employee.create(
-        { firstName, lastName, age },
-        { transaction },
-      );
+    // const result = await sequelize.transaction(async (transaction) => {
+    //   const employee = await Employee.create(
+    //     { firstName, lastName, age },
+    //     { transaction },
+    //   );
 
-      await Address.create(
-        { city, street, number, employeeId: employee.id },
-        { transaction },
-      );
+    //   await Address.create(
+    //     { city, street, number, employeeId: employee.id },
+    //     { transaction },
+    //   );
+    // });
+
+    const employee = await Employee.create(
+      { firstName, lastName, age },
+      { transaction },
+    );
+
+    await Address.create(
+      { city, street, number, employeeId: employee.id },
+      { transaction },
+    );
+
+    await transaction.commit();
+
+    return res.status(201).json({
+      id: employee.id,
+      message: 'Cadastrado com sucesso'
     });
-
-    // await transaction.commit();
-
-    return res.status(201).json({ message: 'Cadastrado com sucesso' });
   } catch (e) {
-    // await transaction.rollback();
+    await transaction.rollback();
 
     console.log(e.message);
     res.status(500).json({ message: 'Ocorreu um erro' });
