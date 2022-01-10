@@ -10,7 +10,7 @@ module.exports = {
           autoIncrement: true,
           primaryKey: true,
           type: Sequelize.INTEGER,
-          field: 'book_id',
+          field: 'user_id',
         },
         firstName: {
           allowNull: false,
