@@ -1,0 +1,14 @@
+{
+  "name": "rooms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Miguel Retroz <contato.miguelretroz@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "socket.io": "^4.4.1"
+  }
+}
