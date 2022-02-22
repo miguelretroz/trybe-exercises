@@ -1,6 +1,6 @@
 import json
+from unittest.mock import mock_open, patch
 from pokemon import retrieve_pokemons_by_type
-from io import StringIO
 
 
 def test_retrieve_pokemons_by_type():
@@ -30,9 +30,9 @@ def test_retrieve_pokemons_by_type():
         "sp_def": 64,
         "speed": 43,
     }
-    fake_file = StringIO(
-        json.dumps({"results": [grass_type_pokemon, water_type_pokemon]})
-    )
-    assert retrieve_pokemons_by_type('Grass', fake_file) == [
-        grass_type_pokemon
-    ]
+    pokemon_json_content = json.dumps(
+        {"results": [grass_type_pokemon, water_type_pokemon]})
+    with patch("builtins.open", mock_open(read_data=pokemon_json_content)):
+        assert retrieve_pokemons_by_type("Grass", "dummy") == [
+            grass_type_pokemon
+        ]
