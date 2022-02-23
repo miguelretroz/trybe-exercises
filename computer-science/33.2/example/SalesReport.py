@@ -5,36 +5,47 @@ import csv
 from zipfile import ZipFile
 
 
-class Compressor(ABC):
-    def __init__(self, filepath="./"):
-        self.filepath = filepath
+class Serializer(ABC):
+    # def __init__(self, filepath="./"):
+    #     self.filepath = filepath
 
     @abstractmethod
-    def compress(self, file_name):
+    def serialize(cls, data):
         raise NotImplementedError
 
 
-class ZipCompressor(Compressor):
-    def __init__(self, filepath="./"):
-        self.filepath = filepath
+class ZipCompressor(Serializer):
+    # def __init__(self, filepath="./"):
+    #     self.filepath = filepath
+    FILE_PATH = "./"
 
-    def compress(self, file_name):
-        with ZipFile(file_name + ".zip", "w") as zip_file:
+    @classmethod
+    def compress(cls, file_name):
+        with ZipFile(cls.FILE_PATH + file_name + ".zip", "w") as zip_file:
             zip_file.write(file_name)
 
+    @classmethod
+    def serialize(cls, data):
+        pass
 
-class GzCompressor(Compressor):
+
+class GzCompressor(Serializer):
     def __init__(self, filepath="./"):
         self.filepath = filepath
 
-    def compress(self, file_name):
+    @staticmethod
+    def compress(file_name):
         with open(file_name, "rb") as content:
             with gzip.open(file_name + ".gz", "wb") as gzip_file:
                 gzip_file.writelines(content)
 
+    @classmethod
+    def serialize(cls, data):
+        pass
+
 
 class SalesReport(ABC):
-    def __init__(self, export_file, compressor=GzCompressor()):
+    def __init__(self, export_file, compressor=GzCompressor):
         self.export_file = export_file
         self.compressor = compressor
 
@@ -91,13 +102,13 @@ class SalesReportCSV(SalesReport):
 
 purchase_report_json = SalesReportJSON("my_purchase_report")
 sale_report_json = SalesReportJSON(
-    "my_sale_report", ZipCompressor())
+    "my_sale_report", ZipCompressor)
 
 purchase_report_json.compress()
 sale_report_json.compress()
 
 purchase_report_csv = SalesReportCSV("my_purchase_report")
-sale_report_csv = SalesReportCSV("my_sale_report", ZipCompressor())
+sale_report_csv = SalesReportCSV("my_sale_report", ZipCompressor)
 
 purchase_report_csv.compress()
 sale_report_csv.compress()
