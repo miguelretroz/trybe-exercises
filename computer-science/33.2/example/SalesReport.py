@@ -2,11 +2,41 @@ from abc import ABC, abstractmethod
 import gzip
 import json
 import csv
+from zipfile import ZipFile
+
+
+class Compressor(ABC):
+    def __init__(self, filepath="./"):
+        self.filepath = filepath
+
+    @abstractmethod
+    def compress(self, file_name):
+        raise NotImplementedError
+
+
+class ZipCompressor(Compressor):
+    def __init__(self, filepath="./"):
+        self.filepath = filepath
+
+    def compress(self, file_name):
+        with ZipFile(file_name + ".zip", "w") as zip_file:
+            zip_file.write(file_name)
+
+
+class GzCompressor(Compressor):
+    def __init__(self, filepath="./"):
+        self.filepath = filepath
+
+    def compress(self, file_name):
+        with open(file_name, "rb") as content:
+            with gzip.open(file_name + ".gz", "wb") as gzip_file:
+                gzip_file.writelines(content)
 
 
 class SalesReport(ABC):
-    def __init__(self, export_file):
+    def __init__(self, export_file, compressor=GzCompressor()):
         self.export_file = export_file
+        self.compressor = compressor
 
     def build(self):
         """ Aqui colocamos a lógica para a entidade 'se criar',
@@ -23,37 +53,51 @@ class SalesReport(ABC):
             "Coluna 3": "Dado C"
             }]
 
+    FILE_EXTENSION = ''
+
+    def get_export_file_name(self):
+        return self.export_file + self.FILE_EXTENSION
+
     def compress(self):
-        binary_content = json.dumps(self.build()).encode('utf-8')
-
-        with gzip.open(self.export_file + '.gz', 'wb') as compressed_file:
-            compressed_file.write(binary_content)
+        self.serialize()
+        self.compressor.compress(self.get_export_file_name())
 
     @abstractmethod
     def serialize(self):
         raise NotImplementedError
-
-    @abstractmethod
-    def get_length(self):
-        raise NotImplementedError
-
-
-class SalesReportJSON(SalesReport):
-    def serialize(self):
-        with open(self.export_file + ".json", "w") as file:
-            json.dump(self.build(), file)
 
     def get_length(self):
         return len(self.build())
 
 
-class SalesReportCSV(SalesReport):
+class SalesReportJSON(SalesReport):
+    FILE_EXTENSION = ".json"
+
     def serialize(self):
-        with open(self.export_file + ".csv", "w") as file:
+        with open(self.get_export_file_name(), "w") as file:
+            json.dump(self.build(), file)
+
+
+class SalesReportCSV(SalesReport):
+    FILE_EXTENSION = ".csv"
+
+    def serialize(self):
+        with open(self.get_export_file_name(), "w") as file:
             writer = csv.writer(file)
             writer.writerow(self.build()[1].keys())
             for data in self.build():
                 writer.writerow(data.values())
 
-    def get_length(self):
-        return len(self.build())
+
+purchase_report_json = SalesReportJSON("my_purchase_report")
+sale_report_json = SalesReportJSON(
+    "my_sale_report", ZipCompressor())
+
+purchase_report_json.compress()
+sale_report_json.compress()
+
+purchase_report_csv = SalesReportCSV("my_purchase_report")
+sale_report_csv = SalesReportCSV("my_sale_report", ZipCompressor())
+
+purchase_report_csv.compress()
+sale_report_csv.compress()
