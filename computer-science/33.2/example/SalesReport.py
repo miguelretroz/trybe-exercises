@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import gzip
 import json
 import csv
 
@@ -21,6 +22,12 @@ class SalesReport(ABC):
             "Coluna 2": "Dado B",
             "Coluna 3": "Dado C"
             }]
+
+    def compress(self):
+        binary_content = json.dumps(self.build()).encode('utf-8')
+
+        with gzip.open(self.export_file + '.gz', 'wb') as compressed_file:
+            compressed_file.write(binary_content)
 
     @abstractmethod
     def serialize(self):
