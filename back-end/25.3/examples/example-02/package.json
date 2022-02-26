@@ -1,0 +1,16 @@
+{
+  "name": "example-02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./tests"
+  },
+  "author": "Miguel Retroz <contato.miguelretroz@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.3",
+    "sinon": "^11.1.2"
+  }
+}
