@@ -1,0 +1,165 @@
+#container {
+  margin: 0 auto;
+  width: 100%;
+  background: #fff;
+}
+
+#header {
+  background: #ccc;
+  padding: 20px;
+}
+
+#header h1 {
+  margin: 0;
+}
+
+#navigation {
+  float: left;
+  width: 100%;
+  background: #333;
+}
+
+#navigation ul {
+  margin: 0;
+  padding: 0;
+}
+
+#navigation ul li {
+  list-style-type: none;
+  display: inline;
+}
+
+#navigation li a {
+  display: block;
+  float: left;
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  border-right: 1px solid #fff;
+}
+
+#navigation li a:hover {
+  background: #383;
+}
+
+#content-container {
+  float: left;
+  width: 100%;
+  background: #FFF;
+}
+
+#content {
+  clear: left;
+  float: left;
+  width: 60%;
+  padding: 20px 0;
+  margin: 0 0 0 4%;
+  display: inline;
+}
+
+#content h2 {
+  margin: 0;
+}
+
+#aside {
+  float: right;
+  width: 33%;
+  padding: 20px 0;
+  margin: 0 3% 0 0;
+  display: inline;
+}
+
+#aside h3 {
+  margin: 0;
+}
+
+#footer {
+  clear: left;
+  background: #ccc;
+  text-align: right;
+  padding: 20px;
+  height: 1%;
+}
+
+@media print {
+  #header, #navigation, #footer {
+    display: none;
+  }
+  #aside {
+    float: left;
+    clear: left;
+  }
+
+  #content {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 240px) {
+  body {
+    padding: 0px;
+    margin: 0px;
+    font-size: 10px;
+  }
+  
+  #header {
+    position: fixed;
+    width: 100%;
+  }
+
+  #navigation {
+    margin: 70px 5px 0px 5px;
+    width: 95%;
+  }
+
+  #navigation ul {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #navigation ul li a {
+    border: none;
+    width: 91%;
+  }
+  
+  img {
+    width: 150%;
+  }
+  
+  #aside {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 241px) and (max-width: 360px) {
+  body {
+    margin: 0px;
+  }
+
+  #header {
+    position: fixed;
+    width: 100%;
+  }
+
+  #navigation {
+    margin: 85px 10px 0px 10px;
+    width: 95%;
+  }
+
+  #navigation ul {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  #navigation ul a {
+    border: none;
+  }
+
+  img {
+    width: 150%;
+  }
+
+  #aside {
+    display: none;
+  }
+}
