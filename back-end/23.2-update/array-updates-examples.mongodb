@@ -1,0 +1,417 @@
+use("sales");
+
+// $push
+db.supplies.updateOne(
+  {
+    _id: 1
+  },
+  {
+    $push: {
+      items: {
+        "name": "notepad",
+        "price": 35.29,
+        "quantity": 2,
+      },
+    },
+  },
+  { 
+    upsert: true,
+  },
+);
+
+db.supplies.find();
+
+// $each
+use("sales");
+
+db.supplies.updateOne(
+  {},
+  {
+    $push: {
+      items: {
+        $each: [
+          {
+            "name": "pens",
+            "price": 56.12,
+            "quantity": 5,
+          },
+          {
+            "name": "envelopes",
+            "price": 19.95,
+            "quantity": 8,
+          },
+        ],
+      },
+    },
+  },
+  {
+    upsert: true,
+  },
+);
+
+db.supplies.find();
+
+db.dropDatabase();
+
+// Múltiplos modificadores
+use("sales");
+
+db.supplies.updateOne(
+  {
+    _id: 1,
+  },
+  {
+    $push: {
+      items: {
+        $each: [
+          {
+            "name": "notepad",
+            "price": 35.29,
+            "quantity": 2,
+          },
+          {
+            "name": "envelopes",
+            "price": 19.95,
+            "quantity": 8,
+          },
+          {
+            "name": "pens",
+            "price": 56.12,
+            "quantity": 5,
+          },
+        ],
+        $sort: { quantity: -1 },
+        $slice: 2,
+      },
+    },
+  },
+  {
+    upsert: true,
+  },
+);
+
+db.supplies.find();
+
+// $pop
+use("sales");
+
+db.supplies.updateOne(
+  {
+    _id: 1,
+  },
+  {
+    $push: {
+      items: {
+        $each: [
+          {
+            "name": "notepad",
+            "price": 35.29,
+            "quantity": 2,
+          },
+          {
+            "name": "envelopes",
+            "price": 19.95,
+            "quantity": 8,
+          },
+          {
+            "name": "pens",
+            "price": 56.12,
+            "quantity": 5,
+          },
+        ],
+      },
+    },
+  },
+  {
+    upsert: true,
+  },
+);
+
+db.supplies.find();
+
+db.supplies.updateOne(
+  {
+    _id: 1,
+  },
+  {
+    $pop: {
+      items: 1,
+    },
+  },
+);
+
+db.supplies.find();
+
+// $pull
+use("sales");
+
+db.dropDatabase();
+
+db.supplies.insertMany(
+  [
+    {
+      _id: 1,
+      items: [
+        {
+          "name" : "notepad",
+          "price" : 35.29,
+          "quantity" : 2,
+        },
+        {
+          "name": "envelopes",
+          "price": 19.95,
+          "quantity": 8,
+        },
+        {
+          "name": "pens",
+          "price": 56.12,
+          "quantity": 5,
+        },
+      ],
+    },
+    {
+      _id: 2,
+      items: [
+        {
+          "name" : "pencil",
+          "price" : 5.29,
+          "quantity" : 2,
+        },
+        {
+          "name": "envelopes",
+          "price": 19.95,
+          "quantity": 8,
+        },
+        {
+          "name": "backpack",
+          "price": 80.12,
+          "quantity": 1,
+        },
+        {
+          "name": "pens",
+          "price": 56.12,
+          "quantity": 5,
+        },
+      ],
+    }
+  ],
+);
+
+db.supplies.find();
+
+use("sales");
+
+db.supplies.updateMany(
+  {},
+  {
+    $pull: {
+      items: {
+        name: { $in: [ "pens", "envelopes" ] },
+      },
+    },
+  },
+);
+
+db.supplies.find();
+
+use("sales");
+
+db.profiles.insertOne(
+  {
+    _id: 1,
+    votes: [ 3, 5, 6, 7, 7, 8 ],
+  },
+);
+
+db.profiles.find();
+
+db.profiles.updateOne(
+  {
+    _id: 1,
+  },
+  {
+    $pull: {
+      votes: {
+        $gte: 6,
+      },
+    },
+  },
+);
+
+
+db.profiles.find();
+
+use("sales");
+
+db.survey.insertMany(
+  [
+    {
+      _id: 1,
+      results: [
+        { item: "A", score: 5 },
+        { item: "B", score: 8, comment: "Strongly agree" },
+      ],
+    },
+    {
+      _id: 2,
+      results: [
+        { item: "C", score: 8, comment: "Strongly agree" },
+        { item: "B", score: 4 },
+      ],
+    },
+  ],
+);
+
+db.survey.find();
+
+db.survey.updateMany(
+  {},
+  {
+    $pull: {
+      results: {
+        item: "B",
+        score: 8,
+      },
+    },
+  },
+);
+
+db.survey.find();
+
+// $addToSet
+use("sales");
+
+db.inventory.insertOne(
+  {
+    _id: 1,
+    item: "polarizing_filter",
+    tags: [ "electronics", "camera" ],
+  },
+);
+
+db.inventory.find();
+
+db.inventory.updateOne(
+  {
+    _id: 1,
+  },
+  {
+    $addToSet: {
+      tags: "accessories",
+    },
+  },
+);
+
+db.inventory.updateOne(
+  {
+    _id: 1,
+  },
+  {
+    $addToSet: {
+      tags: "camera",
+    },
+  },
+);
+
+db.inventory.insertOne(
+  {
+    _id: 2,
+    item: "cable",
+    tags: [ "electronics", "supplies" ],
+  },
+);
+
+use("sales");
+
+db.inventory.updateOne(
+  {
+    _id: 2,
+  },
+  {
+    $addToSet: {
+      tags: {
+        $each: [ "camera", "electronics", "accessories" ],
+      },
+    },
+  }
+);
+
+db.inventory.find();
+
+// arrayFilters
+use("sales");
+
+db.recipes.insertMany([
+  {
+    title: "Panqueca Simples",
+    ingredients: [
+      { name: "Farinha", quantity: 2},
+      { name: "Oleo", quantity: 4 },
+      { name: "Leite", quantity: 1 },
+    ],
+  },
+  {
+    title: "Bolo de Cenoura",
+    ingredients: [
+      { name: "Farinha", quantity: 2},
+      { name: "Oleo", quantity: 1, unit: "xícara" },
+      { name: "Ovo", quantity: 3},
+      { name: "Cenoura", quantity: 3},
+      { name: "Fermento", quantity: 1},
+    ],
+  },
+]);
+
+db.recipes.find();
+
+db.recipes.updateOne(
+  {
+    title: "Panqueca Simples",
+  },
+  {
+    $set: {
+      "ingredients.$[ingredient].name": "Farinha integral",
+    },
+  },
+  {
+    arrayFilters: [
+      { "ingredient.name": "Farinha" },
+    ],
+  },
+);
+
+db.recipes.updateOne(
+  {
+    title: "Panqueca Simples",
+  },
+  {
+    $set: {
+      "ingredients.$[ingredient].unit": "xícara",
+    },
+  },
+  {
+    arrayFilters: [
+      {
+        "ingredient.name": "Farinha integral",
+      },
+    ],
+  },
+);
+
+db.recipes.updateMany(
+  {},
+  {
+    $set: {
+      "ingredients.$[ingredient].unit": "xícara",
+      "ingredients.$[ingredient].name": "Farinha integral",
+    },
+  },
+  {
+    arrayFilters: [
+      {
+        "ingredient.name": "Farinha",
+      },
+    ],
+  },
+);
+
