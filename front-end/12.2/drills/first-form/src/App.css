@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input, select, textarea {
+  margin-left: 10px;
+}
