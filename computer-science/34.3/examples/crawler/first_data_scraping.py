@@ -1,15 +1,15 @@
 import requests
 from parsel import Selector
 
-response = requests.get("http://books.toscrape.com")
-selector = Selector(text=response.text)
+URL_BASE = "http://books.toscrape.com/catalogue/"
+next_page_url = "page-1.html"
 
-title = selector.css(".product_pod h3 a::attr(title)").getall()
+while next_page_url:
+    response = requests.get(f"{URL_BASE}{next_page_url}")
+    selector = Selector(text=response.text)
+    for product in selector.css(".product_pod"):
+        title = product.css("h3 a::attr(title)").get()
+        price = product.css(".price_color::text").get()
+        print(title, price)
 
-price = selector.css(
-    ".product_pod .product_price .price_color::text").getall()
-
-for product in selector.css('.product_pod'):
-    title = product.css("h3 a::attr(title)").get()
-    price = product.css(".product_price .price_color::text").get()
-    print(title, price)
+    next_page_url = selector.css(".next a::attr(href)").get()
