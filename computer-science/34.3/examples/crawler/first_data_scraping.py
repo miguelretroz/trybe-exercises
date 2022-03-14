@@ -10,7 +10,7 @@ while next_page_url:
 
     for product in selector.css(".product_pod"):
         title = product.css("h3 a::attr(title)").get()
-        price = product.css(".price_color::text").get()
+        price = product.css(".price_color::text").re_first(r"£\d+\.\d{2}")
         print(title, price)
 
         detail_href = product.css(".product_pod h3 a::attr(href)").get()
@@ -21,6 +21,11 @@ while next_page_url:
 
         detail_description = detail_selector.css(
             '#product_description ~ p::text').get()
+
+        description_suffix = "...more"
+
+        if detail_description.endswith(description_suffix):
+            detail_description = detail_description[:-len(description_suffix)]
         print(detail_description)
 
     next_page_url = selector.css(".next a::attr(href)").get()
