@@ -1,5 +1,5 @@
 const conversionTableInSquareMeter: { [key: string]: number } = {
-  'k2m': 1000,
+  'km²': 1000,
   'hm²': 100,
   'dam²': 10,
   'm²': 1,
