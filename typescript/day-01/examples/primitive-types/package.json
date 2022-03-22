@@ -1,0 +1,11 @@
+{
+  "name": "primitive-types",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Miguel Retroz <contato.miguelretroz@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.1",
+    "@types/node": "^17.0.21"
+  }
+}
