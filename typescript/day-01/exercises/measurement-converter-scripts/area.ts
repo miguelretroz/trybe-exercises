@@ -15,7 +15,7 @@ export function convert(value: number, unitBase: string, conversionUnit: string)
 }
 
 export function exec(): void {
-  const unitTable = ['km²', 'hm²', 'dam²', 'm²', 'dm²', 'cm²', 'mm²'];
+  const unitTable = Object.keys(conversionTableInSquareMeter);
 
   console.log('---Conversor de área---');
   const value: number = readlineSync.questionInt('Entre com o valor a ser convertido: ');
