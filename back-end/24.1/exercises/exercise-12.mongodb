@@ -1,0 +1,53 @@
+// 12. Descubra quais as três uf s que mais compraram no ano de 2020 . Retorne os documentos no seguinte formato:
+// {
+//   "totalVendas": 10,
+//   "uf": "SP"
+// }
+use('erp');
+
+db.vendas.aggregate(
+  [
+    {
+      $match: {
+        dataVenda: {
+          $gte: ISODate("2020-01-01"),
+          $lt: ISODate("2021-01-01"),
+        },
+      },
+    },
+    {
+      $lookup: {
+        from: "clientes",
+        localField: "clienteId",
+        foreignField: "clienteId",
+        as: "clientes",
+      },
+    },
+    {
+      $unwind: "$clientes",
+    },
+    {
+      $group: {
+        _id: "$clientes.endereco.uf",
+        totalVendas: {
+          $sum: 1,
+        },
+      },
+    },
+    {
+      $project: {
+        _id: false,
+        uf: "$_id",
+        totalVendas: true,
+      },
+    },
+    {
+      $sort: {
+        totalVendas: -1,
+      },
+    },
+    {
+      $limit: 3,
+    },
+  ],
+);

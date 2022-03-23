@@ -1,0 +1,19 @@
+use('agg_example');
+
+db.inventory.insertOne(
+  {
+    _id: 7,
+    item: "ABC1",
+    sizes: ["S", "M", "L"]
+  },
+);
+
+use('agg_example');
+
+db.inventory.aggregate(
+  [
+    {
+      $unwind: "$sizes",
+    },
+  ]
+);
