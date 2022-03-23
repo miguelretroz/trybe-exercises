@@ -1,0 +1,49 @@
+// Exercício 5 : Confira o número de documentos retornados pelo pipeline com o método itcount() . Até aqui, você deve ter 486 documentos sendo retornados.
+use("erp");
+
+db.clientes.aggregate(
+  [
+    {
+      $addFields: {
+        idade: {
+          $floor: {
+            $divide: [
+              {
+                $subtract: [
+                  new Date(),
+                  "$dataNascimento",
+                ],
+              },
+              31104000000,
+            ],
+          },
+        },
+      },
+    },
+    {
+      $lookup: {
+        from: "vendas",
+        let: { clienteId: "$clienteId" },
+        pipeline: [
+          {
+            $match: {
+              $expr: {
+                $eq: ["$clienteId", "$$clienteId"],
+              },
+            },
+          },
+        ],
+        as: "compras",
+      },
+    },
+    {
+      $match: {
+        "compras.dataVenda": {
+          $gte: ISODate("2019-06-01"),
+          $lt: ISODate("2020-04-01"),
+        },
+      },
+    },
+
+  ],
+).itcount();

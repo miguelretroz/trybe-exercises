@@ -1,0 +1,79 @@
+use('storage');
+
+db.sales.drop();
+
+db.sales.insertMany(
+  [
+    {
+      _id: 1,
+      item: "abc",
+      price: 10,
+      fee: 2,
+      discount: 5,
+      date: ISODate("2014-03-01T08:00:00Z")
+    },
+    {
+      _id: 2,
+      item: "jkl",
+      price: 20,
+      fee: 1,
+      discount: 2,
+      date: ISODate("2014-03-01T09:00:00Z")
+    },
+  ],
+);
+
+db.sales.aggregate(
+  [
+    {
+      $project: {
+        item: 1,
+        total: {
+          $subtract: [
+            { $add: ["$price", "$fee"] },
+            "$discount",
+          ],
+        },
+      },
+    },
+  ],
+);
+
+db.sales.aggregate(
+  [
+    {
+      $project: {
+        item: 1,
+        dateDifference: {
+          $subtract: ["$$NOW", "$date"],
+        },
+      },
+    },
+  ],
+);
+
+db.sales.aggregate(
+  [
+    {
+      $project: {
+        item: 1,
+        dateDifference: {
+          $subtract: [new Date(), "$date"],
+        },
+      },
+    },
+  ],
+);
+
+db.sales.aggregate(
+  [
+    {
+      $project: {
+        item: 1,
+        dateDifference: {
+          $subtract: ["$date", 5 * 60 * 1000],
+        },
+      },
+    },
+  ],
+);

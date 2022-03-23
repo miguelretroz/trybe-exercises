@@ -1,0 +1,65 @@
+// Exercício 6 : Ainda nesse pipeline , descubra os 5 estados com mais compras.
+use("erp");
+
+db.clientes.aggregate(
+  [
+    {
+      $addFields: {
+        idade: {
+          $floor: {
+            $divide: [
+              {
+                $subtract: [
+                  new Date(),
+                  "$dataNascimento",
+                ],
+              },
+              31104000000,
+            ],
+          },
+        },
+      },
+    },
+    {
+      $lookup: {
+        from: "vendas",
+        let: { clienteId: "$clienteId" },
+        pipeline: [
+          {
+            $match: {
+              $expr: {
+                $eq: ["$clienteId", "$$clienteId"],
+              },
+            },
+          },
+        ],
+        as: "compras",
+      },
+    },
+    {
+      $group: {
+        _id: "$endereco.uf",
+        totalCompras: {
+          $sum: {
+            $size: "$compras",
+          },
+        },
+      },
+    },
+    {
+      $sort: {
+        totalCompras: -1,
+      },
+    },
+    {
+      $limit: 5,
+    },
+    {
+      $project: {
+        _id: 0,
+        estado: "$_id",
+        totalCompras: "$totalCompras",
+      },
+    },
+  ],
+);
