@@ -34,11 +34,11 @@ class Car {
   }
 
   speedUp(): void {
-    console.log("O carro está 1km/h mais rápido!");
+    console.log("O carro está acelerando!");
   }
 
   speedDown(): void {
-    console.log("O carro está 1km/h mais devagar!");
+    console.log("O carro perdendo velocidade!");
   }
 
   stop(): void {
@@ -49,3 +49,5 @@ class Car {
     console.log(`O carro virou à ${direction}`);
   }
 }
+
+export default Car;

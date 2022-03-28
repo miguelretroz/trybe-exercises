@@ -1,8 +1,8 @@
 enum Doors {
   FrontLeft = "frente esquerda",
   FrontRight = "frente direita",
-  FearLeft = "traseira esquerda",
-  FearRight = "traseira direita",
+  RearLeft = "traseira esquerda",
+  RearRight = "traseira direita",
 }
 
 export default Doors;
