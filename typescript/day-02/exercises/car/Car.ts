@@ -1,21 +1,6 @@
-enum Colors {
-  Black = "Preta",
-  White = "Branca",
-  Red = "Vermelha",
-  Silver = "Prata"
-}
-
-enum Doors {
-  FrontLeft = "frente esquerda",
-  FrontRight = "frente direita",
-  FearLeft = "traseira esquerda",
-  FearRight = "traseira direita",
-}
-
-enum Directions {
-  Left = "Esquerda",
-  Right = "Direita"
-}
+import Colors from "./Colors";
+import Doors from './Doors';
+import Directions from "./Directions";
 
 class Car {
   _brand: string;
