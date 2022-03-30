@@ -22,6 +22,15 @@ array.set(7, "Michelle")
 array_memory_size = sys.getsizeof(array.data)
 print(array_memory_size)
 
+array.set(0, "Marcos")
+array.set(1, "Patrícia")
+print(array)
+
+array.set(0, "Valeria")
+print(array)
+
+array.set(1, "Miguel")
+
 print(array.get(0))
 print(array.get(1))
 print("-----")
