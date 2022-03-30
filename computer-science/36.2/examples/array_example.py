@@ -35,6 +35,9 @@ print(array)
 array.remove(0)
 print(array)
 
+array.update(0, "João")
+print(array)
+
 print(array.get(0))
 print(array.get(1))
 print("-----")

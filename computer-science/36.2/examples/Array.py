@@ -16,3 +16,6 @@ class Array:
 
     def remove(self, index):
         return self.data.pop(index)
+
+    def update(self, index, value):
+        self.data[index] = value
