@@ -1,15 +1,18 @@
-class Array:
-    def __init__(self):
-        self.data = []
+from Array import Array
 
-    def __len__(self):
-        return len(self.data)
+array = Array()
+array.set(0, "Felipe")
+array.set(1, "Ana")
+array.set(2, "Shirley")
+array.set(3, "Miguel")
 
-    def __str__(self):
-        return str(self.data)
 
-    def get(self, index):
-        return self.data[index]
+print(array.get(0))
+print(array.get(1))
+print("-----")
 
-    def set(self, index, value):
-        self.data.insert(index, value)
+index = 0
+
+while index < len(array):
+    print("Index", index, ", Nome: ", array.get(index))
+    index += 1
