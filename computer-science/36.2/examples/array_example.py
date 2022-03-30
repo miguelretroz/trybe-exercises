@@ -30,6 +30,10 @@ array.set(0, "Valeria")
 print(array)
 
 array.set(1, "Miguel")
+print(array)
+
+array.remove(0)
+print(array)
 
 print(array.get(0))
 print(array.get(1))

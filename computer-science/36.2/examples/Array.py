@@ -13,3 +13,6 @@ class Array:
 
     def set(self, index, value):
         self.data.insert(index, value)
+
+    def remove(self, index):
+        return self.data.pop(index)
