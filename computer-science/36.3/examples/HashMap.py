@@ -1,6 +1,6 @@
 class HashMap:
     def __init__(self):
-        self.buckets = [None for i in range(10)]
+        self._buckets = [None for i in range(10)]
 
     def get_address(self, id_num):
         return id_num % 10
