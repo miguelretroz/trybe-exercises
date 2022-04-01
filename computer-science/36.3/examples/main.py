@@ -1,7 +1,13 @@
 from HashMap import HashMap
 from Employee import Employee
 
-employees = [(14, "name1"), (23, "name2"), (10, "name3"), (9, "name4")]
+employees = [
+    (14, "name1"),
+    (23, "name2"),
+    (10, "name3"),
+    (9, "name4"),
+    (24, "name5"),
+]
 
 employeesHash = HashMap()
 
