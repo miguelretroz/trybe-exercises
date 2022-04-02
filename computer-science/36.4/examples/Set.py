@@ -28,3 +28,12 @@ class Set():
                 unionSet.add(index)
 
         return unionSet
+
+    def intersection(self, setB):
+        intersectionSet = Set()
+        for index, elem in enumerate(self._numbers):
+            if elem:
+                if index in setB:
+                    intersectionSet.add(index)
+
+        return intersectionSet
