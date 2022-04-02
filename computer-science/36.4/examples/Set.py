@@ -2,8 +2,8 @@ class Set():
     def __init__(self):
         self._numbers = [False for _ in range(1001)]
 
-    def add(self, item):
-        self._numbers[item] = True
+    def __contains__(self, item):
+        return self._numbers[item]
 
     def __str__(self):
         result = []
@@ -14,5 +14,17 @@ class Set():
 
         return str(result)
 
-    def __contains__(self, item):
-        return item in self._numbers
+    def add(self, item):
+        self._numbers[item] = True
+
+    def union(self, setB):
+        unionSet = Set()
+        for index, elem in enumerate(self._numbers):
+            if elem:
+                unionSet.add(index)
+
+        for index, elem in enumerate(setB._numbers):
+            if elem:
+                unionSet.add(index)
+
+        return unionSet
