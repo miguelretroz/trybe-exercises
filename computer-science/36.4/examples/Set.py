@@ -13,3 +13,6 @@ class Set():
                 result.append(index)
 
         return str(result)
+
+    def __contains__(self, item):
+        return item in self._numbers
