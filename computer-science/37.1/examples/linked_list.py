@@ -18,3 +18,16 @@ class LinkedList:
         self.head_value = first_value
         self.__length += 1
 
+    def insert_last(self, value):
+        if self.is_empty():
+            return self.insert_first(value)
+
+        current_value = self.head_value
+        last_value = Node(value)
+
+        while current_value.next:
+            current_value = current_value.next
+
+        current_value.next = last_value
+        self.__length += 1
+
