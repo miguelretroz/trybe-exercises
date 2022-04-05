@@ -100,3 +100,5 @@ class LinkedList:
 
         return value_returned
 
+    def is_empty(self):
+        return not self.__length
