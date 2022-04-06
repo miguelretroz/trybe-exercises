@@ -87,15 +87,10 @@ class LinkedList:
 
     def get_element_at(self, position):
         value_returned = None
-        value_to_be_returned = self.head_value
+        value_to_be_returned = self.__get_node_at(position)
 
         if value_to_be_returned:
-            while position > 0 and value_to_be_returned.next:
-                value_to_be_returned = value_to_be_returned.next
-                position -= 1
-
-            if value_to_be_returned:
-                value_returned = Node(value_to_be_returned.value)
+            value_returned = Node(value_to_be_returned.value)
 
         return value_returned
 
@@ -134,3 +129,5 @@ if __name__ == "__main__":
     print(linked_list)
     linked_list.remove_at(1)
     print(linked_list)
+
+    print(linked_list.get_element_at(1))
