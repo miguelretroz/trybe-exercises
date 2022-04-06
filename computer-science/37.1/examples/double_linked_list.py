@@ -38,3 +38,20 @@ class DoubleLinkedList:
         self.tail = last_value
         self.__length += 1
 
+    def insert_at(self, value, position):
+        if position < 1:
+            return self.insert_first(value)
+        if position >= len(self):
+            return self.insert_last(value)
+
+        current_value = self.head
+        while position > 1:
+            current_value = current_value.next
+            position -= 1
+
+        next_value = DoubleLinkedNode(value)
+        next_value.previous = current_value
+        next_value.next = current_value.next
+        current_value.next = next_value
+        self.__length += 1
+
