@@ -45,14 +45,11 @@ class LinkedList:
         if position >= len(self):
             return self.insert_last(value)
 
-        current_value = self.head_value
-        while position > 1:
-            current_value = current_value.next
-            position -= 1
+        previous_value = self.__get_node_at((position - 1))
 
         next_value = Node(value)
-        next_value.next = current_value.next
-        current_value.next = next_value
+        next_value.next = previous_value.next
+        previous_value.next = next_value
         self.__length += 1
 
     def remove_first(self):
@@ -131,4 +128,7 @@ if __name__ == "__main__":
     linked_list.insert_first(1)
     linked_list.insert_first(2)
     linked_list.insert_last(3)
+    print(linked_list)
+
+    linked_list.insert_at(4, 1)
     print(linked_list)
