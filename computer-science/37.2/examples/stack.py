@@ -2,6 +2,16 @@ class Stack():
     def __init__(self):
         self._data = list()
 
+    def __str__(self):
+        str_items = ""
+        for i in range(self.size()):
+            value = self._data[i]
+            str_items += str(value)
+            if i + 1 < self.size():
+                str_items += ", "
+
+        return f"Stack(\"{str_items}\""
+
     def size(self):
         return len(self._data)
 
