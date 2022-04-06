@@ -69,3 +69,15 @@ class DoubleLinkedList:
 
         return value_to_be_removed
 
+    def remove_last(self):
+        if len(self) <= 1:
+            return self.remove_first()
+
+        previous_to_be_removed = self.tail.previous
+        value_to_be_removed = self.tail
+        previous_to_be_removed.next = None
+        self.tail = previous_to_be_removed
+        self.__length -= 1
+
+        return value_to_be_removed
+
