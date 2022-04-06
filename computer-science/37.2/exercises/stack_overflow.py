@@ -1,0 +1,2 @@
+class StackOverflow(Exception):
+    pass
