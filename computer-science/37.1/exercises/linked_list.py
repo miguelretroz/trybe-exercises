@@ -102,3 +102,20 @@ class LinkedList:
 
     def is_empty(self):
         return not self.__length
+
+    def clear(self):
+        while not self.is_empty():
+            self.remove_first()
+
+
+if __name__ == "__main__":
+    linked_list = LinkedList()
+
+    linked_list.insert_first(1)
+    linked_list.insert_first(2)
+    linked_list.insert_first(3)
+    linked_list.insert_first(4)
+    print(linked_list)
+
+    linked_list.clear()
+    print(linked_list)
