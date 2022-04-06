@@ -7,3 +7,7 @@ class Stack():
 
     def is_empty(self):
         return not bool(self.size())
+
+    def push(self, value):
+        self._data.append(value)
+
