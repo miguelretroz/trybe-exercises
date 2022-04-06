@@ -25,3 +25,5 @@ class Stack():
         value = self._data[-1]
         return value
 
+    def clear(self):
+        self._data.clear()
