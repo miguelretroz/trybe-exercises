@@ -16,3 +16,13 @@ class DoubleLinkedList:
     def is_empty(self):
         return not self.__length
 
+    def insert_first(self, value):
+        first_value = DoubleLinkedNode(value)
+        first_value.next = self.head
+        self.head = first_value
+        if self.is_empty():
+            self.tail = first_value
+        else:
+            first_value.next.previous = first_value
+        self.__length += 1
+
