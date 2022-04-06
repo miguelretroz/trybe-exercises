@@ -33,11 +33,8 @@ class LinkedList:
         if self.is_empty():
             return self.insert_first(value)
 
-        current_value = self.head_value
+        current_value = self.__get_node_at(len(self))
         last_value = Node(value)
-
-        while current_value.next:
-            current_value = current_value.next
 
         current_value.next = last_value
         self.__length += 1
@@ -129,4 +126,9 @@ if __name__ == "__main__":
     print(linked_list)
 
     linked_list.clear()
+    print(linked_list)
+
+    linked_list.insert_first(1)
+    linked_list.insert_first(2)
+    linked_list.insert_last(3)
     print(linked_list)
