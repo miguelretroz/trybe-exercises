@@ -101,6 +101,18 @@ class LinkedList:
         while not self.is_empty():
             self.remove_first()
 
+    def index_of(self, value):
+        current_value = self.head_value
+        index_count = 0
+        while current_value:
+            if current_value.value == value:
+                return index_count
+
+            current_value = current_value.next
+            index_count += 1
+
+        return -1
+
 
 if __name__ == "__main__":
     linked_list = LinkedList()
@@ -131,3 +143,6 @@ if __name__ == "__main__":
     print(linked_list)
 
     print(linked_list.get_element_at(1))
+
+    print(linked_list.index_of(1))
+    print(linked_list.index_of(5))
