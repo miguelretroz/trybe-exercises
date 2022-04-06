@@ -37,3 +37,27 @@ class Stack():
 
     def clear(self):
         self._data.clear()
+
+
+if __name__ == "__main__":
+    elements = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    content_stack = Stack()
+
+    for elem in elements:
+        content_stack.push(elem)
+
+    print(content_stack)
+
+    print(content_stack.size())
+
+    print(content_stack.peek())
+
+    print(content_stack.pop())
+
+    print(content_stack.peek())
+
+    print(content_stack.size())
+
+    print(content_stack.clear())
+
+    print(content_stack.size())
