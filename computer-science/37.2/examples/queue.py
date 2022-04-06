@@ -1,4 +1,4 @@
-class Stack():
+class Queue:
     def __init__(self):
         self._data = list()
 
@@ -10,7 +10,7 @@ class Stack():
             if i + 1 < self.size():
                 str_items += ", "
 
-        return f"Stack(\"{str_items}\")"
+        return f"Queue(\"{str_items}\")"
 
     def size(self):
         return len(self._data)
@@ -25,14 +25,14 @@ class Stack():
         if self.is_empty():
             return None
 
-        value = self._data[-1]
-        del self._data[-1]
+        value = self._data[0]
+        del self._data[0]
         return value
 
     def peek(self):
         if self.is_empty():
             return None
-        value = self._data[-1]
+        value = self._data[0]
         return value
 
     def clear(self):
@@ -41,23 +41,23 @@ class Stack():
 
 if __name__ == "__main__":
     elements = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    content_stack = Stack()
+    content_queue = Queue()
 
     for elem in elements:
-        content_stack.push(elem)
+        content_queue.push(elem)
 
-    print(content_stack)
+    print(content_queue)
 
-    print(content_stack.size())
+    print(content_queue.size())
 
-    print(content_stack.peek())
+    print(content_queue.peek())
 
-    print(content_stack.pop())
+    print(content_queue.pop())
 
-    print(content_stack.peek())
+    print(content_queue.peek())
 
-    print(content_stack.size())
+    print(content_queue.size())
 
-    print(content_stack.clear())
+    print(content_queue.clear())
 
-    print(content_stack.size())
+    print(content_queue.size())
