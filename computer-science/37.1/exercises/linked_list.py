@@ -64,10 +64,7 @@ class LinkedList:
         if len(self) <= 1:
             return self.remove_first()
 
-        previous_to_be_removed = self.head_value
-
-        while previous_to_be_removed.next.next:
-            previous_to_be_removed = previous_to_be_removed.next
+        previous_to_be_removed = self.__get_node_at(len(self) - 2)
 
         value_to_be_removed = previous_to_be_removed.next
         previous_to_be_removed.next = None
@@ -131,4 +128,7 @@ if __name__ == "__main__":
     print(linked_list)
 
     linked_list.insert_at(4, 1)
+    print(linked_list)
+
+    linked_list.remove_last()
     print(linked_list)
