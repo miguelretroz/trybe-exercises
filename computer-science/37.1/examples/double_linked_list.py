@@ -26,3 +26,15 @@ class DoubleLinkedList:
             first_value.next.previous = first_value
         self.__length += 1
 
+    def insert_last(self, value):
+        if self.is_empty():
+            return self.insert_first(value)
+
+        current_value = self.tail
+
+        last_value = DoubleLinkedNode(value)
+        last_value.previous = current_value
+        current_value.next = last_value
+        self.tail = last_value
+        self.__length += 1
+
