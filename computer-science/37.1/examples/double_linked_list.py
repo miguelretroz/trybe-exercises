@@ -55,3 +55,17 @@ class DoubleLinkedList:
         current_value.next = next_value
         self.__length += 1
 
+    def remove_first(self):
+        value_to_be_removed = self.head
+
+        if value_to_be_removed:
+            self.head = self.head.next
+            self.head.previous = None
+            value_to_be_removed.next = None
+            self.__length -= 1
+
+            if self.is_empty():
+                self.tail = None
+
+        return value_to_be_removed
+
