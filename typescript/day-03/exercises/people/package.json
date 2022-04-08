@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run build && node ./dist/index.js",
-    "dev": "ts-node-dev index.ts",
+    "dev": "tsnd --watch ./ index.ts",
     "build": "tsc"
   },
   "devDependencies": {
