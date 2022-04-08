@@ -15,6 +15,36 @@ const options = {
     info: {
       title: 'Exercise 01 People',
       version: '1.0.0',
+    },
+    components: {
+      requestBodies: {
+        User: {
+          Register: {
+            description: 'Dados do usuário',
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    name: {
+                      type: 'string'
+                    },
+                    email: {
+                      type: 'string',
+                      format: 'email',
+                    },
+                    password: {
+                      type: 'string',
+                      format: 'password',
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   apis: ['./controllers/**/*.ts']

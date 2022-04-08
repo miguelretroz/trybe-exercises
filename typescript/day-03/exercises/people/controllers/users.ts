@@ -82,6 +82,8 @@ router.get('/users/:userId', getById);
  *     description: Rota para registro de novos usuários.
  *     tags:
  *     - Users
+ *     requestBody:
+ *       $ref: '#/components/requestBodies/User/Register'
  *     responses:
  *       200:
  *         description: Retorna usuário recém registrado.
@@ -120,6 +122,8 @@ router.post('/users/register', register);
  *         example: 1
  *     tags:
  *     - Users
+ *     requestBody:
+ *       $ref: '#/components/requestBodies/User/Register'
  *     responses:
  *       200:
  *         description: Retorna usuário recém editado.
