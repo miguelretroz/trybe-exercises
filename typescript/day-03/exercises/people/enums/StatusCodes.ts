@@ -1,0 +1,12 @@
+enum StatusCode {
+  OK = 200,
+  CREATED,
+  NO_CONTENT = 204,
+  UNAUTHORIZED = 401,
+  NOT_FOUND = 404,
+  CONFLICT = 409,
+  INTERNAL_SERVER_ERROR = 500,
+  NOT_IMPLEMENTED,
+}
+
+export default StatusCode;
