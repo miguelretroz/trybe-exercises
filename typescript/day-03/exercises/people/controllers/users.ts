@@ -2,6 +2,10 @@ import express from 'express';
 import { Request, Response } from 'express';
 import StatusCode from '../enums/StatusCodes';
 
+import usersServices from '../services/users';
+import User from '../interfaces/User';
+import Error from '../interfaces/Error';
+
 const router = express.Router({ mergeParams: true });
 
 /**
@@ -101,8 +105,14 @@ router.get('/users/:userId', getById);
  *                    type: string
  *                    format: email
  */
- export const register = (_req: Request, res: Response) => {
-  return res.status(StatusCode.NOT_IMPLEMENTED).end();
+export const register = async (req: Request<{}, {}, User>, res: Response) => {
+  const { email, name, password } = req.body;
+
+  const registrationResult = await usersServices.register({ email, name, password });
+
+  if (registrationResult.code) return res.status(registrationResult.code).json(registrationResult);
+
+  return res.status(StatusCode.OK).json(registrationResult);
 };
 router.post('/users/register', register);
 
