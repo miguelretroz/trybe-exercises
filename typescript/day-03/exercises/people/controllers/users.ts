@@ -2,10 +2,10 @@ import express from 'express';
 import { Request, Response } from 'express';
 import StatusCode from '../enums/StatusCodes';
 
+import usersModels from '../models/users';
 import usersServices from '../services/users';
-import User from '../interfaces/User';
 import usersMiddlewares from '../middlewares/users';
-import Error from '../interfaces/Error';
+import User from '../interfaces/User';
 
 const router = express.Router({ mergeParams: true });
 
@@ -189,8 +189,12 @@ router.put('/users/edit/:userId', usersMiddlewares.update, update);
  *       204:
  *         description: Não retorna nada.
  */
- export const remove = (_req: Request, res: Response) => {
-  return res.status(StatusCode.NOT_IMPLEMENTED).end();
+ export const remove = async (req: Request<{ userId: string }>, res: Response) => {
+  const { userId } = req.params;
+
+  await usersModels.remove(userId);
+
+  return res.status(StatusCode.NO_CONTENT).end();
 };
 router.delete('/users/remove/:userId', remove);
 
