@@ -4,7 +4,6 @@ import StatusCode from '../enums/StatusCodes';
 
 import usersServices from '../services/users';
 import User from '../interfaces/User';
-import Error from '../interfaces/Error';
 import usersMiddlewares from '../middlewares/users';
 
 const router = express.Router({ mergeParams: true });
@@ -36,8 +35,9 @@ const router = express.Router({ mergeParams: true });
  *                      type: string
  *                      format: email
  */
-export const getAll = (_req: Request, res: Response) => {
-  return res.status(StatusCode.NOT_IMPLEMENTED).end();
+export const getAll = async (_req: Request, res: Response) => {
+  const users: User[] = await usersServices.getAll();
+  return res.status(StatusCode.OK).json(users);
 };
 router.get('/users/list', getAll);
 
