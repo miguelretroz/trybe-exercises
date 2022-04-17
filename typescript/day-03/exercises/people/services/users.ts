@@ -36,8 +36,24 @@ export const getById = async (userId: string): Promise<User | {}> => {
   return {};
 };
 
+export const update = async (userData: User): Promise<User | Error> => {
+  const userUpdated = await usersModels.update(userData);
+
+  if (userUpdated) {
+    const { password, ...userWithoutPassword } = userUpdated;
+
+    return userWithoutPassword;
+  };
+
+  return {
+    message: 'User not found',
+    code: StatusCode.NOT_FOUND,
+  }
+};
+
 export default {
   register,
   getAll,
   getById,
+  update
 };
