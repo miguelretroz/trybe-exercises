@@ -74,8 +74,12 @@ router.get('/users/list', getAll);
  *                    type: string
  *                    format: email
  */
- export const getById = (_req: Request, res: Response) => {
-  return res.status(StatusCode.NOT_IMPLEMENTED).end();
+ export const getById = async (req: Request<{ userId: string }>, res: Response) => {
+  const { userId } = req.params;
+
+  const user = await usersServices.getById(userId);
+
+  return res.status(StatusCode.OK).json(user);
 };
 router.get('/users/:userId', getById);
 
