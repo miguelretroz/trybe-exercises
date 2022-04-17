@@ -28,7 +28,14 @@ export const register = async (userData: User): Promise<User> => {
   return userDataWithoutPassword;
 };
 
+export const getAll = async (): Promise<User[]> => {
+  const users: User[] = JSON.parse(await fs.readFile('./users.json', 'utf-8'));
+
+  return users;
+};
+
 export default {
   register,
   getByEmail,
+  getAll,
 };
