@@ -44,9 +44,26 @@ export const getById = async (userId: string): Promise<User | null> => {
   return null;
 };
 
+export const update = async (userData: User): Promise<User | null> => {
+  const users = JSON.parse(await fs.readFile('./users.json', 'utf-8'));
+
+  const userIndex = users.findIndex(({ id }: User) => id === userData.id);
+
+  if (userIndex < 0) return null;
+
+  const newData = { ...users[userIndex], ...userData };
+
+  users[userIndex] = newData;
+
+  await fs.writeFile('./users.json', JSON.stringify(users), 'utf-8');
+
+  return newData;
+}
+
 export default {
   register,
   getByEmail,
   getAll,
   getById,
+  update,
 };
