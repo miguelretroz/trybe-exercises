@@ -60,10 +60,23 @@ export const update = async (userData: User): Promise<User | null> => {
   return newData;
 }
 
+export const remove = async (userId: string): Promise<void> => {
+  const users: User[] = JSON.parse(await fs.readFile('./users.json', 'utf-8'));
+
+  const userIndex = users.findIndex(({ id }: User) => id === userId);
+
+  if (userIndex >= 0) {
+    users.splice(userIndex, 1);
+
+    await fs.writeFile('./users.json', JSON.stringify(users), 'utf-8');
+  }
+}
+
 export default {
   register,
   getByEmail,
   getAll,
   getById,
   update,
+  remove,
 };
