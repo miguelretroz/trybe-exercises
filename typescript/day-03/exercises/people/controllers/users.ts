@@ -5,6 +5,7 @@ import StatusCode from '../enums/StatusCodes';
 import usersServices from '../services/users';
 import User from '../interfaces/User';
 import Error from '../interfaces/Error';
+import usersMiddlewares from '../middlewares/users';
 
 const router = express.Router({ mergeParams: true });
 
@@ -114,7 +115,7 @@ export const register = async (req: Request<{}, {}, User>, res: Response) => {
 
   return res.status(StatusCode.OK).json(registrationResult);
 };
-router.post('/users/register', register);
+router.post('/users/register', usersMiddlewares.register, register);
 
 /**
  * @openapi
