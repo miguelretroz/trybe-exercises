@@ -5,6 +5,7 @@ import StatusCode from '../enums/StatusCodes';
 import usersServices from '../services/users';
 import User from '../interfaces/User';
 import usersMiddlewares from '../middlewares/users';
+import Error from '../interfaces/Error';
 
 const router = express.Router({ mergeParams: true });
 
@@ -156,10 +157,17 @@ router.post('/users/register', usersMiddlewares.register, register);
  *                    type: string
  *                    format: email
  */
- export const update = (_req: Request, res: Response) => {
-  return res.status(StatusCode.NOT_IMPLEMENTED).end();
+ export const update = async (req: Request<{ userId: string }, {}, User>, res: Response) => {
+  const { userId } = req.params;
+  const { email, name, password } = req.body;
+
+  const userUpdated: any = await usersServices.update({ id: userId, email, name, password });
+
+  if (userUpdated.code) return res.status(userUpdated.code).json({ message: userUpdated.message });
+
+  return res.status(StatusCode.OK).json(userUpdated);
 };
-router.put('/users/edit/:userId', update);
+router.put('/users/edit/:userId', usersMiddlewares.update, update);
 
 /**
  * @openapi
