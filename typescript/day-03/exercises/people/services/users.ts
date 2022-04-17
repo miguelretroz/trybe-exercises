@@ -14,6 +14,17 @@ export const register = async (newUserData: User): Promise<any | Error> => {
   return newUser;
 };
 
+export const getAll = async (): Promise<User[]> => {
+  const users = await usersModels.getAll();
+
+  const usersWithoutPassword = users.map(
+    ({ password, ...userWithoutPassword }: User) => userWithoutPassword,
+  );
+
+  return usersWithoutPassword;
+};
+
 export default {
   register,
+  getAll,
 };
