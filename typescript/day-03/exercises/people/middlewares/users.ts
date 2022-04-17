@@ -12,6 +12,15 @@ export const register = (req: Request<{}, {}, User>, res: Response, next: NextFu
   next();
 };
 
+export const update = (req: Request<{}, {}, User>, res: Response, next: NextFunction) => {
+  const { error } = usersSchemas.update.validate(req.body);
+
+  if (error) return res.status(StatusCode.UNPROCESSABLE_ENTITY).json({ message: error.details[0].message });
+
+  next();
+};
+
 export default {
   register,
+  update,
 };
