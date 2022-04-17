@@ -34,8 +34,19 @@ export const getAll = async (): Promise<User[]> => {
   return users;
 };
 
+export const getById = async (userId: string): Promise<User | null> => {
+  const users: User[] = JSON.parse(await fs.readFile('./users.json', 'utf-8'));
+
+  const userIndex = users.findIndex(({ id }: User) => id === userId);
+
+  if (userIndex >= 0) return users[userIndex];
+
+  return null;
+};
+
 export default {
   register,
   getByEmail,
   getAll,
+  getById,
 };
