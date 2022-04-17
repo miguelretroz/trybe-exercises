@@ -24,7 +24,20 @@ export const getAll = async (): Promise<User[]> => {
   return usersWithoutPassword;
 };
 
+export const getById = async (userId: string): Promise<User | {}> => {
+  const user = await usersModels.getById(userId);
+
+  if (user) {
+    const { password, ...userWithoutPassword } = user;
+
+    return userWithoutPassword;
+  }
+
+  return {};
+};
+
 export default {
   register,
   getAll,
+  getById,
 };
